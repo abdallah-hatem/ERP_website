@@ -707,7 +707,7 @@ aside.left-panel {
   top: 55px;
   z-index: 999;
 }
-aside.left-panel:hover {
+aside.left-panel {
   overflow-x: scroll;
 }
 
@@ -750,8 +750,6 @@ aside.left-panel:hover {
   position: relative;
 }
 .navbar .navbar-nav > li {
-  padding-left: 30px;
-  padding-right: 30px;
 }
 .navbar .navbar-nav > li.active {
   background: #fafafa;
@@ -804,12 +802,13 @@ aside.left-panel:hover {
 }
 .navbar .navbar-nav li.menu-item-has-children a {
   line-height: 30px;
+  padding: 12px 15px;
 }
 .navbar .navbar-nav li.menu-item-has-children a:before {
   content: "";
   position: absolute;
   top: 23px;
-  right: 0;
+  right: 16px;
   width: 8px;
   height: 8px;
   border-style: solid;
@@ -858,7 +857,7 @@ aside.left-panel:hover {
 .navbar .navbar-nav li.menu-item-has-children.show a:before {
   border-color: transparent #607d8b #607d8b transparent;
   top: 20px;
-  right: -5px;
+  right: 16px;
 }
 .navbar .navbar-nav li.menu-item-has-children.show a:hover:before {
   border-color: transparent#37a000#37a000 transparent;
@@ -2749,7 +2748,7 @@ footer.site-footer .footer-inner a {
     max-width: 280px;
   }
 
-  aside.left-panel:hover {
+  aside.left-panel {
     overflow-x: inherit;
   }
 
@@ -3175,5 +3174,25 @@ footer.site-footer .footer-inner a {
 .active {
   border-left: 3px solid #37a000;
 }
-
+.active2 {
+  border-left: 1px solid transparent;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
+.open .info {
+  display: none;
+}
+
+.img-circle {
+  border-radius: 50%;
+  height: 22%;
+  width: 22%;
+  border: 1px solid gray;
+  padding: 5px;
+}
+.open .img-circle {
+  height: 50%;
+  width: 50%;
+}
