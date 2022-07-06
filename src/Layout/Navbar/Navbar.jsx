@@ -1,38 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Navbar() {
-  function handleSideBar() {
-    var body = document.body;
-    body.classList.contains("open")
-      ? body.classList.remove("open")
-      : body.classList.add("open");
-  }
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
+  useEffect(() => {
+    window.addEventListener("resize", function () {
+      setWindowSize(window.innerWidth);
+    });
+    let leftPanelId = document.getElementById("left-panel");
+    var body = document.body;
+
+    if (windowSize < 1024) {
+      body.classList.add("small-device");
+      body.classList.remove("open");
+    } else {
+      body.classList.remove("small-device");
+    }
+  }, [windowSize]);
+
+  function handleSideBar() {
+    let body = document.body;
+
+    let leftPanelId = document.getElementById("left-panel");
+
+    if (windowSize < 1024) {
+      leftPanelId.classList.toggle("animation-dropdown");
+    } else {
+      body.classList.toggle("open");
+    }
+  }
   return (
     <header id="header" class="header">
       <div class="top-left">
         <div class="navbar-header">
           <a class="navbar-brand" href="./">
-            <img
-              src="	https://technext.github.io/elaadmin/images/logo.png"
-              alt="Logo"
-            />
+            <img src="images/logo.png" alt="Logo" />
           </a>
           <a class="navbar-brand hidden" href="./">
             <img src="images/logo2.png" alt="Logo" />
           </a>
-          {/* <a id="menuToggle" class="menutoggle">
-                <i class="fa fa-bars"></i>
-              </a> */}
           <a onClick={handleSideBar} id="menuToggle" class="menutoggle">
-            <span
-              style={{
-                fontSize: 25,
-                color: "black",
-                display: "block",
-              }}
-              class="pe-7s-keypad"
-            ></span>
+            <i class="fa fa-bars"></i>
           </a>
         </div>
       </div>
@@ -42,7 +50,6 @@ function Navbar() {
             <button class="search-trigger">
               <i class="fa fa-search"></i>
             </button>
-
             <div class="form-inline">
               <form class="search-form">
                 <input
@@ -102,10 +109,7 @@ function Navbar() {
                 <p class="red">You have 4 Mails</p>
                 <a class="dropdown-item media" href="#">
                   <span class="photo media-left">
-                    <img
-                      alt="avatar"
-                      src="https://technext.github.io/elaadmin/images/admin.jpg"
-                    />
+                    <img alt="avatar" src="images/avatar/1.jpg" />
                   </span>
                   <div class="message media-body">
                     <span class="name float-left">Jonathan Smith</span>
@@ -115,10 +119,7 @@ function Navbar() {
                 </a>
                 <a class="dropdown-item media" href="#">
                   <span class="photo media-left">
-                    <img
-                      alt="avatar"
-                      src="https://technext.github.io/elaadmin/images/admin.jpg"
-                    />
+                    <img alt="avatar" src="images/avatar/2.jpg" />
                   </span>
                   <div class="message media-body">
                     <span class="name float-left">Jack Sanders</span>
@@ -128,10 +129,7 @@ function Navbar() {
                 </a>
                 <a class="dropdown-item media" href="#">
                   <span class="photo media-left">
-                    <img
-                      alt="avatar"
-                      src="https://technext.github.io/elaadmin/images/admin.jpg"
-                    />
+                    <img alt="avatar" src="images/avatar/3.jpg" />
                   </span>
                   <div class="message media-body">
                     <span class="name float-left">Cheryl Wheeler</span>
@@ -141,10 +139,7 @@ function Navbar() {
                 </a>
                 <a class="dropdown-item media" href="#">
                   <span class="photo media-left">
-                    <img
-                      alt="avatar"
-                      src="https://technext.github.io/elaadmin/images/admin.jpg"
-                    />
+                    <img alt="avatar" src="images/avatar/4.jpg" />
                   </span>
                   <div class="message media-body">
                     <span class="name float-left">Rachel Santos</span>
@@ -159,17 +154,16 @@ function Navbar() {
           <div class="user-area dropdown float-right">
             <a
               href="#"
-              class="dropdown-toggle"
+              class="dropdown-toggle active"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              {/* <img
-                    class="user-avatar rounded-circle"
-                    src="https://technext.github.io/elaadmin/images/admin.jpg"
-                    alt="User Avatar"
-                  /> */}
-              <i class="menu-icon fa fa-cogs"></i>
+              <img
+                class="user-avatar rounded-circle"
+                src="images/admin.jpg"
+                alt="User Avatar"
+              />
             </a>
 
             <div class="user-menu dropdown-menu">
