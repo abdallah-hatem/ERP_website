@@ -3,7 +3,7 @@
   margin-bottom: 7px;
   font-size: inherit;
   font-weight: lighter;
-  min-width: 120px;
+  min-width: 150px;
   margin-right: 5px;
   color: #374767;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -17,7 +17,8 @@
   justify-content: space-between;
   align-items: center;
 }
-.squared-input-container input {
+.squared-input-container input,
+.squared-input-container textarea {
   display: block;
   padding: 10px;
   width: 100%;
@@ -33,7 +34,8 @@
   font-size: 1em;
   line-height: 1.25em;
 }
-.squared-input-container input::placeholder {
+.squared-input-container input::placeholder,
+.squared-input-container textarea::placeholder {
   color: gray;
   font-size: 15px;
   /* font-weight: 200; */
@@ -45,3 +47,20 @@
   justify-content: flex-end;
   color: #ff8787;
 }
+/* 
+.squared-input-container textarea {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #d7dbe0;
+  border-radius: 3px;
+  color: #5c5c5c;
+  outline: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+  font-size: 1em;
+  line-height: 1.25em;
+} */

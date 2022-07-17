@@ -1,16 +1,18 @@
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import Login from "../Pages/Login/Login";
 import Sale from "../Pages/Sales/Sale";
-import AddSupplier from "../Pages/Supplier/AddSupplier";
+import AddSupplier from "../Pages/Supplier/AddSupplier/AddSupplier";
+import SupplierList from "../Pages/Supplier/SupplierList/SupplierList";
+// import AddSupplier from "../Pages/Supplier/AddSupplier";
+// import SupplierList from "../Pages/Supplier/SupplierList";
 
 export const routes = [
-  // {
-  //   id: 1,
-  //   title: "Dashboard",
-  //   path: "/dashboard",
-  //   icon: "menu-icon fa fa-cogs",
-  //   component: <Dashboard />,
-  // },
+  {
+    id: 1,
+    title: "Dashboard",
+    path: "/dashboard",
+    icon: "menu-icon fa fa-cogs",
+    component: <Dashboard />,
+  },
   {
     id: 0,
     title: "Sale",
@@ -119,7 +121,7 @@ export const routes = [
         title: "Supplier List",
         icon: "menu-icon fa fa-cogs",
         path: "/supplier-list",
-        component: <Login />,
+        component: <SupplierList />,
       },
       {
         id: 0,

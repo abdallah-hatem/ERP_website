@@ -447,6 +447,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   width: 100%;
+  background-color: #f5f5f5;
 }
 
 p {
@@ -2893,7 +2894,7 @@ footer.site-footer .footer-inner a {
 
 /*# sourceMappingURL=style.css.map */
 
-.active {
+.Active {
   border-left: 3px solid $sec-color;
 }
 .active2 {
@@ -2947,4 +2948,7 @@ footer.site-footer .footer-inner a {
     width: 300px;
     max-width: 300px;
   }
+}
+.animate {
+  transition: all 3s ease-in-out;
 }

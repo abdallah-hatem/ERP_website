@@ -17,7 +17,11 @@ const ButtonComponent = ({
     <button
       type={type}
       onClick={onClick}
-      style={{ backgroundColor: color, borderRadius: "0.25rem", cursor: "pointer" }}
+      style={{
+        backgroundColor: color,
+        borderRadius: "0.25rem",
+        cursor: "pointer",
+      }}
       className="site-button-component"
       disabled={disable || loading}
     >

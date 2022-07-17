@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -29,12 +30,18 @@ function Navbar() {
       body.classList.toggle("open");
     }
   }
+
+  const { t, i18n } = useTranslation();
+
   return (
     <header id="header" class="header">
       <div class="top-left">
         <div class="navbar-header">
           <a class="navbar-brand" href="./">
-            <img src="images/logo.png" alt="Logo" />
+            <img
+              src="https://technext.github.io/elaadmin/images/logo.png"
+              alt="Logo"
+            />
           </a>
           <a class="navbar-brand hidden" href="./">
             <img src="images/logo2.png" alt="Logo" />
@@ -153,17 +160,18 @@ function Navbar() {
 
           <div class="user-area dropdown float-right">
             <a
-              href="#"
-              class="dropdown-toggle active"
+              href="/#"
+              // class="dropdown-toggle"
               data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+              // aria-haspopup="true"
+              // aria-expanded="false"
             >
-              <img
+              <i class="menu-icon fa fa-cogs"></i>
+              {/* <img
                 class="user-avatar rounded-circle"
                 src="images/admin.jpg"
                 alt="User Avatar"
-              />
+              /> */}
             </a>
 
             <div class="user-menu dropdown-menu">
@@ -182,6 +190,48 @@ function Navbar() {
 
               <a class="nav-link" href="#">
                 <i class="fa fa-power -off"></i>Logout
+              </a>
+            </div>
+          </div>
+          <div class="user-area dropdown float-right">
+            <a
+              href="/#"
+              // class="dropdown-toggle"
+              data-toggle="dropdown"
+              // aria-haspopup="true"
+              // aria-expanded="false"
+            >
+              <i class="fas fa-globe"></i>
+              {/* <img
+                class="user-avatar rounded-circle"
+                src="images/admin.jpg"
+                alt="User Avatar"
+              /> */}
+            </a>
+
+            <div class="user-menu dropdown-menu">
+              <a
+                style={{
+                  backgroundColor: i18n.language === "en" && "#37a000",
+                  color: i18n.language === "en" && "white",
+                }}
+                onClick={() => i18n.changeLanguage("en")}
+                class="nav-link"
+                href="#"
+              >
+                <i class="fa fa- user"></i>English
+              </a>
+
+              <a
+                style={{
+                  backgroundColor: i18n.language === "ar" && "#37a000",
+                  color: i18n.language === "ar" && "white",
+                }}
+                onClick={() => i18n.changeLanguage("ar")}
+                class="nav-link"
+                href="#"
+              >
+                <i class="fa fa- user"></i>العربية
               </a>
             </div>
           </div>

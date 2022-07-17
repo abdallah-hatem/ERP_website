@@ -9,8 +9,10 @@ import {
   Row,
   Col,
 } from "shards-react";
+import { useTranslation } from "react-i18next";
 
 function FormComponent({ children, title }) {
+  const { t, i18n } = useTranslation();
   return (
     <Card small className="mb-4">
       <CardHeader
@@ -18,7 +20,7 @@ function FormComponent({ children, title }) {
         className="border-bottom"
       >
         <h6 style={{}} className="m-0">
-          {title}
+          {t(title)}
         </h6>
       </CardHeader>
       <ListGroup flush>
