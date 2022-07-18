@@ -18,7 +18,8 @@
   align-items: center;
 }
 .squared-input-container input,
-.squared-input-container textarea {
+.squared-input-container textarea,
+.squared-input-container select {
   display: block;
   padding: 10px;
   width: 100%;
@@ -47,20 +48,22 @@
   justify-content: flex-end;
   color: #ff8787;
 }
-/* 
-.squared-input-container textarea {
+.options-cont {
   display: block;
-  padding: 10px;
+  /* padding: 10px; */
   width: 100%;
   background-color: white;
   border: 1px solid #d7dbe0;
   border-radius: 3px;
   color: #5c5c5c;
   outline: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: top;
   font-size: 1em;
   line-height: 1.25em;
-} */
+}
+.css-1s2u09g-control {
+  border: none !important;
+}

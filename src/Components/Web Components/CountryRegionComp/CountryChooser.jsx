@@ -1,23 +1,17 @@
 import React from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import { useTranslation } from "react-i18next";
-import "./CountryChooser.css";
+import "./Style.css";
 
-function CountryChooser({
-  name = "City",
-  value,
-  setCountry,
-  handleChange,
-  label,
-  handleCountryChange,
-}) {
-  const { t } = useTranslation();
+function CountryChooser({ name, value, handleChange, label }) {
+  const { t, i18n } = useTranslation();
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "space-between",
         marginBottom: 10,
+        direction: i18n.language === "en" ? "ltr" : "rtl",
       }}
     >
       <label id="lbl" htmlFor="feInputState">
@@ -27,7 +21,7 @@ function CountryChooser({
         name={name}
         classes="cls"
         value={value}
-        onChange={handleCountryChange}
+        onChange={(e) => handleChange({ target: { name, value: e } })}
       />
     </div>
   );

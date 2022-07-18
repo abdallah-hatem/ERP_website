@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "./style.css";
+import Select from "react-select";
+
 function InputComponent({
   label,
   name,
@@ -15,6 +17,9 @@ function InputComponent({
   disabled = false,
   onFocus,
   textArea = false,
+  chooseOptions = false,
+  options = [],
+  width,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -38,6 +43,20 @@ function InputComponent({
             disabled={disabled}
             onFocus={onFocus}
           />
+        ) : chooseOptions ? (
+          <div style={{ width }}>
+            <Select
+              className="options-cont"
+              placeholder="Select Option"
+              options={options}
+              name={name}
+              value={value}
+              // onChange={handleChange}
+              onChange={(e) =>
+                handleChange({ target: { name, value: e.value } })
+              }
+            />
+          </div>
         ) : (
           <input
             onChange={handleChange}
@@ -49,6 +68,7 @@ function InputComponent({
             id={id}
             disabled={disabled}
             onFocus={onFocus}
+            style={{ width }}
           />
         )}
         {errorMessage ? (

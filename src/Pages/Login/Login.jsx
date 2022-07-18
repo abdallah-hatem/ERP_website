@@ -8,7 +8,6 @@ import { LOGIN } from "./Api";
 
 function Login() {
   const defaultValues = useRef({
-    user_name: "",
     email: "",
     password: "",
   });
@@ -18,7 +17,7 @@ function Login() {
   }, []);
   function handleSubmit(e) {
     // e.preventDefault();
-    if (!values.user_name || !values.email || !values.password) {
+    if (!values.email || !values.password) {
       alert(t("Fill the inputs"));
       return;
     }
@@ -32,16 +31,6 @@ function Login() {
     <FormComponent title={"Login"}>
       <div className="row">
         <div className="col-lg-12">
-          <InputComponent
-            label={"User Name :"}
-            placeholder="User Name"
-            handleChange={handleChange}
-            name="user_name"
-            value={values["user_name"]}
-            required
-            // errorMessage={error.FullName}
-            // onBlur={CheckInputs(values, error)}
-          />
           <InputComponent
             label={"E-Mail :"}
             placeholder="E-Mail"

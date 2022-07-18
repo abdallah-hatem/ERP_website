@@ -74,6 +74,7 @@ function MasterTable({
   allowDelete = false,
   allowPrint = false,
   allowExcel = false,
+  allowPdf = false,
   allowPaging = false,
   columnChooser = true,
   pageSize = 5,
@@ -224,7 +225,6 @@ function MasterTable({
         onCellPrepared={(e) => handleStyle && handleStyle(e)}
       >
         <Selection mode="multiple" showCheckBoxesMode={showCheckBoxesMode} />
-
         <SearchPanel visible={searchPanel} />
         <ColumnChooser enabled={columnChooser} />
         <FilterRow visible={filterRow} />
@@ -250,13 +250,15 @@ function MasterTable({
           />
         </Editing>
         {/* <Scrolling mode="virtual" rowRenderingMode="virtual" /> */}
-        <Paging enabled={true} />
-        <Paging defaultPageSize={pageSize} />
-        <Pager
-          showPageSizeSelector={true}
-          allowedPageSizes={[pageSize, pageSize * 2, pageSize * 4]}
-          showInfo={true}
-        />
+        {allowPaging && <Paging enabled={true} />}
+        {allowPaging && <Paging defaultPageSize={pageSize} />}
+        {allowPaging && (
+          <Pager
+            showPageSizeSelector={true}
+            allowedPageSizes={[pageSize, pageSize * 2, pageSize * 4]}
+            showInfo={true}
+          />
+        )}
         {colAttributes?.length > 0 &&
           colAttributes.map((col, index) => {
             return (
@@ -292,10 +294,12 @@ function MasterTable({
               />
             );
           })}
-
         {children}
-        <Export enabled={allowExcel} allowExportSelectedData={true} />
-
+        <Export
+          enabled={allowExcel || allowPdf}
+          formats={allowExcel ? ["excel"] : ["pdf"]}
+          allowExportSelectedData={true}
+        />
         <Summary recalculateWhileEditing={true}>
           {summaryItems.map((item, index) => {
             return (
@@ -349,7 +353,7 @@ const onToolbarPreparing = (e) => {
     widget: "dxButton",
     options: {
       icon: "exportpdf",
-      hint: "طباعة",
+      hint: "Print",
       onClick: function () {
         const doc = new jsPDF();
         const dataGrid = dataGridRef.current.instance;

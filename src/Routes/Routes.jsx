@@ -1,7 +1,18 @@
+import CreditCustomer from "../Pages/Customer/CreditCustomer";
+import CustomerAdvance from "../Pages/Customer/CustomerAdvance";
+import CustomerLedger from "../Pages/Customer/CustomerLedger";
+import CustomerList from "../Pages/Customer/CustomerList";
+import PaidCustomer from "../Pages/Customer/PaidCustomer";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import Sale from "../Pages/Sales/Sale";
-import AddSupplier from "../Pages/Supplier/AddSupplier/AddSupplier";
-import SupplierList from "../Pages/Supplier/SupplierList/SupplierList";
+import NewSale from "../Pages/Sales/NewSale";
+import AddSupplier from "../Pages/Supplier/AddSupplier";
+import AddCustomer from "../Pages/Supplier/Customer/AddCustomer";
+import SupplierAdvance from "../Pages/Supplier/SupplierAdvance";
+import SupplierLedger from "../Pages/Supplier/SupplierLedger";
+import SupplierList from "../Pages/Supplier/SupplierList";
+// import SupplierAdvance from "../Pages/Supplier/SupplierAdvance/SupplierAdvance";
+// import SupplierLedger from "../Pages/Supplier/SupplierLedger/SupplierLedger";
+// import SupplierList from "../Pages/Supplier/SupplierList/SupplierList";
 // import AddSupplier from "../Pages/Supplier/AddSupplier";
 // import SupplierList from "../Pages/Supplier/SupplierList";
 
@@ -23,7 +34,7 @@ export const routes = [
         title: "New Sale",
         icon: "menu-icon fa fa-cogs",
         path: "/sale",
-        component: <Sale />,
+        component: <NewSale />,
       },
       {
         id: 0,
@@ -65,42 +76,42 @@ export const routes = [
         title: "Add Customer",
         icon: "menu-icon fa fa-cogs",
         path: "/add-customer",
-        component: <Sale />,
+        component: <AddCustomer />,
       },
       {
         id: 0,
         title: "Customer List",
         icon: "menu-icon fa fa-cogs",
         path: "/customer-list",
-        component: "",
+        component: <CustomerList />,
       },
       {
         id: 0,
         title: "Credit Customer",
         icon: "menu-icon fa fa-cogs",
         path: "/credit-customer",
-        component: "",
+        component: <CreditCustomer />,
       },
       {
         id: 0,
         title: "Paid Customer",
         icon: "menu-icon fa fa-cogs",
         path: "/paid-customer",
-        component: "",
+        component: <PaidCustomer />,
       },
       {
         id: 0,
         title: "Customer Ledger",
         icon: "menu-icon fa fa-cogs",
         path: "/customer-ledger",
-        component: "",
+        component: <CustomerLedger />,
       },
       {
         id: 0,
         title: "Customer Advance",
         icon: "menu-icon fa fa-cogs",
         path: "/customer-advance",
-        component: "",
+        component: <CustomerAdvance />,
       },
     ],
   },
@@ -128,14 +139,14 @@ export const routes = [
         title: "Supplier Ledger",
         icon: "menu-icon fa fa-cogs",
         path: "/supplier-ledger",
-        component: "",
+        component: <SupplierLedger />,
       },
       {
         id: 0,
         title: "Supplier Advance",
         icon: "menu-icon fa fa-cogs",
         path: "/supplier-advance",
-        component: "",
+        component: <SupplierAdvance />,
       },
     ],
   },
@@ -148,8 +159,8 @@ export const routes = [
         id: 0,
         title: "Add Category",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -204,8 +215,8 @@ export const routes = [
         id: 0,
         title: "Add Purchase",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -225,8 +236,8 @@ export const routes = [
         id: 0,
         title: "Stock Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
     ],
   },
@@ -239,8 +250,8 @@ export const routes = [
         id: 0,
         title: "Chart of Accounts",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -344,8 +355,8 @@ export const routes = [
         id: 0,
         title: "Closing",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -456,8 +467,8 @@ export const routes = [
         id: 0,
         title: "HRM",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -505,8 +516,8 @@ export const routes = [
         id: 0,
         title: "Add New Bank",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -540,8 +551,8 @@ export const routes = [
         id: 0,
         title: "Add Service",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -575,8 +586,8 @@ export const routes = [
         id: 0,
         title: "Add Quotation",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -596,8 +607,8 @@ export const routes = [
         id: 0,
         title: "VAT & TAX Settings",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -645,8 +656,8 @@ export const routes = [
         id: 0,
         title: "Return",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,
@@ -680,8 +691,8 @@ export const routes = [
         id: 0,
         title: "Software Settings",
         icon: "menu-icon fa fa-cogs",
-        path: "/sale",
-        component: <Sale />,
+        path: "",
+        component: "",
       },
       {
         id: 0,

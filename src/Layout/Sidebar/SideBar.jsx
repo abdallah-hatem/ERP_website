@@ -11,7 +11,6 @@ function SideBar() {
   useEffect(() => {
     setCurrentRoute(location.pathname);
   }, [location]);
-  console.log(currentRoute);
 
   const { t } = useTranslation();
 

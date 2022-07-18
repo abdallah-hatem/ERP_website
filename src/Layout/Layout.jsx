@@ -1,9 +1,7 @@
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import Navbar from "./Navbar/Navbar";
 import SideBar from "./Sidebar/SideBar";
 
 import { Routes, Route } from "react-router-dom";
-import Sale from "../Pages/Sales/Sale";
 import { routes } from "../Routes/Routes";
 
 function Layout() {
@@ -26,8 +24,6 @@ function Layout() {
                   <Route path={el.path} element={el.component} />
                 )
               )}
-              {/* <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/sale" element={<Sale />} /> */}
             </Routes>
           </div>
         </div>
