@@ -20,16 +20,19 @@ function InputComponent({
   chooseOptions = false,
   options = [],
   width,
+  children = false,
 }) {
   const { t, i18n } = useTranslation();
 
   return (
-    <div
-      style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}
-      // style={{ direction: i18n.language === "en" ? "ltr" : "ltr" }}
-    >
+    <div style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}>
       <div className="squared-input-container">
-        <label id="domain-label">{t(label)}</label>
+        <label
+          style={{ textAlign: i18n.language === "ar" && "right" }}
+          id="domain-label"
+        >
+          {t(label)}
+        </label>
         {textArea ? (
           <textarea
             className="textArea"
@@ -38,24 +41,40 @@ function InputComponent({
             onBlur={onBlur}
             name={name}
             value={value}
-            placeholder={placeholder}
+            placeholder={t(placeholder)}
             id={id}
             disabled={disabled}
             onFocus={onFocus}
+            style={{ width: width }}
           />
         ) : chooseOptions ? (
-          <div style={{ width }}>
+          <div
+            className="options-cont"
+            style={{
+              textAlign: i18n.language === "ar" && "right",
+              width: width,
+            }}
+          >
             <Select
-              className="options-cont"
-              placeholder="Select Option"
+              // classNamePrefix={"options-cont"}
+              placeholder={t(placeholder)}
               options={options}
               name={name}
               value={value}
-              // onChange={handleChange}
               onChange={(e) =>
                 handleChange({ target: { name, value: e.value } })
               }
             />
+          </div>
+        ) : children ? (
+          <div
+            className="image-upload-cont"
+            style={{
+              textAlign: i18n.language === "ar" && "right",
+              width: width,
+            }}
+          >
+            {children}
           </div>
         ) : (
           <input
@@ -64,11 +83,11 @@ function InputComponent({
             onBlur={onBlur}
             name={name}
             value={value}
-            placeholder={placeholder}
+            placeholder={t(placeholder)}
             id={id}
             disabled={disabled}
             onFocus={onFocus}
-            style={{ width }}
+            style={{ width: width }}
           />
         )}
         {errorMessage ? (

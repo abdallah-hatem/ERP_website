@@ -117,8 +117,8 @@ function AddSupplier() {
       textArea: true,
     },
     {
-      label: "City  :",
-      placeholder: "City ",
+      label: "City :",
+      placeholder: "City",
       handleChange: handleChange,
       name: "city",
       value: values["city"],
@@ -190,7 +190,7 @@ function AddSupplier() {
         </div>
       </div>
 
-      <div style={{ width: "20%", float: "right", marginTop: 20 }}>
+      <div style={{ width: "200px", float: "right", marginTop: 20 }}>
         <ButtonComponent onClick={handleSubmit} title={"Submit"} />
       </div>
     </FormComponent>

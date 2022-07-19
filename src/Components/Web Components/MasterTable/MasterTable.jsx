@@ -112,6 +112,8 @@ function MasterTable({
   keyExpr,
   selectedRowKeys = "none",
   handleStyle = false,
+  ColoredRows = false,
+  placeholder = "Search...",
 }) {
   const { t, i18n } = useTranslation();
 
@@ -223,9 +225,10 @@ function MasterTable({
         onSelectionChanged={onSelectionChanged}
         selectedRowKeys={selectedRowKeys}
         onCellPrepared={(e) => handleStyle && handleStyle(e)}
+        rowAlternationEnabled={ColoredRows}
       >
         <Selection mode="multiple" showCheckBoxesMode={showCheckBoxesMode} />
-        <SearchPanel visible={searchPanel} />
+        <SearchPanel placeholder={t(placeholder)} visible={searchPanel} />
         <ColumnChooser enabled={columnChooser} />
         <FilterRow visible={filterRow} />
         <HeaderFilter visible={headerFilter} />

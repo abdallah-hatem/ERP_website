@@ -1,13 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
-import CountryChooser from "../../../Components/Web Components/CountryRegionComp/CountryChooser";
-import RegionChooser from "../../../Components/Web Components/CountryRegionComp/RegionChooser";
-import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
-
-// import "./AddSupplier.css";
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
+import CountryChooser from "../../Components/Web Components/CountryRegionComp/CountryChooser";
+import RegionChooser from "../../Components/Web Components/CountryRegionComp/RegionChooser";
+import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
+import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
 function AddCustomer() {
   const defaultValues = useRef({
@@ -190,7 +188,7 @@ function AddCustomer() {
         </div>
       </div>
 
-      <div style={{ width: "20%", float: "right", marginTop: 20 }}>
+      <div style={{ width: "200px", float: "right", marginTop: 20 }}>
         <ButtonComponent onClick={handleSubmit} title={"Submit"} />
       </div>
     </FormComponent>

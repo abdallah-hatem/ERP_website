@@ -93,6 +93,7 @@ function PaidCustomer() {
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}
+        ColoredRows
       />
     </FormComponent>
   );

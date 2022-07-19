@@ -91,6 +91,7 @@ function CustomerList() {
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}
+        ColoredRows
       />
     </FormComponent>
   );

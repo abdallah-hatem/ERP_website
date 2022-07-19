@@ -18,6 +18,7 @@ function RegionChooser({
         display: "flex",
         justifyContent: "space-between",
         direction: i18n.language === "en" ? "ltr" : "rtl",
+        textAlign: i18n.language === "ar" && "right",
       }}
     >
       <label id="lbl" htmlFor="feInputState">

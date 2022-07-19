@@ -12,6 +12,7 @@ function CountryChooser({ name, value, handleChange, label }) {
         justifyContent: "space-between",
         marginBottom: 10,
         direction: i18n.language === "en" ? "ltr" : "rtl",
+        textAlign: i18n.language === "ar" && "right",
       }}
     >
       <label id="lbl" htmlFor="feInputState">

@@ -25,7 +25,7 @@ const ButtonComponent = ({
       className="site-button-component"
       disabled={disable || loading}
     >
-      <i className={icon}></i>{" "}
+      <i className={icon}></i>
       {!loading ? t(title) : <TailSpin color="white" height={20} width={20} />}
     </button>
   );

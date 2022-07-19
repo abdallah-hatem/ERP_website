@@ -1,12 +1,18 @@
+import AddCustomer from "../Pages/Customer/AddCustomer";
 import CreditCustomer from "../Pages/Customer/CreditCustomer";
 import CustomerAdvance from "../Pages/Customer/CustomerAdvance";
 import CustomerLedger from "../Pages/Customer/CustomerLedger";
 import CustomerList from "../Pages/Customer/CustomerList";
 import PaidCustomer from "../Pages/Customer/PaidCustomer";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AddCategory from "../Pages/Product/AddCategory";
+import AddProduct from "../Pages/Product/AddProduct";
+import AddUnit from "../Pages/Product/AddUnit";
+import CategoryList from "../Pages/Product/CategoryList";
+import UnitList from "../Pages/Product/UnitList";
 import NewSale from "../Pages/Sales/NewSale";
 import AddSupplier from "../Pages/Supplier/AddSupplier";
-import AddCustomer from "../Pages/Supplier/Customer/AddCustomer";
+// import AddCustomer from "../Pages/Supplier/Customer/AddCustomer";
 import SupplierAdvance from "../Pages/Supplier/SupplierAdvance";
 import SupplierLedger from "../Pages/Supplier/SupplierLedger";
 import SupplierList from "../Pages/Supplier/SupplierList";
@@ -159,36 +165,36 @@ export const routes = [
         id: 0,
         title: "Add Category",
         icon: "menu-icon fa fa-cogs",
-        path: "",
-        component: "",
+        path: "/add-category",
+        component: <AddCategory />,
       },
       {
         id: 0,
         title: "Category List",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/category-list",
+        component: <CategoryList />,
       },
       {
         id: 0,
         title: "Add Unit",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/add-unit",
+        component: <AddUnit />,
       },
       {
         id: 0,
         title: "Unit List",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/unit-list",
+        component: <UnitList />,
       },
       {
         id: 0,
         title: "Add Product",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/add-product",
+        component: <AddProduct />,
       },
       {
         id: 0,

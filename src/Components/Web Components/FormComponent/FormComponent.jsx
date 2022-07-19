@@ -1,14 +1,7 @@
 import React from "react";
 import "./FormComponent.css";
 
-import {
-  Card,
-  CardHeader,
-  ListGroup,
-  ListGroupItem,
-  Row,
-  Col,
-} from "shards-react";
+import { Card, CardHeader, CardBody } from "shards-react";
 import { useTranslation } from "react-i18next";
 
 function FormComponent({ children, title, style }) {
@@ -17,20 +10,17 @@ function FormComponent({ children, title, style }) {
     <div style={style}>
       <Card small className="mb-4">
         <CardHeader
-          style={{ backgroundColor: "white" }}
+          style={{
+            backgroundColor: "white",
+            textAlign: i18n.language === "ar" && "right",
+          }}
           className="border-bottom"
         >
           <h6 style={{}} className="m-0">
             {t(title)}
           </h6>
         </CardHeader>
-        <ListGroup flush>
-          <ListGroupItem className="p-3">
-            <Row>
-              <Col>{children}</Col>
-            </Row>
-          </ListGroupItem>
-        </ListGroup>
+        <CardBody>{children}</CardBody>
       </Card>
     </div>
   );

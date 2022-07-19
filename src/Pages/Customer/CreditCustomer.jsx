@@ -93,6 +93,7 @@ function CreditCustomer() {
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}
+        ColoredRows
       />
     </FormComponent>
   );

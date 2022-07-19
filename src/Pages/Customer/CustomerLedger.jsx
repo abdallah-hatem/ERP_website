@@ -123,6 +123,7 @@ function CustomerLedger() {
           columnChooser={false}
           dataSource={data}
           colAttributes={columns}
+          ColoredRows
         />
       </FormComponent>
       <span style={{ float: "right" }} class="padding-lefttitle">

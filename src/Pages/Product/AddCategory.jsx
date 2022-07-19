@@ -4,13 +4,12 @@ import ButtonComponent from "../../Components/Web Components/ButtonComponent/But
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
-function SupplierAdvance() {
+function AddCategory() {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
-    supplier_name: "",
-    advance_type: "",
-    amount: 0,
+    category_name: "",
+    status: "",
   });
   const [values, setValues] = useState(defaultValues.current);
   const handleChange = useCallback((e) => {
@@ -29,61 +28,37 @@ function SupplierAdvance() {
 
   const options = [
     {
-      label: "Hudson",
-      value: "hudson",
+      label: "Active",
+      value: "active",
     },
     {
-      label: "Mike",
-      value: "mike",
-    },
-    {
-      label: "Justin",
-      value: "justin",
-    },
-  ];
-  const AdvanceTypeOptions = [
-    {
-      label: "Payment",
-      value: "payment",
-    },
-    {
-      label: "Receive",
-      value: "receive",
+      label: "Inactive",
+      value: "inactive",
     },
   ];
   const data = [
     {
-      label: "Supplier Name :",
-      placeholder: "Select Option",
-      name: "supplier_name",
+      label: "Category Name :",
+      placeholder: "Category Name",
+      name: "category_name",
+      handleChange,
+      value: values["category_name"],
+    },
+    {
+      label: "Status :",
+      placeholder: "Status",
+      name: "status",
       chooseOptions: true,
       options: options,
       handleChange,
-      value: values["supplier_name"],
-    },
-    {
-      label: "Advance Type :",
-      placeholder: "Select Option",
-      name: "advance_type",
-      chooseOptions: true,
-      options: AdvanceTypeOptions,
-      handleChange,
-      value: values["advance_type"],
-    },
-    {
-      label: "Amount :",
-      placeholder: "Amount",
-      name: "amount",
-      type: "number",
-      handleChange,
-      value: values["amount"],
+      value: values["status"],
     },
   ];
   useEffect(() => {
     console.log(values);
   }, [values]);
   return (
-    <FormComponent title="Supplier Advance">
+    <FormComponent title="Add Category">
       <div className="row">
         <div className="col-lg-10">
           {data.map((el) => (
@@ -99,13 +74,21 @@ function SupplierAdvance() {
               //   value={el.value}
             />
           ))}
-          <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-            <ButtonComponent onClick={handleSubmit} title={"Submit"} />
-          </div>
+          <>
+            <div style={{ width: "200px", float: "right", marginTop: 20 }}>
+              <ButtonComponent
+                onClick={handleSubmit}
+                title={"Save And Add Another"}
+              />
+            </div>
+            <div style={{ width: "100px", float: "right", marginTop: 20 }}>
+              <ButtonComponent onClick={handleSubmit} title={"Save"} />
+            </div>
+          </>
         </div>
       </div>
     </FormComponent>
   );
 }
 
-export default SupplierAdvance;
+export default AddCategory;
