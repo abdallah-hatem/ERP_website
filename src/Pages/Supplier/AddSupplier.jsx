@@ -131,7 +131,7 @@ function AddSupplier() {
       value: values["zip_code"],
     },
     {
-      label: "Previous Balance:",
+      label: "Previous Balance :",
       placeholder: "Previous Balance",
       handleChange: handleChange,
       name: "previous_balance",

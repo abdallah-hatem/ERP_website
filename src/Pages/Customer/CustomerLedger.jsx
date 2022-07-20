@@ -130,7 +130,7 @@ function CustomerLedger() {
         {buttons.map((el) => (
           <a href={el.href} class={el.class} style={{ margin: 5 }}>
             <i class={el.iconClass}> </i>
-            {el.title}
+            {t(el.title)}
           </a>
         ))}
       </span>

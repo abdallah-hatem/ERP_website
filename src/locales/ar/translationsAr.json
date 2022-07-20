@@ -10,7 +10,7 @@
   "ABOUT US": "من نحن",
   "BLOGS": "الأخبار",
   "Job Title": "عنوان وظيفي",
-  "Description": "وصف",
+  "Description": "الوصف",
   "Image": "صورة",
   "Link": "الرابط",
   "E-mail": "البريد الإلكتروني",
@@ -202,10 +202,10 @@
   "Incorrect password": "كلمة سر خاطئة",
   "old password and new password can't be the same": "كلمة المرور القديمة وكلمة المرور الجديدة لا يمكن أن تكون متطابقة",
 
-  "Supplier List": "قائمة الموزعين",
+  "Supplier List": "قائمة الموردين",
   "Category List": "قائمة الفئات",
-  "Supplier Name": "أسم الموزع",
-  "Supplier Name :": "أسم الموزع :",
+  "Supplier Name": "أسم المورد",
+  "Supplier Name :": "أسم المورد :",
   "Add Product": "أضف منتج",
   "Add Category": "أضف فئة",
   "Product": "المنتجات",
@@ -237,6 +237,7 @@
   "Mobile": "رقم المحمول",
   "VAT Number :": "رقم ضريبة القيمة المضافة :",
   "VAT Number": "رقم ضريبة القيمة المضافة",
+  "VAT NO": "رقم ضريبة القيمة المضافة",
   "E-Mail Address :": "البريد الإلكتروني :",
   "E-Mail": "البريد الإلكتروني",
 
@@ -252,17 +253,60 @@
   "Fax": "فاكس",
 
   "Country :": "البلد :",
-  "Select Country": "البلد أختر",
+  "State :": "المنطقة :",
+  "State": "المنطقة",
+  "Select Country": "أختر البلد ",
+  "Select Region": "أختر المنطقة ",
 
   "City :": "المدينة :",
-  "City ": "المدينة",
+  "City": "المدينة",
 
   "Zip Code :": "الرمز البريدي :",
   "Zip Code": "الرمز البريدي",
 
+  "Previous Balance :": "الرصيد السابق :",
+  "Previous Balance": "الرصيد السابق",
+
+  "Advance Type :": "نوع الدفع المسبق :",
+
+  "Amount :": "المبلغ :",
+  "Amount": "المبلغ",
+
+  "Balance :": "الرصيد :",
+  "Balance": "الرصيد",
+
+  "Mobile No.": "رقم المحمول",
+  "Credit": "الإئتمان",
+  "Debit": "مدين",
+  "Voucher No.": "رقم القسيمة",
+  "Date": "التاريخ",
+  "Manage Supplier": "التحكم في الموردين",
+  "Manage Customer": "التحكم في العملاء",
+
+  "Contact :": " :",
+  "Contact": "",
+
+  "Customer Name :": "اسم العميل :",
+  "Customer Name": "اسم العميل",
+
+  "CR Number :": "رقم التسجيل التجاري :",
+  "CR Number": "رقم التسجيل التجاري",
+  "CR NO.": "رقم التسجيل التجاري",
+
   " :": " :",
   "": "",
 
-  "Supplier": "موزع",
-  "Add Supplier": "أضف موزع"
+  "Supplier": "مورد",
+  "Customer": "العميل",
+  "Customer List": "قائمة العملاء",
+  "Credit Customer": "ائتمان العميل",
+  "Paid Customer": "العميل المدفوع",
+  "Supplier Ledger": "دفتر حسابات الموردين",
+  "Customer Ledger": "دفتر حسابات العملاء",
+  "Supplier Advance": "تقدم المورد",
+  "Customer Advance": "تقدم العميل",
+  "Select Option": "حدد خيار",
+  "Dashboard": "لوحة تحكم",
+  "Add Customer": "أضف عميل",
+  "Add Supplier": "أضف مورد"
 }

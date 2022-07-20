@@ -3,7 +3,13 @@ import { CountryDropdown } from "react-country-region-selector";
 import { useTranslation } from "react-i18next";
 import "./Style.css";
 
-function CountryChooser({ name, value, handleChange, label }) {
+function CountryChooser({
+  name,
+  value,
+  handleChange,
+  label,
+  placeholder = "Select Country",
+}) {
   const { t, i18n } = useTranslation();
   return (
     <div
@@ -19,6 +25,7 @@ function CountryChooser({ name, value, handleChange, label }) {
         {t(label)}
       </label>
       <CountryDropdown
+        defaultOptionLabel={t(placeholder)}
         name={name}
         classes="cls"
         value={value}

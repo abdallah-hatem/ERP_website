@@ -10,6 +10,7 @@ function RegionChooser({
   value,
   label,
   disableWhenEmpty = true,
+  placeholder = "Select Region",
 }) {
   const { t, i18n } = useTranslation();
   return (
@@ -25,6 +26,7 @@ function RegionChooser({
         {t(label)}
       </label>
       <RegionDropdown
+        defaultOptionLabel={t(placeholder)}
         name={name}
         disableWhenEmpty={disableWhenEmpty}
         country={country}

@@ -21,6 +21,7 @@ function InputComponent({
   options = [],
   width,
   children = false,
+  hideLabel = false,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -28,7 +29,10 @@ function InputComponent({
     <div style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}>
       <div className="squared-input-container">
         <label
-          style={{ textAlign: i18n.language === "ar" && "right" }}
+          style={{
+            textAlign: i18n.language === "ar" && "right",
+            display: hideLabel && "none",
+          }}
           id="domain-label"
         >
           {t(label)}
@@ -60,7 +64,7 @@ function InputComponent({
               placeholder={t(placeholder)}
               options={options}
               name={name}
-              value={value}
+              // value={value}
               onChange={(e) =>
                 handleChange({ target: { name, value: e.value } })
               }
@@ -98,4 +102,4 @@ function InputComponent({
   );
 }
 
-export default InputComponent;
+export default React.memo(InputComponent);

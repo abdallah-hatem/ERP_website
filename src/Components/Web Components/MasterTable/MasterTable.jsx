@@ -114,6 +114,8 @@ function MasterTable({
   handleStyle = false,
   ColoredRows = false,
   placeholder = "Search...",
+  options = [],
+  colChildren,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -252,6 +254,8 @@ function MasterTable({
             confirmDeleteMessage={t(deleteMessage)}
           />
         </Editing>
+        {/* <Lookup dataSource={options} displayExpr="Name" valueExpr="ID" /> */}
+
         {/* <Scrolling mode="virtual" rowRenderingMode="virtual" /> */}
         {allowPaging && <Paging enabled={true} />}
         {allowPaging && <Paging defaultPageSize={pageSize} />}
@@ -294,7 +298,15 @@ function MasterTable({
                 //         ? `${col.widthRatio}px`
                 //         : "150px"
                 // }
-              />
+              >
+                {col.options && (
+                  <Lookup
+                    dataSource={options}
+                    displayExpr="Name"
+                    valueExpr="ID"
+                  />
+                )}
+              </Column>
             );
           })}
         {children}

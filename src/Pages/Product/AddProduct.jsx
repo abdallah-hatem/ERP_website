@@ -9,6 +9,8 @@ import { ImageUploader } from "../../Components/Web Components/ImageUploader/Ima
 import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
 import "./style.css";
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
+import { Column, Lookup } from "devextreme-react/data-grid";
 
 function AddProduct() {
   const defaultValues = useRef({
@@ -22,6 +24,7 @@ function AddProduct() {
     category: "",
     unit: "",
     vat: "",
+    product_details: "",
   });
   const [values, setValues] = useState(defaultValues.current);
   const handleChange = useCallback((e) => {
@@ -44,7 +47,20 @@ function AddProduct() {
   useEffect(() => {
     console.log(values);
   }, [values]);
-
+  const options = [
+    {
+      ID: 1,
+      Name: "Hudson",
+    },
+    {
+      ID: 2,
+      Name: "Mike",
+    },
+    {
+      ID: 3,
+      Name: "Jack",
+    },
+  ];
   const CategoryOptions = [
     {
       label: "Electronics",
@@ -138,6 +154,33 @@ function AddProduct() {
       name: "vat",
       value: values["vat"],
     },
+    {
+      label: "Product Details :",
+      placeholder: "Product Details",
+      handleChange,
+      name: "product_details",
+      value: values["product_details"],
+      textArea: true,
+    },
+  ];
+
+  const columns = [
+    {
+      field: "supplier",
+      caption: t("Supplier"),
+      options,
+    },
+    {
+      field: "supplier_price",
+      caption: t("Supplier Price"),
+    },
+  ];
+
+  const data = [
+    {
+      supplier: 1,
+      supplier_price: "200",
+    },
   ];
 
   return (
@@ -176,14 +219,32 @@ function AddProduct() {
               name={el.name}
               value={el.value}
               chooseOptions={el.chooseOptions}
+              textArea={el.textArea}
               options={el.options}
             />
           ))}
         </div>
       </div>
+      <FormComponent style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
+        <MasterTable
+          allowAdd
+          allowDelete
+          allowUpdate
+          searchPanel={false}
+          columnChooser={false}
+          dataSource={data}
+          colAttributes={columns}
+          ColoredRows
+          options={options}
+        >
+          {/* <Column dataField="supplier" caption="Supplier">
+          <Lookup dataSource={options} displayExpr="Name" valueExpr="ID" />
+          </Column> */}
+        </MasterTable>
+      </FormComponent>
 
       <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-        <ButtonComponent onClick={handleSubmit} title={"Submit"} />
+        <ButtonComponent onClick={handleSubmit} title={"Save"} />
       </div>
     </FormComponent>
   );

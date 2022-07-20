@@ -115,8 +115,8 @@ function AddCustomer() {
       textArea: true,
     },
     {
-      label: "City  :",
-      placeholder: "City ",
+      label: "City :",
+      placeholder: "City",
       handleChange: handleChange,
       name: "city",
       value: values["city"],
@@ -129,7 +129,7 @@ function AddCustomer() {
       value: values["zip_code"],
     },
     {
-      label: "Previous Balance:",
+      label: "Previous Balance :",
       placeholder: "Previous Balance",
       handleChange: handleChange,
       name: "previous_balance",

@@ -7,6 +7,7 @@ import PaidCustomer from "../Pages/Customer/PaidCustomer";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddCategory from "../Pages/Product/AddCategory";
 import AddProduct from "../Pages/Product/AddProduct";
+import AddProductCsv from "../Pages/Product/AddProductCsv";
 import AddUnit from "../Pages/Product/AddUnit";
 import CategoryList from "../Pages/Product/CategoryList";
 import UnitList from "../Pages/Product/UnitList";
@@ -200,8 +201,8 @@ export const routes = [
         id: 0,
         title: "Add Product (CSV)",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/add-product-csv",
+        component: <AddProductCsv />,
       },
       {
         id: 0,
