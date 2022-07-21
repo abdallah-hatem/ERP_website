@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
 
-import "./style.css";
-
 function SupplierList() {
   const { t } = useTranslation();
 
@@ -48,6 +46,8 @@ function SupplierList() {
     {
       field: "balance",
       caption: t("Balance"),
+      dataType: "number",
+      format: "currency",
     },
   ];
 
@@ -56,31 +56,45 @@ function SupplierList() {
       sl: 1,
       supplier_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 10,
     },
     {
       sl: 2,
       supplier_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 10,
     },
     {
       sl: 3,
       supplier_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 10,
     },
     {
       sl: 4,
       supplier_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 10,
     },
     {
       sl: 5,
       supplier_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 10,
     },
     {
       sl: 6,
       supplier_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 10,
+    },
+  ];
+
+  const summary = [
+    {
+      column: "balance",
+      summaryType: "sum",
+      valueFormat: "currency",
     },
   ];
 
@@ -94,6 +108,7 @@ function SupplierList() {
         dataSource={data}
         colAttributes={columns}
         ColoredRows
+        summaryItems={summary}
       />
     </FormComponent>
   );

@@ -733,6 +733,7 @@ aside.left-panel {
 
 .open aside.left-panel:hover {
   overflow-x: inherit;
+  // overflow-y: scroll;
 }
 
 .small-device .right-panel {

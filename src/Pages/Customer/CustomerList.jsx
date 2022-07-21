@@ -46,6 +46,7 @@ function CustomerList() {
     {
       field: "balance",
       caption: t("Balance"),
+      format: "currency",
     },
   ];
 
@@ -54,34 +55,47 @@ function CustomerList() {
       sl: 1,
       customer_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 5,
     },
     {
       sl: 2,
       customer_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 5,
     },
     {
       sl: 3,
       customer_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 5,
     },
     {
       sl: 4,
       customer_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 5,
     },
     {
       sl: 5,
       customer_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 5,
     },
     {
       sl: 6,
       customer_name: "Abdallah",
       address_1: "1234 - street",
+      balance: 5,
     },
   ];
 
+  const summary = [
+    {
+      column: "balance",
+      summaryType: "sum",
+      valueFormat: "currency",
+    },
+  ];
   return (
     <FormComponent title={"Customer List"}>
       <MasterTable
@@ -92,6 +106,7 @@ function CustomerList() {
         dataSource={data}
         colAttributes={columns}
         ColoredRows
+        summaryItems={summary}
       />
     </FormComponent>
   );

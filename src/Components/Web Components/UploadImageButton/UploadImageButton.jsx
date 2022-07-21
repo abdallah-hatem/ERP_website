@@ -55,6 +55,7 @@ const UploadImageButton = ({
               className="clearAllOption"
               onClick={handleRemoveAllImages}
             >
+              {console.log(imagesFiles)}
               {isMultiple ? t("Clear All?") : ""}
             </span>
           ) : (

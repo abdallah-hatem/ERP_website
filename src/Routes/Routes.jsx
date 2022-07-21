@@ -1,3 +1,4 @@
+import ManagePurchase from "../Components/Web Components/Purchase/ManagePurchase";
 import AddCustomer from "../Pages/Customer/AddCustomer";
 import CreditCustomer from "../Pages/Customer/CreditCustomer";
 import CustomerAdvance from "../Pages/Customer/CustomerAdvance";
@@ -10,6 +11,7 @@ import AddProduct from "../Pages/Product/AddProduct";
 import AddProductCsv from "../Pages/Product/AddProductCsv";
 import AddUnit from "../Pages/Product/AddUnit";
 import CategoryList from "../Pages/Product/CategoryList";
+import ManageProduct from "../Pages/Product/ManageProduct";
 import UnitList from "../Pages/Product/UnitList";
 import NewSale from "../Pages/Sales/NewSale";
 import AddSupplier from "../Pages/Supplier/AddSupplier";
@@ -208,8 +210,8 @@ export const routes = [
         id: 0,
         title: "Manage Product",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/manage-product",
+        component: <ManageProduct />,
       },
     ],
   },
@@ -229,8 +231,8 @@ export const routes = [
         id: 0,
         title: "Manage Purchase",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/manage-purchase",
+        component: <ManagePurchase />,
       },
     ],
   },

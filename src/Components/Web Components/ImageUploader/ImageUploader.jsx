@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import ImageUploading from "react-images-uploading";
 import "./style.css";
 
@@ -11,6 +12,7 @@ export function ImageUploader() {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
+  const { t } = useTranslation();
 
   return (
     <div className="App">
@@ -39,9 +41,10 @@ export function ImageUploader() {
                 {...dragProps}
                 className="button-14"
               >
-                Click or Drop here
+                {t("Click or Drop here")}
               </button>
               &nbsp;
+              {images.length === 0 && t("No File Chosen")}
               {images.length > 0 && (
                 <button className="button-14" onClick={onImageRemoveAll}>
                   Remove all images

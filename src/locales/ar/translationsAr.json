@@ -207,6 +207,7 @@
   "Supplier Name": "أسم المورد",
   "Supplier Name :": "أسم المورد :",
   "Add Product": "أضف منتج",
+  "Add Product (CSV)": "(CSV) أضف منتج",
   "Add Category": "أضف فئة",
   "Product": "المنتجات",
   "Barcode / QR-code :": "بار كود / QR-كود :",
@@ -282,6 +283,7 @@
   "Date": "التاريخ",
   "Manage Supplier": "التحكم في الموردين",
   "Manage Customer": "التحكم في العملاء",
+  "Manage Product": "التحكم في المنتجات",
 
   "Contact :": " :",
   "Contact": "",
@@ -293,10 +295,23 @@
   "CR Number": "رقم التسجيل التجاري",
   "CR NO.": "رقم التسجيل التجاري",
 
+  "Product Details :": "تفاصيل المنتج :",
+  "Product Details": "تفاصيل المنتج",
+
+  "Upload CSV File :": "رفع ملف CSV :",
+  "Import Product (CSV)": "CSV رفع ملف",
+
   " :": " :",
   "": "",
 
   "Supplier": "مورد",
+  "Print": "إطبع",
+  "Download Sample File": "تنزيل ملف عينة",
+  "CSV File Information": "CSV معلومات ملف",
+  "Choose File": "اختر ملف",
+  "Click or Drop here": "انقر أو أفلت هنا",
+  "No File Chosen": "لم تقم باختيار ملف",
+  "Supplier Price": "سعر المورد",
   "Customer": "العميل",
   "Customer List": "قائمة العملاء",
   "Credit Customer": "ائتمان العميل",

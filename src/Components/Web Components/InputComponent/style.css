@@ -63,17 +63,24 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   vertical-align: top;
-  font-size: 1em;
+  /* font-size: 1em; */
+  font-size: 15px;
+
   line-height: 1.25em;
   border: none !important;
 }
 .css-1s2u09g-control {
   /* width: 100% !important; */
+  height: 42px;
+}
+/**** Options container on focus ****/
+.css-1pahdxg-control {
+  height: 42px;
 }
 .align {
   text-align: right;
 }
-/**************** Options Component ****************/
+/**************** Children container ****************/
 .image-upload-cont {
   display: block;
   padding: 10px;

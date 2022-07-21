@@ -52,10 +52,15 @@ function SideBar() {
             {routes.map((el) =>
               el.path === "/dashboard" ? (
                 <li className={el.path === currentRoute ? "Active" : ""}>
-                  <a href={el.path}>
+                  {/* <a href={el.path}>
                     <i class="menu-icon fa fa-laptop"></i>
                     {t("Dashboard")}
-                  </a>
+                  </a> */}
+
+                  <Link to={el.path}>
+                    <i class="menu-icon fa fa-laptop"></i>
+                    {t("Dashboard")}
+                  </Link>
                 </li>
               ) : (
                 <li

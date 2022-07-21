@@ -73,10 +73,10 @@ function CategoryList() {
   return (
     <FormComponent title={"Category List"}>
       <MasterTable
-        key="sl"
+        // keyExpr={"sl"}
         allowDelete
         allowUpdate
-        allowPaging
+        // allowPaging
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}

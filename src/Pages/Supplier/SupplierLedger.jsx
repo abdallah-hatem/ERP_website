@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
 
@@ -23,16 +24,19 @@ function SupplierLedger() {
     {
       field: "debit",
       caption: t("Debit"),
+      dataType: "number",
       format: "currency",
     },
     {
       field: "credit",
       caption: t("Credit"),
+      dataType: "number",
       format: "currency",
     },
     {
       field: "balance",
       caption: t("Balance"),
+      dataType: "number",
       format: "currency",
     },
   ];
@@ -42,63 +46,82 @@ function SupplierLedger() {
       date: "2022 / 03 / 08",
       description: "Supplier .Anderson",
       voucher_no: "20220308110905",
-      debit: "$ 0.00",
-      credit: "$ 0.00",
-      balance: "$ 0.00",
+      debit: 5,
+      credit: 5,
+      balance: 5,
     },
     {
       date: "2022 / 010 / 08",
       description: "Supplier .Anderson",
       voucher_no: "20220308110905",
-      debit: "$ 0.00",
-      credit: "$ 0.00",
-      balance: "$ 0.00",
+      debit: 5,
+      credit: 5,
+      balance: 5,
     },
     {
       date: "2022 / 03 / 08",
       description: "Supplier .Justin",
       voucher_no: "20220308110905",
-      debit: "$ 0.00",
-      credit: "$ 0.00",
-      balance: "$ 0.00",
+      debit: 5,
+      credit: 5,
+      balance: 5,
     },
     {
       date: "2022 / 03 / 08",
       description: "Supplier .Justin",
       voucher_no: "20220308110905",
-      debit: "$ 0.00",
-      credit: "$ 0.00",
-      balance: "$ 0.00",
+      debit: 5,
+      credit: 5,
+      balance: 5,
     },
     {
       date: "2022 / 03 / 08",
       description: "Supplier .Nelson",
       voucher_no: "20220308110905",
-      debit: "$ 0.00",
-      credit: "$ 0.00",
-      balance: "$ 0.00",
+      debit: 5,
+      credit: 5,
+      balance: 5,
     },
     {
       date: "2022 / 03 / 08",
       description: "Supplier .Nelson",
       voucher_no: "20220308110905",
-      debit: "$ 0.00",
-      credit: "$ 0.00",
-      balance: "$ 0.00",
+      debit: 5,
+      credit: 5,
+      balance: 5,
     },
   ];
+
   const buttons = [
     {
       title: "Add Supplier",
-      href: "add-supplier",
+      path: "add-supplier",
       iconClass: "ti-plus",
       class: "btn btn-info m-b-5 m-r-2",
     },
     {
       title: "Manage Supplier",
-      href: "supplier-list",
+      path: "supplier-list",
       iconClass: "ti-align-justify",
       class: "btn btn-primary m-b-5 m-r-2",
+    },
+  ];
+
+  const summary = [
+    {
+      column: "balance",
+      summaryType: "sum",
+      valueFormat: "currency",
+    },
+    {
+      column: "debit",
+      summaryType: "sum",
+      valueFormat: "currency",
+    },
+    {
+      column: "credit",
+      summaryType: "sum",
+      valueFormat: "currency",
     },
   ];
 
@@ -106,7 +129,7 @@ function SupplierLedger() {
     <>
       <FormComponent title={"Supplier Ledger"}>
         <MasterTable
-          summaryItems={data}
+          summaryItems={summary}
           allowPrint
           filterRow
           headerFilter
@@ -117,14 +140,7 @@ function SupplierLedger() {
           ColoredRows
         />
       </FormComponent>
-      <span style={{ float: "right" }} class="padding-lefttitle">
-        {buttons.map((el) => (
-          <a href={el.href} class={el.class} style={{ margin: 5 }}>
-            <i class={el.iconClass}> </i>
-            {t(el.title)}
-          </a>
-        ))}
-      </span>
+      <ActionsButtons buttons={buttons} />
     </>
   );
 }

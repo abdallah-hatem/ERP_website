@@ -10,7 +10,6 @@ import InputComponent from "../../Components/Web Components/InputComponent/Input
 
 import "./style.css";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
-import { Column, Lookup } from "devextreme-react/data-grid";
 
 function AddProduct() {
   const defaultValues = useRef({
@@ -25,6 +24,7 @@ function AddProduct() {
     unit: "",
     vat: "",
     product_details: "",
+    image_path: "",
   });
   const [values, setValues] = useState(defaultValues.current);
   const handleChange = useCallback((e) => {
@@ -42,11 +42,23 @@ function AddProduct() {
     }
   }
 
+  let handleGetImages = (event) => {
+    let files = event.target.files;
+    setValues((prev) => ({ ...prev, image_path: files[0] }));
+  };
+  let handleRemoveImage = useCallback(() => {
+    setValues((prev) => ({
+      ...prev,
+      image_path: "",
+    }));
+  }, []);
+
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
     console.log(values);
   }, [values]);
+
   const options = [
     {
       ID: 1,
@@ -61,6 +73,7 @@ function AddProduct() {
       Name: "Jack",
     },
   ];
+
   const CategoryOptions = [
     {
       label: "Electronics",
@@ -71,6 +84,7 @@ function AddProduct() {
       value: "food",
     },
   ];
+
   const UnitOptions = [
     {
       label: "Piece",
@@ -85,6 +99,7 @@ function AddProduct() {
       value: "kg",
     },
   ];
+
   const DataCol1 = [
     {
       label: "Product Name :",
@@ -122,6 +137,7 @@ function AddProduct() {
       value: values["igt"],
     },
   ];
+
   const DataCol2 = [
     {
       label: "SN :",
@@ -207,7 +223,21 @@ function AddProduct() {
           ))}
           <InputComponent children={false} label={"Image :"}>
             <ImageUploader />
-            {/* <UploadImageButton />  */}
+            {/* <UploadImageButton
+              isMultiple={false}
+              handleGetImages={handleGetImages}
+              handleRemoveImage={handleRemoveImage}
+              imagesFiles={
+                values && values.image_path
+                  ? [
+                      typeof values.image_path == "string"
+                        ? // ? ApiBaseUrl + values.image_path
+                          "ApiBaseUrl" + values.image_path
+                        : values.image_path,
+                    ]
+                  : []
+              }
+            /> */}
           </InputComponent>
         </div>
         <div className="col-lg-6">
@@ -225,7 +255,10 @@ function AddProduct() {
           ))}
         </div>
       </div>
-      <FormComponent style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}>
+      <FormComponent
+        hideHeader
+        style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+      >
         <MasterTable
           allowAdd
           allowDelete
@@ -236,11 +269,7 @@ function AddProduct() {
           colAttributes={columns}
           ColoredRows
           options={options}
-        >
-          {/* <Column dataField="supplier" caption="Supplier">
-          <Lookup dataSource={options} displayExpr="Name" valueExpr="ID" />
-          </Column> */}
-        </MasterTable>
+        />
       </FormComponent>
 
       <div style={{ width: "200px", float: "right", marginTop: 20 }}>

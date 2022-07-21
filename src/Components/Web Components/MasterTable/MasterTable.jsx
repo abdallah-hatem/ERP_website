@@ -45,6 +45,7 @@ import "jspdf-autotable";
 import { exportDataGrid as exportDataGridToPdf } from "devextreme/pdf_exporter";
 // import { GET_SEARCH_ITEMS } from "../../../Services/ApiServices/ItemsAPI";
 import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 const dataGridRef = React.createRef();
 
@@ -327,6 +328,7 @@ function MasterTable({
                 cssClass={item.cssClass}
                 skipEmptyValues={true}
                 customizeText={item.customizeText}
+                alignment={item.alignment}
               />
             );
           })}
@@ -368,7 +370,7 @@ const onToolbarPreparing = (e) => {
     widget: "dxButton",
     options: {
       icon: "exportpdf",
-      hint: "Print",
+      hint: t("Print"),
       onClick: function () {
         const doc = new jsPDF();
         const dataGrid = dataGridRef.current.instance;
