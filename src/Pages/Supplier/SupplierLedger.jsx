@@ -140,7 +140,7 @@ function SupplierLedger() {
           ColoredRows
         />
       </FormComponent>
-      <ActionsButtons buttons={buttons} />
+      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
     </>
   );
 }

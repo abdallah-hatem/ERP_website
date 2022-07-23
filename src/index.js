@@ -12,9 +12,7 @@ i18next.init({
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <I18nextProvider i18n={i18next}> */}
       <App />
-      {/* </I18nextProvider> */}
     </BrowserRouter>
   </React.StrictMode>
 );

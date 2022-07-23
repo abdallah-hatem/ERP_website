@@ -4,7 +4,7 @@ import ButtonComponent from "../../Components/Web Components/ButtonComponent/But
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
-function QrCode({ rowId }) {
+function BarCode({ rowId }) {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
@@ -31,16 +31,16 @@ function QrCode({ rowId }) {
 
   const data = [
     {
-      label: "Qr-Code / row :",
-      placeholder: "Qr-Code qunatity for each row",
+      label: "Barcode / row :",
+      placeholder: "Barcode quantity for each row",
       name: "quantity",
       handleChange,
       value: values["quantity"],
       type: "number",
     },
     {
-      label: "No. Of Qr-Code  :",
-      placeholder: "No. Of Qr-Code ",
+      label: "No. Of Barcode  :",
+      placeholder: "No. Of Barcode ",
       name: "number",
       handleChange,
       value: values["number"],
@@ -54,21 +54,14 @@ function QrCode({ rowId }) {
 
   return (
     <FormComponent hideHeader>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 25,
-        }}
-      >
+      <div className="barcode-cont">
         {data.map((el) => (
-          <div style={{ width: "42%" }}>
+          <div className="input-cont">
             <InputComponent
               label={el.label}
               placeholder={el.placeholder}
               type={el.type}
-              width="100%"
+              //   width="100%"
               handleChange={el.handleChange}
               name={el.name}
               //   value={el.value}
@@ -76,15 +69,32 @@ function QrCode({ rowId }) {
           </div>
         ))}
         <ButtonComponent
-          onClick={handleSubmit}
           title="Generate"
-          style={{ width: "100px" }}
+          onClick={handleSubmit}
+          style={{ width: "100px", marginBottom: 15 }}
         />
       </div>
 
-      <div>
+      <div
+        style={{
+          border: "1px solid lightgray",
+          padding: 10,
+          width: "20%",
+          minWidth: "180px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p style={{ fontSize: "10px" }}>Demo Company</p>
+          <p style={{ fontSize: "10px" }}>Sm</p>
+        </div>
         <img
-          src="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/my-assets/image/qr/63538869.png"
+          src="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/vendor/barcode.php?size=30&text=63538869&print=true"
           class="img-responsive center-block qrcode-image"
           alt=""
         />
@@ -98,4 +108,4 @@ function QrCode({ rowId }) {
   );
 }
 
-export default QrCode;
+export default BarCode;

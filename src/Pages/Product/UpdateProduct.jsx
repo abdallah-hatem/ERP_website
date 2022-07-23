@@ -8,15 +8,14 @@ import FormComponent from "../../Components/Web Components/FormComponent/FormCom
 import { ImageUploader } from "../../Components/Web Components/ImageUploader/ImageUploader";
 import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
-// import "./style.css";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
 
-function AddProduct() {
+function UpdateProduct({ UpdateData }) {
   const defaultValues = useRef({
     barcode: "",
-    product_name: "",
-    model: "",
-    sale_price: "",
+    product_name: UpdateData.product_name,
+    model: UpdateData.product_model,
+    sale_price: UpdateData.price,
     image: "",
     igt: "",
     sn: "",
@@ -62,10 +61,12 @@ function AddProduct() {
     console.log(values);
   }, [values]);
 
+  console.log(UpdateData);
+
   const options = [
     {
       ID: 1,
-      Name: "Hudson",
+      Name: UpdateData.supplier_name,
     },
     {
       ID: 2,
@@ -198,12 +199,12 @@ function AddProduct() {
   const data = [
     {
       supplier: 1,
-      supplier_price: "200",
+      supplier_price: UpdateData.supplier_price,
     },
   ];
 
   return (
-    <FormComponent title={"Add Product"}>
+    <FormComponent title={"Update Product"}>
       <div className="row">
         <div className="col-lg-12">
           <InputComponent
@@ -242,6 +243,11 @@ function AddProduct() {
               }
             /> */}
           </InputComponent>
+          <img
+            style={{ height: "150px", width: "150px", margin: "10px 0" }}
+            src={UpdateData.images}
+            alt="product_img"
+          ></img>
         </div>
         <div className="col-lg-6">
           {DataCol2.map((el) => (
@@ -272,15 +278,14 @@ function AddProduct() {
           colAttributes={columns}
           ColoredRows
           options={options}
-          onSaving={(e) => console.log(e)}
         />
       </FormComponent>
 
       <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-        <ButtonComponent onClick={handleSubmit} title={"Save"} />
+        <ButtonComponent onClick={handleSubmit} title={"Update"} />
       </div>
     </FormComponent>
   );
 }
 
-export default AddProduct;
+export default UpdateProduct;
