@@ -116,7 +116,7 @@ function MasterTable({
   ColoredRows = false,
   placeholder = "Search...",
   options = [],
-  colChildren,
+  editingMode = "row",
 }) {
   const { t, i18n } = useTranslation();
 
@@ -240,7 +240,7 @@ function MasterTable({
         <HeaderFilter visible={headerFilter} />
         <GroupPanel visible={groupPanel} />
         <Editing
-          mode="row"
+          mode={editingMode}
           useIcons={true}
           allowAdding={allowAdd}
           allowDeleting={allowDelete}
@@ -301,7 +301,7 @@ function MasterTable({
               >
                 {col.options && (
                   <Lookup
-                    dataSource={options}
+                    dataSource={col.options}
                     displayExpr="Name"
                     valueExpr="ID"
                   />
