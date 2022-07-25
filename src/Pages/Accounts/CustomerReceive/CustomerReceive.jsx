@@ -51,9 +51,9 @@ function CustomerReceive() {
   }, [values, startDate]);
 
   return (
-    <FormComponent title={"Supplier Payment"}>
+    <FormComponent title={"Customer Receive"}>
       <div className="row">
-        <div className="col-lg-12">
+        <div className="col-lg-6">
           <InputComponent label={"Date :"}>
             <DatePicker
               dateFormat={"dd/MM/yyyy"}

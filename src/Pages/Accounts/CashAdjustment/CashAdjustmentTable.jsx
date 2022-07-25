@@ -10,20 +10,22 @@ function CashAdjustmentTable() {
     {
       field: "code",
       caption: t("Code"),
-      cellRender: (data) => (
-        <input style={{ width: "100%" }} disabled value={data.value}></input>
-      ),
+      allowEditing: false,
+      // cellRender: (data) => (
+      //   <input style={{ width: "100%" }} disabled value={data.value}></input>
+      // ),
     },
     {
       field: "amount",
       caption: t("Amount"),
-      cellRender: (data) => (
-        <input
-          style={{ width: "100%" }}
-          type="number"
-          //   value={data.value}
-        ></input>
-      ),
+      dataType: "number",
+      // cellRender: (data) => (
+      //   <input
+      //     style={{ width: "100%" }}
+      //     type="number"
+      //     //   value={data.value}
+      //   ></input>
+      // ),
     },
   ];
 
@@ -40,12 +42,12 @@ function CashAdjustmentTable() {
       style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
     >
       <MasterTable
+        allowUpdate
+        ColoredRows
         searchPanel={false}
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}
-        ColoredRows
-        onSaving={(e) => console.log(e)}
       />
     </FormComponent>
   );

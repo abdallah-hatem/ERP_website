@@ -10,26 +10,34 @@ import { useTranslation } from "react-i18next";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import "../style.scss";
+
+import CreditVoucherTable from "./CreditVoucherTable";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
-import CashAdjustmentTable from "./CashAdjustmentTable";
+// import "../style.scss";
 
-function CashAdjustment() {
+function CreditVoucher() {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
     voucher_number: "OP-2",
-    adjustment_type: "",
+    debit_account_head: "",
     remark: "",
     date: "",
+    account_name: "",
+    code: "",
+    amount: "",
   });
 
   const [values, setValues] = useState(defaultValues.current);
 
   const handleChange = useCallback((e) => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
+
+  const handleChangeTable = useCallback((e) => {
+    setValues((prev) => ({ ...prev, ...e }));
   }, []);
 
   function handleSubmit(e) {
@@ -44,16 +52,12 @@ function CashAdjustment() {
 
   const options = [
     {
-      label: "Hudson",
-      value: "hudson",
+      label: "Cash In Hand",
+      value: "cash in hand",
     },
     {
-      label: "Mike",
-      value: "mike",
-    },
-    {
-      label: "Justin",
-      value: "justin",
+      label: "Cash In Bank",
+      value: "cash in bank",
     },
   ];
 
@@ -68,13 +72,13 @@ function CashAdjustment() {
     },
 
     {
-      label: "Adjustment Type :",
+      label: "Debit Account Head :",
       placeholder: "Select Option",
-      name: "adjustment_type",
+      name: "debit_account_head",
       chooseOptions: true,
       options: options,
       handleChange,
-      value: values["adjustment_type"],
+      value: values["debit_account_head"],
     },
     {
       label: "Remark :",
@@ -97,8 +101,9 @@ function CashAdjustment() {
   useEffect(() => {
     console.log(values);
   }, [values, startDate]);
+
   return (
-    <FormComponent title="Cash Adjustment">
+    <FormComponent title="Credit Voucher">
       <div className="row">
         <div className="col-lg-8">
           {data.map((el, index) => (
@@ -130,12 +135,7 @@ function CashAdjustment() {
           ))}
         </div>
 
-        <CashAdjustmentTable />
-        {/* {useMemo(
-          () => (
-          ),
-          []
-        )} */}
+        <CreditVoucherTable handleChange={handleChangeTable} />
 
         <div style={{ width: "100%", marginTop: 20 }}>
           <ButtonComponent
@@ -149,4 +149,4 @@ function CashAdjustment() {
   );
 }
 
-export default CashAdjustment;
+export default CreditVoucher;

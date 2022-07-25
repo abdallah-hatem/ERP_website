@@ -30,6 +30,17 @@ function ManageProduct() {
     {
       field: "product_name",
       caption: t("Product Name"),
+      cellRender: (data) => (
+        <span
+          onClick={(e) => {
+            navigate(`/product-details/${data.data.sl}`);
+            e.preventDefault();
+          }}
+          style={{ cursor: "pointer", color: "#37a000" }}
+        >
+          {data.value}
+        </span>
+      ),
     },
     {
       field: "product_model",
@@ -38,7 +49,17 @@ function ManageProduct() {
     {
       field: "supplier_name",
       caption: t("Supplier Name"),
-      cellRender: () => <a href="/">sasa</a>,
+      cellRender: (data) => (
+        <span
+          onClick={(e) => {
+            // navigate(`/product-details/${data.data.sl}`);
+            e.preventDefault();
+          }}
+          style={{ cursor: "pointer", color: "#37a000" }}
+        >
+          {data.value}
+        </span>
+      ),
     },
     {
       field: "price",
@@ -148,7 +169,7 @@ function ManageProduct() {
           dataSource={data}
           colAttributes={columns}
           ColoredRows
-          onRowDoubleClick={(e) => navigate(`/product-details/${e.data.sl}`)}
+          // onRowDoubleClick={(e) => navigate(`/product-details/${e.data.sl}`)}
         >
           <Column type="buttons" width={120}>
             <Button

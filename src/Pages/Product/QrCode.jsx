@@ -82,7 +82,7 @@ function QrCode({ rowId }) {
         />
       </div>
 
-      <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <img
           src="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/my-assets/image/qr/63538869.png"
           class="img-responsive center-block qrcode-image"

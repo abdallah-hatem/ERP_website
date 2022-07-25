@@ -27,14 +27,14 @@ function CustomerPaymentTable() {
     {
       field: "paid_amount",
       caption: t("Paid Amount"),
-      format: "amount",
+      // format: "number",
     },
   ];
 
   const data2 = [
     {
       payment_type: 1,
-      paid_amount: 20,
+      paid_amount: 0.0,
     },
   ];
 
@@ -51,8 +51,8 @@ function CustomerPaymentTable() {
         dataSource={data2}
         colAttributes={columns2}
         ColoredRows
-        onSaving={(e) => console.log(e)}
       />
+
       <div style={{ width: "250px", float: "right", marginTop: 20 }}>
         <ButtonComponent title={"Add New Payment Method"} />
       </div>

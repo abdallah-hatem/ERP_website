@@ -32,7 +32,6 @@ function InputComponent({
           style={{
             textAlign: i18n.language === "ar" && "right",
             display: hideLabel && "none",
-            margin: "0",
           }}
           // id="domain-label"
         >

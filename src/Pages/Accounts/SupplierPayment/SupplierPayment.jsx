@@ -53,7 +53,7 @@ function SupplierPayment() {
   return (
     <FormComponent title={"Supplier Payment"}>
       <div className="row">
-        <div className="col-lg-12">
+        <div className="col-lg-6">
           <InputComponent label={"Date :"}>
             <DatePicker
               dateFormat={"dd/MM/yyyy"}

@@ -1,9 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
+import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
+import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 
-function PaymentMethodList() {
+function VoucherApproval() {
   const { t } = useTranslation();
 
   const columns = [
@@ -30,12 +30,10 @@ function PaymentMethodList() {
   ];
 
   return (
-    <FormComponent title={"Payment Method List"}>
+    <FormComponent title={"Voucher Approval"}>
       <MasterTable
         allowPrint
         allowExcel
-        allowDelete
-        allowUpdate
         allowPaging
         ColoredRows
         columnChooser={false}
@@ -46,4 +44,4 @@ function PaymentMethodList() {
   );
 }
 
-export default PaymentMethodList;
+export default VoucherApproval;

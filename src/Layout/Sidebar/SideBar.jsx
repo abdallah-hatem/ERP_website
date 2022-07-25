@@ -102,38 +102,38 @@ function SideBar() {
                     {el.data &&
                       el.data.length > 0 &&
                       el.data.map((ele) => (
-                        // <li>
-                        //   <i style={{ color: "#607D8B" }} class={ele.icon}></i>
-                        //   <a
-                        //     className={ele.path === currentRoute && "highlight"}
-                        //     style={{
-                        //       fontSize: "13px",
-                        //       // color: ele.path === currentRoute && "white",
-                        //     }}
-                        //     href={ele.path}
-                        //   >
-                        //     {ele.title}
-                        //   </a>
-                        // </li>
-                        <li
-                          style={{
-                            cursor: "pointer",
-                            // backgroundColor: "#1c1f22",
-                            // paddingLeft: "70px",
-                          }}
-                        >
-                          <Link to={ele.path}>
-                            <i></i>
-                            <p
-                              style={{ fontSize: "13px", marginBottom: 10 }}
-                              className={
-                                ele.path === currentRoute && "highlight"
-                              }
-                            >
-                              {t(ele.title)}
-                            </p>
-                          </Link>
+                        <li>
+                          <i style={{ color: "#607D8B" }} class={ele.icon}></i>
+                          <a
+                            className={ele.path === currentRoute && "highlight"}
+                            style={{
+                              fontSize: "13px",
+                              // color: ele.path === currentRoute && "white",
+                            }}
+                            href={ele.path}
+                          >
+                            {ele.title}
+                          </a>
                         </li>
+                        // <li
+                        //   style={{
+                        //     cursor: "pointer",
+                        //     // backgroundColor: "#1c1f22",
+                        //     // paddingLeft: "70px",
+                        //   }}
+                        // >
+                        //   <Link to={ele.path}>
+                        //     <i></i>
+                        //     <p
+                        //       style={{ fontSize: "13px", marginBottom: 10 }}
+                        //       className={
+                        //         ele.path === currentRoute && "highlight"
+                        //       }
+                        //     >
+                        //       {t(ele.title)}
+                        //     </p>
+                        //   </Link>
+                        // </li>
                       ))}
                   </ul>
                 </li>

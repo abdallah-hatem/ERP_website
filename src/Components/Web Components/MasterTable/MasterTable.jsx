@@ -39,6 +39,7 @@ import {
   Export,
   Selection,
   SearchPanel,
+  Sorting,
 } from "devextreme-react/data-grid";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -117,6 +118,8 @@ function MasterTable({
   placeholder = "Search...",
   options = [],
   editingMode = "row",
+  onEditorPreparing,
+  allowSorting = false,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -223,17 +226,20 @@ function MasterTable({
         onRowDblClick={onRowDoubleClick}
         onSaving={onSaving}
         remoteOperations={remoteOperations}
-        sorting={remoteOperations ? false : true}
+        // sorting={remoteOperations ? false : true}
         keyExpr={keyExpr}
         onSelectionChanged={onSelectionChanged}
         selectedRowKeys={selectedRowKeys}
         onCellPrepared={(e) => handleStyle && handleStyle(e)}
         rowAlternationEnabled={ColoredRows}
+        onEditorPreparing={onEditorPreparing}
+        sorting={"null"}
       >
         {/* <Selection
                mode="multiple"
                showCheckBoxesMode={showCheckBoxesMode}
             /> */}
+        {/* <Sorting mode="single" /> */}
         <SearchPanel placeholder={t(placeholder)} visible={searchPanel} />
         <ColumnChooser enabled={columnChooser} />
         <FilterRow visible={filterRow} />
@@ -293,6 +299,7 @@ function MasterTable({
                 calculateCellValue={col.calculateCellValueHandle}
                 cellRender={col.cellRender}
                 width={col.width}
+                allowEditing={col.allowEditing}
                 // width={
                 //     col.widthRatio
                 //         ? `${col.widthRatio}px`
@@ -302,8 +309,9 @@ function MasterTable({
                 {col.options && (
                   <Lookup
                     dataSource={col.options}
-                    displayExpr="Name"
-                    valueExpr="ID"
+                    displayExpr="label"
+                    valueExpr="value"
+                    allowClearing={true}
                   />
                 )}
               </Column>

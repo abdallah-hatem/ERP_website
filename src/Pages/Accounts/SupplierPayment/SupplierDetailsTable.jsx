@@ -8,38 +8,38 @@ function SupplierDetailsTable() {
 
   const options = [
     {
-      ID: 1,
-      Name: "Hudson",
+      label: "Hudson",
+      value: "Hudson",
     },
     {
-      ID: 2,
-      Name: "Mike",
+      label: "Mike",
+      value: "Mike",
     },
     {
-      ID: 3,
-      Name: "Jack",
+      label: "Jack",
+      value: "Jack",
     },
   ];
 
   const VoucherOptions = [
     {
-      ID: 1,
-      Name: "Option1",
+      label: "Option1",
+      value: "Option1",
     },
     {
-      ID: 2,
-      Name: "Option2",
+      label: "Option2",
+      value: "Option2",
     },
     {
-      ID: 3,
-      Name: "Option3",
+      label: "Option3",
+      value: "Option3",
     },
   ];
 
   const columns = [
     {
       field: "supplier",
-      caption: t("Supplier Name"),
+      caption: t("Supplier value"),
       options: options,
     },
     {
@@ -61,10 +61,10 @@ function SupplierDetailsTable() {
 
   const data = [
     {
-      supplier: 1,
-      voucher_no: 1,
-      due_amount: 0,
-      amount: 0,
+      supplier: "",
+      voucher_no: "",
+      due_amount: "",
+      amount: "",
     },
   ];
 
@@ -88,7 +88,6 @@ function SupplierDetailsTable() {
         dataSource={data}
         colAttributes={columns}
         ColoredRows
-        onSaving={(e) => console.log(e)}
         summaryItems={summary}
       />
     </FormComponent>

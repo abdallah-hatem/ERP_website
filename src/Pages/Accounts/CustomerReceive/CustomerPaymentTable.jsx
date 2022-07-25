@@ -7,34 +7,35 @@ import MasterTable from "../../../Components/Web Components/MasterTable/MasterTa
 function CustomerPaymentTable() {
   const { t, i18n } = useTranslation();
 
-  const options2 = [
+  const options = [
     {
-      ID: 1,
-      Name: "Cash In Hand",
+      label: "Cash In Hand",
+      value: "Cash In Hand",
     },
     {
-      ID: 2,
-      Name: "Bank",
+      label: "Bank",
+      value: "Bank",
     },
   ];
 
-  const columns2 = [
+  const columns = [
     {
       field: "payment_type",
       caption: t("Payment Type"),
-      options: options2,
+      options: options,
     },
     {
       field: "paid_amount",
       caption: t("Paid Amount"),
-      format: "amount",
+      dataType: "number",
+      format: "currency",
     },
   ];
 
-  const data2 = [
+  const data = [
     {
-      payment_type: 1,
-      paid_amount: 20,
+      payment_type: "",
+      paid_amount: "",
     },
   ];
 
@@ -48,11 +49,11 @@ function CustomerPaymentTable() {
         allowDelete
         searchPanel={false}
         columnChooser={false}
-        dataSource={data2}
-        colAttributes={columns2}
+        dataSource={data}
+        colAttributes={columns}
         ColoredRows
-        onSaving={(e) => console.log(e)}
       />
+
       <div style={{ width: "250px", float: "right", marginTop: 20 }}>
         <ButtonComponent title={"Add New Payment Method"} />
       </div>

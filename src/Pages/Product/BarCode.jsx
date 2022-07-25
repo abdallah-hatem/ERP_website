@@ -81,6 +81,7 @@ function BarCode({ rowId }) {
           padding: 10,
           width: "20%",
           minWidth: "180px",
+          marginTop: 30,
         }}
       >
         <div

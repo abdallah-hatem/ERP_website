@@ -27,7 +27,7 @@ function TreeTable({
 
   return (
     <TreeList
-      id="tasks"
+      // id="tasks"
       dataSource={data}
       autoExpandAll={autoExpandAll}
       columnAutoWidth={columnAutoWidth}
@@ -35,6 +35,7 @@ function TreeTable({
       keyExpr={keyExpr}
       parentIdExpr={parentIdExpr}
       rowAlternationEnabled={rowAlternationEnabled}
+      hoverStateEnabled
     >
       <Editing
         mode="popup"

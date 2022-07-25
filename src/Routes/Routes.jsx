@@ -1,12 +1,16 @@
 import AddPaymentMethod from "../Pages/Accounts/AddPaymentMethod";
 import CashAdjustment from "../Pages/Accounts/CashAdjustment/CashAdjustment";
 import ChartOfAccount from "../Pages/Accounts/ChartOfAccount";
+import ContraVoucher from "../Pages/Accounts/ContraVoucher/ContraVoucher";
+import CreditVoucher from "../Pages/Accounts/CreditVoucher/CreditVoucher";
 import CustomerReceive from "../Pages/Accounts/CustomerReceive/CustomerReceive";
+import DebitVoucher from "../Pages/Accounts/DebitVoucher/DebitVoucher";
+import JournalVoucher from "../Pages/Accounts/JournalVoucher/JournalVoucher";
 import OpeningBalance from "../Pages/Accounts/OpeningBalance";
 import PaymentMethodList from "../Pages/Accounts/PaymentMethodList";
 import ServicePayment from "../Pages/Accounts/ServicePayment/ServicePayment";
 import SupplierPayment from "../Pages/Accounts/SupplierPayment/SupplierPayment";
-// import SupplierPayment from "../Pages/Accounts/SupplierPayment";
+import VoucherApproval from "../Pages/Accounts/VoucherApproval/VoucherApproval";
 import AddCustomer from "../Pages/Customer/AddCustomer";
 import CreditCustomer from "../Pages/Customer/CreditCustomer";
 import CustomerAdvance from "../Pages/Customer/CustomerAdvance";
@@ -319,43 +323,57 @@ export const routes = [
         id: 0,
         title: "Debit Voucher",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/debit-voucher",
+        component: <DebitVoucher />,
       },
       {
         id: 0,
         title: "Credit Voucher",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/credit-voucher",
+        component: <CreditVoucher />,
       },
       {
         id: 0,
         title: "Contra Voucher",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/contra-voucher",
+        component: <ContraVoucher />,
       },
       {
         id: 0,
         title: "Journal Voucher",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/journal-voucher",
+        component: <JournalVoucher />,
       },
       {
         id: 0,
         title: "Voucher Approval",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/voucher-approval",
+        component: <VoucherApproval />,
       },
       {
         id: 0,
         title: "Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        // data: [
+        //   {
+        //     id: 0,
+        //     title: "Cash Book",
+        //     icon: "menu-icon fa fa-cogs",
+        //     path: "/",
+        //     component: "",
+        //   },
+        //   {
+        //     id: 0,
+        //     title: "Inventory Ledger",
+        //     icon: "menu-icon fa fa-cogs",
+        //     path: "/",
+        //     component: "",
+        //   },
+        // ],
       },
     ],
   },

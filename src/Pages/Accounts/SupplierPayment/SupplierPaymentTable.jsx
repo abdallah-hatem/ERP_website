@@ -9,12 +9,12 @@ function SupplierPaymentTable() {
 
   const options2 = [
     {
-      ID: 1,
-      Name: "Cash In Hand",
+      label: "Cash In Hand",
+      value: "Cash In Hand",
     },
     {
-      ID: 2,
-      Name: "Bank",
+      label: "Bank",
+      value: "Bank",
     },
   ];
 
@@ -27,13 +27,13 @@ function SupplierPaymentTable() {
     {
       field: "paid_amount",
       caption: t("Paid Amount"),
-      format: "amount",
+      dataType: "number",
     },
   ];
 
   const data2 = [
     {
-      payment_type: 1,
+      payment_type: "",
       paid_amount: 20,
     },
   ];

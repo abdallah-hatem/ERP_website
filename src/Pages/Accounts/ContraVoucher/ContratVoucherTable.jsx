@@ -1,61 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 
-function CustomerDetailsTable() {
+function ContraVoucherTable({ handleChange }) {
   const { t, i18n } = useTranslation();
+
+  const [val, setVal] = useState("choose a name");
 
   const options = [
     {
       label: "Hudson",
       value: "Hudson",
+      //   value: "123",
     },
     {
       label: "Mike",
       value: "Mike",
+      //   value: "1234",
     },
     {
-      label: "Jack",
-      value: "Jack",
-    },
-  ];
-
-  const VoucherOptions = [
-    {
-      label: "Option1",
-      value: "Option1",
-    },
-    {
-      label: "Option2",
-      value: "Option2",
-    },
-    {
-      label: "Option3",
-      value: "Option3",
+      label: "Justin",
+      value: "Justin",
+      //   value: "12345",
     },
   ];
 
   const columns = [
     {
-      field: "customer_name",
-      caption: t("Customer Name"),
-      options: options,
+      field: "account_name",
+      caption: t("Account Name"),
+      options,
     },
     {
-      field: "voucher_no",
-      caption: t("Voucher No."),
-      options: VoucherOptions,
+      field: "code",
+      caption: t("Code"),
+      allowEditing: false,
     },
     {
-      field: "due_amount",
-      caption: t("Due Amount"),
+      field: "debit",
+      caption: t("Debit"),
       dataType: "number",
       format: "currency",
     },
     {
-      field: "amount",
-      caption: t("Amount"),
+      field: "credit",
+      caption: t("Credit"),
       dataType: "number",
       format: "currency",
     },
@@ -63,16 +53,21 @@ function CustomerDetailsTable() {
 
   const data = [
     {
-      customer_name: "",
-      voucher_no: "",
-      due_amount: "",
-      amount: "",
+      account_name: "",
+      code: "0",
+      debit: "",
+      credit: "",
     },
   ];
 
   const summary = [
     {
-      column: "amount",
+      column: "credit",
+      summaryType: "sum",
+      valueFormat: "currency",
+    },
+    {
+      column: "debit",
       summaryType: "sum",
       valueFormat: "currency",
     },
@@ -85,16 +80,20 @@ function CustomerDetailsTable() {
     >
       <MasterTable
         allowUpdate
+        allowAdd
+        ColoredRows
         searchPanel={false}
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}
-        ColoredRows
-        onSaving={(e) => console.log(e)}
         summaryItems={summary}
+        onSaving={(e) => {
+          console.log(e);
+          //   handleChange(e.changes[0].data);
+        }}
       />
     </FormComponent>
   );
 }
 
-export default CustomerDetailsTable;
+export default ContraVoucherTable;

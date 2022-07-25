@@ -51,7 +51,7 @@ function ServicePayment() {
   }, [values, startDate]);
 
   return (
-    <FormComponent title={"Supplier Payment"}>
+    <FormComponent title={"Service Payment"}>
       <div className="row">
         <div className="col-lg-12">
           <InputComponent label={"Date :"}>
