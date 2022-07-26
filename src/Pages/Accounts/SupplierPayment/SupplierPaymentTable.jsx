@@ -5,59 +5,59 @@ import FormComponent from "../../../Components/Web Components/FormComponent/Form
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 
 function SupplierPaymentTable() {
-  const { t, i18n } = useTranslation();
+   const { t, i18n } = useTranslation();
 
-  const options2 = [
-    {
-      label: "Cash In Hand",
-      value: "Cash In Hand",
-    },
-    {
-      label: "Bank",
-      value: "Bank",
-    },
-  ];
+   const options = [
+      {
+         label: "Cash In Hand",
+         value: "Cash In Hand",
+      },
+      {
+         label: "Bank",
+         value: "Bank",
+      },
+   ];
 
-  const columns2 = [
-    {
-      field: "payment_type",
-      caption: t("Payment Type"),
-      options: options2,
-    },
-    {
-      field: "paid_amount",
-      caption: t("Paid Amount"),
-      dataType: "number",
-    },
-  ];
+   const columns = [
+      {
+         field: "payment_type",
+         caption: t("Payment Type"),
+         options: options,
+      },
+      {
+         field: "paid_amount",
+         caption: t("Paid Amount"),
+         dataType: "number",
+      },
+   ];
 
-  const data2 = [
-    {
-      payment_type: "",
-      paid_amount: 20,
-    },
-  ];
+   const data = [
+      {
+         payment_type: "",
+         paid_amount: 20,
+      },
+   ];
 
-  return (
-    <FormComponent
-      hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
-    >
-      <MasterTable
-        allowUpdate
-        allowDelete
-        searchPanel={false}
-        columnChooser={false}
-        dataSource={data2}
-        colAttributes={columns2}
-        ColoredRows
-        onSaving={(e) => console.log(e)}
-      />
-      <div style={{ width: "250px", float: "right", marginTop: 20 }}>
-        <ButtonComponent title={"Add New Payment Method"} />
-      </div>
-    </FormComponent>
-  );
+   return (
+      <FormComponent
+         hideHeader
+         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+      >
+         <MasterTable
+            allowUpdate
+            allowDelete
+            searchPanel={false}
+            columnChooser={false}
+            dataSource={data}
+            colAttributes={columns}
+            ColoredRows
+         />
+
+         <div style={{ width: "250px", float: "right", marginTop: 20 }}>
+            <ButtonComponent title={"Add New Payment Method"} />
+         </div>
+      </FormComponent>
+   );
 }
 
 export default SupplierPaymentTable;

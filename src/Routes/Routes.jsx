@@ -11,6 +11,7 @@ import PaymentMethodList from "../Pages/Accounts/PaymentMethodList";
 import ServicePayment from "../Pages/Accounts/ServicePayment/ServicePayment";
 import SupplierPayment from "../Pages/Accounts/SupplierPayment/SupplierPayment";
 import VoucherApproval from "../Pages/Accounts/VoucherApproval/VoucherApproval";
+import Closing from "../Pages/Closing/Closing";
 import AddCustomer from "../Pages/Customer/AddCustomer";
 import CreditCustomer from "../Pages/Customer/CreditCustomer";
 import CustomerAdvance from "../Pages/Customer/CustomerAdvance";
@@ -358,22 +359,22 @@ export const routes = [
         id: 0,
         title: "Report",
         icon: "menu-icon fa fa-cogs",
-        // data: [
-        //   {
-        //     id: 0,
-        //     title: "Cash Book",
-        //     icon: "menu-icon fa fa-cogs",
-        //     path: "/",
-        //     component: "",
-        //   },
-        //   {
-        //     id: 0,
-        //     title: "Inventory Ledger",
-        //     icon: "menu-icon fa fa-cogs",
-        //     path: "/",
-        //     component: "",
-        //   },
-        // ],
+        data: [
+          {
+            id: 0,
+            title: "Cash Book",
+            icon: "menu-icon fa fa-cogs",
+            path: "/cash-book",
+            component: "",
+          },
+          {
+            id: 0,
+            title: "Inventory Ledger",
+            icon: "menu-icon fa fa-cogs",
+            path: "/inventory-ledger",
+            component: "",
+          },
+        ],
       },
     ],
   },
@@ -386,8 +387,8 @@ export const routes = [
         id: 0,
         title: "Closing",
         icon: "menu-icon fa fa-cogs",
-        path: "",
-        component: "",
+        path: "/closing",
+        component: <Closing/>,
       },
       {
         id: 0,
