@@ -6,12 +6,17 @@ function ActionsButtons({ buttons = [], style }) {
   const { t } = useTranslation();
 
   return (
-    <div style={style} class="padding-lefttitle">
+    <div style={style}>
       {buttons.map((el) => (
         <Link to={el.path} className={el.class} style={{ margin: 5 }}>
           <i class={el.iconClass}> </i>
           {t(el.title)}
         </Link>
+
+        // <a href={el.path} className={el.class} style={{ margin: 5 }}>
+        //   <i class={el.iconClass}> </i>
+        //   {t(el.title)}
+        // </a>
       ))}
     </div>
   );

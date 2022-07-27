@@ -295,7 +295,7 @@ function MasterTable({
                 groupIndex={col.groupIndex}
                 autoExpandGroup={false}
                 onFilterValuesChange={onFilterValuesChange}
-                allowFiltering={col.HideFilter ? false : true}
+                allowFiltering={col.hideFilter ? false : true}
                 calculateCellValue={col.calculateCellValueHandle}
                 cellRender={col.cellRender}
                 width={col.width}

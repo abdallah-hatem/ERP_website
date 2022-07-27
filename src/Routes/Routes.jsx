@@ -12,6 +12,21 @@ import ServicePayment from "../Pages/Accounts/ServicePayment/ServicePayment";
 import SupplierPayment from "../Pages/Accounts/SupplierPayment/SupplierPayment";
 import VoucherApproval from "../Pages/Accounts/VoucherApproval/VoucherApproval";
 import Closing from "../Pages/Closing/Closing";
+import ClosingReport from "../Pages/Closing/ClosingReport";
+import DueReport from "../Pages/Closing/DueReport";
+import ProfitReportSaleWise from "../Pages/Closing/ProfitReportSaleWise";
+import PurchaseReport from "../Pages/Closing/PurchaseReport";
+import PurchaseReportCategoryWise from "../Pages/Closing/PurchaseReportCategoryWise";
+import SalesReport from "../Pages/Closing/SalesReport";
+import SalesReportCategoryWise from "../Pages/Closing/SalesReportCategoryWise";
+import SalesReportProductWise from "../Pages/Closing/SalesReportProductWise";
+import SalesReturn from "../Pages/Closing/SalesReturn";
+import ShippingCostReport from "../Pages/Closing/ShippingCostReport";
+import SupplierReturn from "../Pages/Closing/SupplierReturn";
+import TaxReport from "../Pages/Closing/TaxReport";
+import TodaysCustomerReceipt from "../Pages/Closing/TodaysCustomerReceipt";
+import TodaysReport from "../Pages/Closing/TodaysReport";
+import UserWiseSalesReport from "../Pages/Closing/UserWiseSalesReport";
 import AddCustomer from "../Pages/Customer/AddCustomer";
 import CreditCustomer from "../Pages/Customer/CreditCustomer";
 import CustomerAdvance from "../Pages/Customer/CustomerAdvance";
@@ -388,105 +403,112 @@ export const routes = [
         title: "Closing",
         icon: "menu-icon fa fa-cogs",
         path: "/closing",
-        component: <Closing/>,
+        component: <Closing />,
       },
       {
         id: 0,
         title: "Closing Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/closing-Report",
+        component: <ClosingReport />,
+      },
+      {
+        id: 0,
+        title: "Todays Report",
+        icon: "menu-icon fa fa-cogs",
+        path: "/todays-report",
+        component: <TodaysReport />,
       },
       {
         id: 0,
         title: "Todays Customer Receipt",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/todays-customer-receipt",
+        component: <TodaysCustomerReceipt />,
       },
       {
         id: 0,
         title: "Sales Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/sales-report",
+        component: <SalesReport />,
       },
       {
         id: 0,
         title: "User Wise Sales Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/user-wise-sales-report",
+        component: <UserWiseSalesReport />,
       },
       {
         id: 0,
         title: "Due Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/due-report",
+        component: <DueReport />,
       },
       {
         id: 0,
         title: "Shipping Cost Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/shipping-cost-report",
+        component: <ShippingCostReport />,
       },
       {
         id: 0,
         title: "Purchase Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/purchase-report",
+        component: <PurchaseReport />,
       },
       {
         id: 0,
         title: "Purchase Report (Category wise)",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/purchase-report-category",
+        component: <PurchaseReportCategoryWise />,
       },
       {
         id: 0,
         title: "Sales Report (Product Wise)",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/sales-report-product",
+        component: <SalesReportProductWise />,
       },
       {
         id: 0,
         title: "Sales Report (Category wise)",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/sales-report-category",
+        component: <SalesReportCategoryWise />,
       },
       {
         id: 0,
         title: "Sales Return",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/sales-return",
+        component: <SalesReturn />,
       },
       {
         id: 0,
         title: "Supplier Return",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/supplier-return",
+        component: <SupplierReturn />,
       },
       {
         id: 0,
         title: "TAX Report",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/tax-report",
+        component: <TaxReport />,
       },
       {
         id: 0,
         title: "Profit Report (Sale Wise)",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/profit_report-sale",
+        component: <ProfitReportSaleWise />,
       },
     ],
   },

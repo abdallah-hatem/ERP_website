@@ -66,7 +66,6 @@ function CashAdjustment() {
       value: values["voucher_number"],
       disabled: true,
     },
-
     {
       label: "Adjustment Type :",
       placeholder: "Select Option",
@@ -89,9 +88,11 @@ function CashAdjustment() {
   const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
-    values["date"] = `${startDate.getDate()}/${
-      startDate.getMonth() + 1
-    }/${startDate.getFullYear()}`;
+    function formattedDate(name) {
+      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
+    }
+
+    values["date"] = formattedDate(startDate);
   }, [startDate]);
 
   useEffect(() => {

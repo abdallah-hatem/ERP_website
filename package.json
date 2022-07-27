@@ -30,6 +30,7 @@
       "react-router-dom": "^6.3.0",
       "react-scripts": "5.0.1",
       "react-select": "^5.4.0",
+      "react-to-print": "^2.14.7",
       "sass": "^1.53.0",
       "shards-react": "^1.0.3",
       "use-file-upload": "^1.0.11",

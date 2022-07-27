@@ -4,7 +4,13 @@ import "./FormComponent.css";
 import { Card, CardHeader, CardBody } from "shards-react";
 import { useTranslation } from "react-i18next";
 
-function FormComponent({ children, title, style, hideHeader = false }) {
+function FormComponent({
+  children,
+  title,
+  style,
+  hideHeader = false,
+  content,
+}) {
   const { t, i18n } = useTranslation();
   return (
     <div style={style}>
@@ -17,7 +23,10 @@ function FormComponent({ children, title, style, hideHeader = false }) {
           }}
           className="border-bottom"
         >
-          <h6 className="m-0">{t(title)}</h6>
+          <div className="d-flex justify-content-between">
+            <h6 className="m-0">{t(title)}</h6>
+            {content}
+          </div>
         </CardHeader>
         <CardBody>{children}</CardBody>
       </Card>
