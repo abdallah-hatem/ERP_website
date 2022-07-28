@@ -8,6 +8,11 @@ import DebitVoucher from "../Pages/Accounts/DebitVoucher/DebitVoucher";
 import JournalVoucher from "../Pages/Accounts/JournalVoucher/JournalVoucher";
 import OpeningBalance from "../Pages/Accounts/OpeningBalance";
 import PaymentMethodList from "../Pages/Accounts/PaymentMethodList";
+import BankBook from "../Pages/Accounts/Report/BankBook";
+import CashBook from "../Pages/Accounts/Report/CashBook";
+import GeneralLedger from "../Pages/Accounts/Report/GeneralLedger";
+import InventoryLedger from "../Pages/Accounts/Report/InventoryLedger";
+import TrialBalance from "../Pages/Accounts/Report/TrialBalance";
 import ServicePayment from "../Pages/Accounts/ServicePayment/ServicePayment";
 import SupplierPayment from "../Pages/Accounts/SupplierPayment/SupplierPayment";
 import VoucherApproval from "../Pages/Accounts/VoucherApproval/VoucherApproval";
@@ -380,13 +385,62 @@ export const routes = [
             title: "Cash Book",
             icon: "menu-icon fa fa-cogs",
             path: "/cash-book",
-            component: "",
+            component: <CashBook />,
           },
           {
             id: 0,
             title: "Inventory Ledger",
             icon: "menu-icon fa fa-cogs",
             path: "/inventory-ledger",
+            component: <InventoryLedger />,
+          },
+          {
+            id: 0,
+            title: "Bank Book",
+            icon: "menu-icon fa fa-cogs",
+            path: "/bank-book",
+            component: <BankBook />,
+          },
+          {
+            id: 0,
+            title: "General Ledger",
+            icon: "menu-icon fa fa-cogs",
+            path: "/general-ledger",
+            component: <GeneralLedger />,
+          },
+          {
+            id: 0,
+            title: "Trial Balance",
+            icon: "menu-icon fa fa-cogs",
+            path: "/trial-balance",
+            component: <TrialBalance />,
+          },
+          {
+            id: 0,
+            title: "Profit Loss",
+            icon: "menu-icon fa fa-cogs",
+            path: "/profit-loss",
+            component: "",
+          },
+          {
+            id: 0,
+            title: "Cash Flow",
+            icon: "menu-icon fa fa-cogs",
+            path: "/cash-flow",
+            component: "",
+          },
+          {
+            id: 0,
+            title: "Coa Print",
+            icon: "menu-icon fa fa-cogs",
+            path: "/coa-print",
+            component: "",
+          },
+          {
+            id: 0,
+            title: "Balance Sheet",
+            icon: "menu-icon fa fa-cogs",
+            path: "/balance-sheet",
             component: "",
           },
         ],
@@ -463,7 +517,7 @@ export const routes = [
       },
       {
         id: 0,
-        title: "Purchase Report (Category wise)",
+        title: "Purchase Report (Category Wise)",
         icon: "menu-icon fa fa-cogs",
         path: "/purchase-report-category",
         component: <PurchaseReportCategoryWise />,
@@ -477,7 +531,7 @@ export const routes = [
       },
       {
         id: 0,
-        title: "Sales Report (Category wise)",
+        title: "Sales Report (Category Wise)",
         icon: "menu-icon fa fa-cogs",
         path: "/sales-report-category",
         component: <SalesReportCategoryWise />,
@@ -498,7 +552,7 @@ export const routes = [
       },
       {
         id: 0,
-        title: "TAX Report",
+        title: "Tax Report",
         icon: "menu-icon fa fa-cogs",
         path: "/tax-report",
         component: <TaxReport />,
@@ -507,7 +561,7 @@ export const routes = [
         id: 0,
         title: "Profit Report (Sale Wise)",
         icon: "menu-icon fa fa-cogs",
-        path: "/profit_report-sale",
+        path: "/profit-report-sale",
         component: <ProfitReportSaleWise />,
       },
     ],

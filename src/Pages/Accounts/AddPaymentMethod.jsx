@@ -6,6 +6,7 @@ import InputComponent from "../../Components/Web Components/InputComponent/Input
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./style.scss";
+import SearchBar from "../Closing/SearchBar";
 
 function AddPaymentMethod() {
   const { t } = useTranslation();
@@ -37,6 +38,7 @@ function AddPaymentMethod() {
       name: "payment_method_name",
       handleChange,
       value: values["payment_method_name"],
+      labelWidth: "500px",
     },
   ];
 
@@ -44,25 +46,14 @@ function AddPaymentMethod() {
     console.log(values);
   }, [values]);
   return (
-    <FormComponent title="Opening Balance">
-      <div className="row">
-        <div className="col-lg-9">
-          {data.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              width="70%"
-            />
-          ))}
-
-          <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-            <ButtonComponent onClick={handleSubmit} title={"Save"} />
-          </div>
-        </div>
-      </div>
+    <FormComponent title="Add Payment Method">
+      <SearchBar
+        listView
+        data={data}
+        buttonTitle="Save"
+        buttonWidth="200px"
+        handleSubmit={handleSubmit}
+      />
     </FormComponent>
   );
 }

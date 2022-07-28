@@ -37,13 +37,12 @@ function SalesReportProductWise() {
   const [endDate, setEndDate] = useState(new Date());
 
   useEffect(() => {
-    values["start_date"] = `${startDate.getDate()}/${
-      startDate.getMonth() + 1
-    }/${startDate.getFullYear()}`;
+    function formattedDate(name) {
+      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
+    }
 
-    values["end_date"] = `${endDate.getDate()}/${
-      endDate.getMonth() + 1
-    }/${endDate.getFullYear()}`;
+    values["start_date"] = formattedDate(startDate);
+    values["end_date"] = formattedDate(endDate);
   }, [startDate, endDate]);
 
   const columns = [
@@ -102,13 +101,13 @@ function SalesReportProductWise() {
       class: "btn btn-primary m-b-5 m-r-2",
     },
     {
-      title: "sales Report (Product Wise)",
+      title: "Sales Report (Product Wise)",
       path: "sales-report-product",
       iconClass: "ti-align-justify",
       class: "btn btn-success m-b-5 m-r-2",
     },
     {
-      title: "profit Report (Sale Wise)",
+      title: "Profit Report (Sale Wise)",
       path: "profit-report-sale",
       iconClass: "ti-align-justify",
       class: "btn btn-warning m-b-5 m-r-2",
@@ -195,13 +194,6 @@ function SalesReportProductWise() {
               <b>Total Sold: </b>$ 0.00
             </div>
           }
-          //   printButton={
-          //     <ButtonComponent
-          //       title={"Print"}
-          //       style={{ width: "100px" }}
-          //       onClick={handlePrint}
-          //     />
-          //   }
         />
       </div>
       <ActionsButtons style={{ float: "right" }} buttons={buttons} />

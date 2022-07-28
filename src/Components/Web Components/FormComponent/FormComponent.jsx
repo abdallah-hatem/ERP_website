@@ -19,16 +19,23 @@ function FormComponent({
           style={{
             backgroundColor: "white",
             textAlign: i18n.language === "ar" && "right",
+            // justifyContent: i18n.language === "ar" && "right",
             display: hideHeader && "none",
           }}
           className="border-bottom"
         >
-          <div className="d-flex justify-content-between">
+          {content ? (
+            // put button in the header div
+            <div className="d-flex justify-content-between">
+              <h6 className="m-0">{t(title)}</h6>
+              {content}
+            </div>
+          ) : (
             <h6 className="m-0">{t(title)}</h6>
-            {content}
-          </div>
+          )}
         </CardHeader>
         <CardBody>{children}</CardBody>
+        {/* <div style={{ padding: 10 }}>{children}</div> */}
       </Card>
     </div>
   );

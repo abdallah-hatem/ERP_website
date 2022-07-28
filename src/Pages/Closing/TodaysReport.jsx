@@ -82,13 +82,13 @@ function TodaysReport() {
       class: "btn btn-primary m-b-5 m-r-2",
     },
     {
-      title: "sales Report (Product Wise)",
+      title: "Sales Report (Product Wise)",
       path: "sales-report-product",
       iconClass: "ti-align-justify",
       class: "btn btn-success m-b-5 m-r-2",
     },
     {
-      title: "profit Report (Sale Wise)",
+      title: "Profit Report (Sale Wise)",
       path: "profit-report-sale",
       iconClass: "ti-align-justify",
       class: "btn btn-warning m-b-5 m-r-2",

@@ -15,6 +15,7 @@ import FormComponent from "../../../Components/Web Components/FormComponent/Form
 import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
 import DebitVoucherTable from "./DebitVoucherTable";
+import SearchBar from "../../Closing/SearchBar";
 
 function DebitVoucher() {
   const { t } = useTranslation();
@@ -91,6 +92,10 @@ function DebitVoucher() {
 
   const [startDate, setStartDate] = useState(new Date());
 
+  const dateData = [
+    { label: "Start Date :", selected: startDate, onChange: setStartDate },
+  ];
+
   useEffect(() => {
     function formattedDate(name) {
       return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
@@ -105,7 +110,7 @@ function DebitVoucher() {
 
   return (
     <FormComponent title="Debit Voucher">
-      <div className="row">
+      {/* <div className="row">
         <div className="col-lg-8">
           {data.map((el, index) => (
             <>
@@ -134,18 +139,35 @@ function DebitVoucher() {
               />
             </>
           ))}
-        </div>
+        </div> */}
 
-        <DebitVoucherTable handleChange={handleChangeTable} />
+      <SearchBar
+        listView
+        showButton={false}
+        data={data}
+        handleSubmit={handleSubmit}
+      >
+        {dateData.map((el) => (
+          <InputComponent label={el.label}>
+            <DatePicker
+              dateFormat={"dd/MM/yyyy"}
+              selected={el.selected}
+              onChange={(date) => el.onChange(date)}
+            />
+          </InputComponent>
+        ))}
+      </SearchBar>
 
-        <div style={{ width: "100%", marginTop: 20 }}>
-          <ButtonComponent
-            style={{ width: "200px", float: "right" }}
-            onClick={handleSubmit}
-            title={"Save"}
-          />
-        </div>
+      <DebitVoucherTable handleChange={handleChangeTable} />
+
+      <div style={{ width: "100%", marginTop: 20 }}>
+        <ButtonComponent
+          style={{ width: "200px", float: "right" }}
+          onClick={handleSubmit}
+          title={"Save"}
+        />
       </div>
+      {/* </div> */}
     </FormComponent>
   );
 }

@@ -20,13 +20,20 @@ function Layout() {
             <Routes>
               {routes.map((el) =>
                 el.data && el.data.length > 0 ? (
-                  el.data.map((ele) => (
-                    <Route path={ele.path} element={ele.component} />
-                  ))
+                  el.data.map((ele) =>
+                    ele.data && ele.data.length > 0 ? (
+                      ele.data.map((ele) => (
+                        <Route path={ele.path} element={ele.component} />
+                      ))
+                    ) : (
+                      <Route path={ele.path} element={ele.component} />
+                    )
+                  )
                 ) : (
                   <Route path={el.path} element={el.component} />
                 )
               )}
+
               <Route
                 path={"product-details/:id"}
                 element={<ProductDetails />}

@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../style.scss";
 import SupplierDetailsTable from "./SupplierDetailsTable";
 import SupplierPaymentTable from "./SupplierPaymentTable";
+import SearchBar from "../../Closing/SearchBar";
 
 function SupplierPayment() {
   const defaultValues = useRef({
@@ -40,6 +41,21 @@ function SupplierPayment() {
 
   const [startDate, setStartDate] = useState(new Date());
 
+  const dateData = [
+    { label: "Date :", selected: startDate, onChange: setStartDate },
+  ];
+
+  const data = [
+    {
+      label: "Remark :",
+      placeholder: "Remark",
+      name: "remark",
+      handleChange,
+      value: values["remark"],
+      textArea: true,
+    },
+  ];
+
   useEffect(() => {
     function formattedDate(name) {
       return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
@@ -54,26 +70,22 @@ function SupplierPayment() {
 
   return (
     <FormComponent title={"Supplier Payment"}>
-      <div className="row">
-        <div className="col-lg-6">
-          <InputComponent label={"Date :"}>
+      <SearchBar
+        listView
+        showButton={false}
+        data={data}
+        handleSubmit={handleSubmit}
+      >
+        {dateData.map((el) => (
+          <InputComponent label={el.label}>
             <DatePicker
               dateFormat={"dd/MM/yyyy"}
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              selected={el.selected}
+              onChange={(date) => el.onChange(date)}
             />
           </InputComponent>
-
-          <InputComponent
-            textArea
-            name={"remark"}
-            value={values["remark"]}
-            placeholder={"Remark"}
-            label={"Remark :"}
-            handleChange={handleChange}
-          />
-        </div>
-      </div>
+        ))}
+      </SearchBar>
 
       <SupplierDetailsTable />
 

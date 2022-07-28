@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useReactToPrint } from "react-to-print";
-import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
-import ReportTable from "./ReportTable";
-import SearchBar from "./SearchBar";
-import DatePicker from "react-datepicker";
 
-function ProfitReportSaleWise() {
+import DatePicker from "react-datepicker";
+import SearchBar from "../../Closing/SearchBar";
+import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
+import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
+import ReportTable from "../../Closing/ReportTable";
+import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
+
+function CashBook() {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
@@ -40,72 +41,58 @@ function ProfitReportSaleWise() {
 
   const columns = [
     {
-      field: "sales_date",
-      caption: t("Sales Date"),
+      field: "sl",
+      caption: t("SL."),
     },
     {
-      field: "invoice_no",
-      caption: t("Invoice No."),
+      field: "date",
+      caption: t("Date"),
     },
     {
-      field: "supplier_amount",
-      caption: t("Supplier Amount"),
+      field: "voucher_no",
+      caption: t("Voucher No."),
+    },
+    {
+      field: "voucher_type",
+      caption: t("Voucher Type"),
       format: "currency",
     },
     {
-      field: "my_sale_amount",
-      caption: t("My Sale Amount"),
+      field: "remark",
+      caption: t("Remark"),
+    },
+    {
+      field: "debit",
+      caption: t("Debit"),
       format: "currency",
     },
     {
-      field: "total_profit",
-      caption: t("Total Profit"),
+      field: "credit",
+      caption: t("Credit"),
+      format: "currency",
+    },
+    {
+      field: "balance",
+      caption: t("Balance"),
       format: "currency",
     },
   ];
 
   const summary = [
     {
-      column: "supplier_amount",
+      column: "debit",
       summaryType: "sum",
       valueFormat: "currency",
     },
     {
-      column: "my_sale_amount",
+      column: "credit",
       summaryType: "sum",
       valueFormat: "currency",
     },
     {
-      column: "total_Profit",
+      column: "balance",
       summaryType: "sum",
       valueFormat: "currency",
-    },
-  ];
-
-  const buttons = [
-    {
-      title: "Todays Report",
-      path: "todays-report",
-      iconClass: "ti-align-justify",
-      class: "btn btn-info m-b-5 m-r-2",
-    },
-    {
-      title: "Purchase Report",
-      path: "purchase-report",
-      iconClass: "ti-align-justify",
-      class: "btn btn-primary m-b-5 m-r-2",
-    },
-    {
-      title: "Sales Report (Product Wise)",
-      path: "sales-report-product",
-      iconClass: "ti-align-justify",
-      class: "btn btn-success m-b-5 m-r-2",
-    },
-    {
-      title: "Profit Report (Sale Wise)",
-      path: "profit-report-sale",
-      iconClass: "ti-align-justify",
-      class: "btn btn-warning m-b-5 m-r-2",
     },
   ];
 
@@ -114,7 +101,7 @@ function ProfitReportSaleWise() {
     content: () => componentRef.current,
   });
 
-  const data = [
+  const dateData = [
     { label: "Start Date :", selected: startDate, onChange: setStartDate },
     { label: "End Date :", selected: endDate, onChange: setEndDate },
   ];
@@ -125,17 +112,9 @@ function ProfitReportSaleWise() {
 
   return (
     <>
-      <SearchBar handleSubmit={handleSubmit}>
-        {data.map((el) => (
-          <InputComponent label={el.label}>
-            <DatePicker
-              dateFormat={"dd/MM/yyyy"}
-              selected={el.selected}
-              onChange={(date) => el.onChange(date)}
-            />
-          </InputComponent>
-        ))}
-      </SearchBar>
+      <FormComponent hideHeader>
+        <SearchBar listView handleSubmit={handleSubmit} dateData={dateData} />
+      </FormComponent>
 
       <div className="d-flex justify-content-end mb-2">
         <ButtonComponent
@@ -152,9 +131,8 @@ function ProfitReportSaleWise() {
           columns={columns}
         />
       </div>
-      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
     </>
   );
 }
 
-export default ProfitReportSaleWise;
+export default CashBook;

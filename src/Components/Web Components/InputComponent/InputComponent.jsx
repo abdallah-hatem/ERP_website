@@ -22,6 +22,7 @@ function InputComponent({
   width,
   children = false,
   hideLabel = false,
+  labelWidth,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -32,6 +33,8 @@ function InputComponent({
           style={{
             textAlign: i18n.language === "ar" && "right",
             display: hideLabel && "none",
+            maxWidth: labelWidth,
+            width: labelWidth,
           }}
           // id="domain-label"
         >

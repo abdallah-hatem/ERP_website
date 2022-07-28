@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./style.scss";
+import SearchBar from "../Closing/SearchBar";
 
 function OpeningBalance() {
   const { t } = useTranslation();
@@ -18,13 +19,15 @@ function OpeningBalance() {
     remark: "",
     date: "",
   });
+
   const [values, setValues] = useState(defaultValues.current);
+
   const handleChange = useCallback((e) => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
+
   function handleSubmit(e) {
     // e.preventDefault();
-
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
@@ -87,6 +90,10 @@ function OpeningBalance() {
 
   const [startDate, setStartDate] = useState(new Date());
 
+  const dateData = [
+    { label: "Date :", selected: startDate, onChange: setStartDate },
+  ];
+
   useEffect(() => {
     function formattedDate(name) {
       return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
@@ -100,34 +107,25 @@ function OpeningBalance() {
   }, [values, startDate]);
   return (
     <FormComponent title="Opening Balance">
-      <div className="row">
-        <div className="col-lg-10">
-          {data.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              chooseOptions={el.chooseOptions}
-              textArea={el.textArea}
-              options={el.options}
-              type={el.type}
-              width="70%"
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              disabled={el.disabled}
-            />
-          ))}
-          <InputComponent width="70%" label={"Date :"}>
+      <SearchBar
+        listView
+        showButton={false}
+        data={data}
+        handleSubmit={handleSubmit}
+      >
+        {dateData.map((el) => (
+          <InputComponent label={el.label}>
             <DatePicker
               dateFormat={"dd/MM/yyyy"}
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              selected={el.selected}
+              onChange={(date) => el.onChange(date)}
             />
           </InputComponent>
-          <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-            <ButtonComponent onClick={handleSubmit} title={"Save"} />
-          </div>
-        </div>
+        ))}
+      </SearchBar>
+
+      <div style={{ width: "200px", float: "right", marginTop: 20 }}>
+        <ButtonComponent onClick={handleSubmit} title={"Save"} />
       </div>
     </FormComponent>
   );

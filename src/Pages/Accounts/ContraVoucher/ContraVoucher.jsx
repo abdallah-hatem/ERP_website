@@ -15,6 +15,7 @@ import CreditVoucherTable from "./ContratVoucherTable";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
+import SearchBar from "../../Closing/SearchBar";
 // import "../style.scss";
 
 function ContraVoucher() {
@@ -70,6 +71,10 @@ function ContraVoucher() {
 
   const [startDate, setStartDate] = useState(new Date());
 
+  const dateData = [
+    { label: "Start Date :", selected: startDate, onChange: setStartDate },
+  ];
+
   useEffect(() => {
     function formattedDate(name) {
       return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
@@ -84,46 +89,31 @@ function ContraVoucher() {
 
   return (
     <FormComponent title="Contra Voucher">
-      <div className="row">
-        <div className="col-lg-8">
-          {data.map((el, index) => (
-            <>
-              {index === 1 && (
-                <InputComponent width="70%" label={"Date :"}>
-                  <DatePicker
-                    dateFormat={"dd/MM/yyyy"}
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                  />
-                </InputComponent>
-              )}
+      <SearchBar
+        listView
+        showButton={false}
+        data={data}
+        handleSubmit={handleSubmit}
+      >
+        {dateData.map((el) => (
+          <InputComponent label={el.label}>
+            <DatePicker
+              dateFormat={"dd/MM/yyyy"}
+              selected={el.selected}
+              onChange={(date) => el.onChange(date)}
+            />
+          </InputComponent>
+        ))}
+      </SearchBar>
 
-              <InputComponent
-                label={el.label}
-                placeholder={el.placeholder}
-                chooseOptions={el.chooseOptions}
-                textArea={el.textArea}
-                options={el.options}
-                type={el.type}
-                width="70%"
-                handleChange={el.handleChange}
-                name={el.name}
-                value={el.value}
-                disabled={el.disabled}
-              />
-            </>
-          ))}
-        </div>
+      <CreditVoucherTable handleChange={handleChangeTable} />
 
-        <CreditVoucherTable handleChange={handleChangeTable} />
-
-        <div style={{ width: "100%", marginTop: 20 }}>
-          <ButtonComponent
-            style={{ width: "200px", float: "right" }}
-            onClick={handleSubmit}
-            title={"Save"}
-          />
-        </div>
+      <div style={{ width: "100%", marginTop: 20 }}>
+        <ButtonComponent
+          style={{ width: "200px", float: "right" }}
+          onClick={handleSubmit}
+          title={"Save"}
+        />
       </div>
     </FormComponent>
   );

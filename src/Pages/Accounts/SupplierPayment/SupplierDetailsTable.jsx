@@ -39,7 +39,7 @@ function SupplierDetailsTable() {
   const columns = [
     {
       field: "supplier",
-      caption: t("Supplier value"),
+      caption: t("Supplier Value"),
       options: options,
     },
     {

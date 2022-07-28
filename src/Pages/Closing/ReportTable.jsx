@@ -3,7 +3,14 @@ import { useTranslation } from "react-i18next";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
 
-function ReportTable({ columns, title, summary, printButton, caption }) {
+function ReportTable({
+  columns,
+  title,
+  summary,
+  printButton,
+  caption,
+  hideHeader = false,
+}) {
   const { t } = useTranslation();
 
   //   const columns = [
@@ -37,12 +44,13 @@ function ReportTable({ columns, title, summary, printButton, caption }) {
   //   ];
 
   return (
-    <FormComponent content={printButton} title={title}>
+    <FormComponent hideHeader={hideHeader} content={printButton} title={title}>
       <div
         className="border-bottom mb-5"
         style={{
           display: "flex",
           justifyContent: "space-between",
+          flexWrap: "wrap",
           alignItems: "center",
           padding: "5px 0px",
         }}

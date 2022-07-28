@@ -30,13 +30,12 @@ function SalesReturn() {
   const [endDate, setEndDate] = useState(new Date());
 
   useEffect(() => {
-    values["start_date"] = `${startDate.getDate()}/${
-      startDate.getMonth() + 1
-    }/${startDate.getFullYear()}`;
+    function formattedDate(name) {
+      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
+    }
 
-    values["end_date"] = `${endDate.getDate()}/${
-      endDate.getMonth() + 1
-    }/${endDate.getFullYear()}`;
+    values["start_date"] = formattedDate(startDate);
+    values["end_date"] = formattedDate(endDate);
   }, [startDate, endDate]);
 
   const columns = [
@@ -85,13 +84,13 @@ function SalesReturn() {
       class: "btn btn-primary m-b-5 m-r-2",
     },
     {
-      title: "sales Report (Product Wise)",
+      title: "Sales Report (Product Wise)",
       path: "sales-report-product",
       iconClass: "ti-align-justify",
       class: "btn btn-success m-b-5 m-r-2",
     },
     {
-      title: "profit Report (Sale Wise)",
+      title: "Profit Report (Sale Wise)",
       path: "profit-report-sale",
       iconClass: "ti-align-justify",
       class: "btn btn-warning m-b-5 m-r-2",
@@ -104,8 +103,8 @@ function SalesReturn() {
   });
 
   const data = [
-    { label: "Start Date", selected: startDate, onChange: setStartDate },
-    { label: "End Date", selected: endDate, onChange: setEndDate },
+    { label: "Start Date :", selected: startDate, onChange: setStartDate },
+    { label: "End Date :", selected: endDate, onChange: setEndDate },
   ];
 
   useEffect(() => {
@@ -135,18 +134,7 @@ function SalesReturn() {
       </div>
 
       <div ref={componentRef}>
-        <ReportTable
-          title="Sales Return"
-          summary={summary}
-          columns={columns}
-          //   printButton={
-          //     <ButtonComponent
-          //       title={"Print"}
-          //       style={{ width: "100px" }}
-          //       onClick={handlePrint}
-          //     />
-          //   }
-        />
+        <ReportTable title="Sales Return" summary={summary} columns={columns} />
       </div>
       <ActionsButtons style={{ float: "right" }} buttons={buttons} />
     </>
