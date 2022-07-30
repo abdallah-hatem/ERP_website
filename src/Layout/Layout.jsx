@@ -6,6 +6,7 @@ import { routes } from "../Routes/Routes";
 
 import ProductDetails from "../Pages/Product/ProductDetails";
 import UpdateProduct from "../Pages/Product/UpdateProduct";
+import EmployeeProfile from "../Pages/HumanResources/HRM/EmployeeProfile";
 
 function Layout() {
   return (
@@ -37,6 +38,10 @@ function Layout() {
               <Route
                 path={"product-details/:id"}
                 element={<ProductDetails />}
+              />
+              <Route
+                path={"manage-employee/employee-profile/:id"}
+                element={<EmployeeProfile />}
               />
               <Route path={"update-product/:id"} element={<UpdateProduct />} />
             </Routes>

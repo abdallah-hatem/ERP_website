@@ -1,11 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import CountryChooser from "../../Components/Web Components/CountryRegionComp/CountryChooser";
-import RegionChooser from "../../Components/Web Components/CountryRegionComp/RegionChooser";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
+import AddFormComponent from "../../Components/Web Components/AddFormComponent/AddFormComponent";
 
 function AddCustomer() {
   const defaultValues = useRef({
@@ -24,7 +20,9 @@ function AddCustomer() {
     zip_code: "",
     previous_balance: "",
   });
+
   const [values, setValues] = useState(defaultValues.current);
+
   const handleChange = useCallback((e) => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
@@ -35,7 +33,6 @@ function AddCustomer() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
     }
   }
@@ -45,6 +42,7 @@ function AddCustomer() {
   useEffect(() => {
     console.log(values);
   }, [values]);
+
   const DataCol1 = [
     {
       label: "Customer Name :",
@@ -83,6 +81,7 @@ function AddCustomer() {
       value: values["fax"],
     },
   ];
+
   const DataCol2 = [
     {
       label: "Mobile :",
@@ -138,60 +137,68 @@ function AddCustomer() {
   ];
 
   return (
-    <FormComponent title={"Add Customer"}>
-      <div className="row">
-        <div className="col-lg-6">
-          {DataCol1.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              textArea={el.textArea === true}
-              // errorMessage={error.FullName}
-              // onBlur={CheckInputs(values, error)}
-            />
-          ))}
+    <AddFormComponent
+      title="Add Customer"
+      DataCol1={DataCol1}
+      DataCol2={DataCol2}
+      handleSubmit={handleSubmit}
+      handleChange={handleChange}
+      values={values}
+    />
+    // <FormComponent title={"Add Customer"}>
+    //   <div className="row">
+    //     <div className="col-lg-6">
+    //       {DataCol1.map((el) => (
+    //         <InputComponent
+    //           label={el.label}
+    //           placeholder={el.placeholder}
+    //           handleChange={el.handleChange}
+    //           name={el.name}
+    //           value={el.value}
+    //           textArea={el.textArea === true}
+    //           // errorMessage={error.FullName}
+    //           // onBlur={CheckInputs(values, error)}
+    //         />
+    //       ))}
 
-          <CountryChooser
-            label="Country :"
-            name="country"
-            value={values.country}
-            // classes="cls"
-            handleChange={handleChange}
-          />
+    //       <CountryChooser
+    //         label="Country :"
+    //         name="country"
+    //         value={values.country}
+    //         // classes="cls"
+    //         handleChange={handleChange}
+    //       />
 
-          <RegionChooser
-            label="State :"
-            name="state"
-            value={values.state}
-            disableWhenEmpty={true}
-            country={values.country}
-            // classes="cls"
-            handleChange={handleChange}
-          />
-        </div>
-        <div className="col-lg-6">
-          {DataCol2.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              textArea={el.textArea === true}
-              // errorMessage={error.FullName}
-              // onBlur={CheckInputs(values, error)}
-            />
-          ))}
-        </div>
-      </div>
+    //       <RegionChooser
+    //         label="State :"
+    //         name="state"
+    //         value={values.state}
+    //         disableWhenEmpty={true}
+    //         country={values.country}
+    //         // classes="cls"
+    //         handleChange={handleChange}
+    //       />
+    //     </div>
+    //     <div className="col-lg-6">
+    //       {DataCol2.map((el) => (
+    //         <InputComponent
+    //           label={el.label}
+    //           placeholder={el.placeholder}
+    //           handleChange={el.handleChange}
+    //           name={el.name}
+    //           value={el.value}
+    //           textArea={el.textArea === true}
+    //           // errorMessage={error.FullName}
+    //           // onBlur={CheckInputs(values, error)}
+    //         />
+    //       ))}
+    //     </div>
+    //   </div>
 
-      <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-        <ButtonComponent onClick={handleSubmit} title={"Submit"} />
-      </div>
-    </FormComponent>
+    //   <div style={{ width: "200px", float: "right", marginTop: 20 }}>
+    //     <ButtonComponent onClick={handleSubmit} title={"Submit"} />
+    //   </div>
+    // </FormComponent>
   );
 }
 

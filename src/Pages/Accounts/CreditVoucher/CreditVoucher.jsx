@@ -1,19 +1,10 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 import CreditVoucherTable from "./CreditVoucherTable";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
 import SearchBar from "../../Closing/SearchBar";
 // import "../style.scss";
@@ -46,8 +37,11 @@ function CreditVoucher() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
+    }
+
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"));
     }
   }
 
@@ -92,18 +86,16 @@ function CreditVoucher() {
   ];
 
   const [startDate, setStartDate] = useState(new Date());
+  const [validDate, setValidDate] = useState(true);
 
   const dateData = [
-    { label: "Start Date :", selected: startDate, onChange: setStartDate },
+    {
+      label: "Date :",
+      value: "date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
   ];
-
-  useEffect(() => {
-    function formattedDate(name) {
-      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
-    }
-
-    values["date"] = formattedDate(startDate);
-  }, [startDate]);
 
   useEffect(() => {
     console.log(values);
@@ -114,19 +106,14 @@ function CreditVoucher() {
       <SearchBar
         listView
         showButton={false}
-        data={data}
         handleSubmit={handleSubmit}
-      >
-        {dateData.map((el) => (
-          <InputComponent label={el.label}>
-            <DatePicker
-              dateFormat={"dd/MM/yyyy"}
-              selected={el.selected}
-              onChange={(date) => el.onChange(date)}
-            />
-          </InputComponent>
-        ))}
-      </SearchBar>
+        handleChange={handleChange}
+        data={data}
+        dateData={dateData}
+        startDate={startDate}
+        values={values}
+        setValidDate={setValidDate}
+      />
 
       <CreditVoucherTable handleChange={handleChangeTable} />
 

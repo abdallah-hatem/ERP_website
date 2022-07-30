@@ -4,9 +4,6 @@ import { useTranslation } from "react-i18next";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
 
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
-
-import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "../style.scss";
@@ -32,7 +29,6 @@ function CustomerReceive() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
     }
   }
@@ -42,7 +38,12 @@ function CustomerReceive() {
   const [startDate, setStartDate] = useState(new Date());
 
   const dateData = [
-    { label: "Date :", selected: startDate, onChange: setStartDate },
+    {
+      label: "Date :",
+      value: "date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
   ];
 
   const data = [
@@ -57,14 +58,6 @@ function CustomerReceive() {
   ];
 
   useEffect(() => {
-    function formattedDate(name) {
-      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
-    }
-
-    values["date"] = formattedDate(startDate);
-  }, [startDate]);
-
-  useEffect(() => {
     console.log(values);
   }, [values, startDate]);
 
@@ -73,19 +66,13 @@ function CustomerReceive() {
       <SearchBar
         listView
         showButton={false}
-        data={data}
         handleSubmit={handleSubmit}
-      >
-        {dateData.map((el) => (
-          <InputComponent label={el.label}>
-            <DatePicker
-              dateFormat={"dd/MM/yyyy"}
-              selected={el.selected}
-              onChange={(date) => el.onChange(date)}
-            />
-          </InputComponent>
-        ))}
-      </SearchBar>
+        handleChange={handleChange}
+        data={data}
+        dateData={dateData}
+        startDate={startDate}
+        values={values}
+      />
 
       <CustomerDetailsTable />
 

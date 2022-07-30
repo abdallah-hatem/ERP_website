@@ -7,98 +7,105 @@ import SearchBar from "./SearchBar";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 
 function ClosingReport() {
-   const { t } = useTranslation();
+  const { t } = useTranslation();
 
-   const defaultValues = useRef({
-      start_date: "",
-      end_date: "",
-   });
+  const defaultValues = useRef({
+    start_date: "",
+    end_date: "",
+  });
 
-   const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current);
 
-   function handleSubmit() {
-      if (values.start_date > values.end_date) {
-         alert(t("Start date cant be bigger than end date"));
-      }
-   }
+  function handleSubmit() {
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"));
+    }
+  }
 
-   const columns = [
-      {
-         field: "sl",
-         caption: t("SL No."),
-         allowEditing: false,
-         hideFilter: true,
-      },
-      {
-         field: "date",
-         caption: t("Date"),
-         dataType: "date",
-      },
-      {
-         field: "cash_in",
-         caption: t("Cash In"),
-         hideFilter: true,
-      },
-      {
-         field: "cash_out",
-         caption: t("Cash Out"),
-         hideFilter: true,
-      },
+  const columns = [
+    {
+      field: "sl",
+      caption: t("SL No."),
+      allowEditing: false,
+      hideFilter: true,
+    },
+    {
+      field: "date",
+      caption: t("Date"),
+      dataType: "date",
+    },
+    {
+      field: "cash_in",
+      caption: t("Cash In"),
+      hideFilter: true,
+    },
+    {
+      field: "cash_out",
+      caption: t("Cash Out"),
+      hideFilter: true,
+    },
 
-      {
-         field: "balance",
-         caption: t("Balance"),
-         hideFilter: true,
-      },
-   ];
+    {
+      field: "balance",
+      caption: t("Balance"),
+      hideFilter: true,
+    },
+  ];
 
-   const ref = useRef();
-   const handlePrint = useReactToPrint({
-      content: () => ref.current,
-   });
+  const ref = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => ref.current,
+  });
 
-   const [startDate, setStartDate] = useState(new Date());
-   const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [validDate, setValidDate] = useState(true);
 
-   useEffect(() => {
-      function formattedDate(name) {
-         return `${name.getDate()}/${
-            name.getMonth() + 1
-         }/${name.getFullYear()}`;
-      }
+  const dateData = [
+    {
+      label: "Start Date :",
+      value: "start_date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
+    {
+      label: "End Date :",
+      value: "end_date",
+      selected: endDate,
+      onChange: setEndDate,
+    },
+  ];
 
-      values["start_date"] = formattedDate(startDate);
-      values["end_date"] = formattedDate(endDate);
-   }, [startDate, endDate]);
+  useEffect(() => {
+    console.log(values);
+  }, [values, startDate, endDate]);
 
-   const dateData = [
-      { label: "Start Date :", selected: startDate, onChange: setStartDate },
-      { label: "End Date :", selected: endDate, onChange: setEndDate },
-   ];
+  return (
+    <>
+      <FormComponent hideHeader>
+        <SearchBar
+          handleSubmit={handleSubmit}
+          dateData={dateData}
+          startDate={startDate}
+          endDate={endDate}
+          values={values}
+          setValidDate={setValidDate}
+        />
+      </FormComponent>
 
-   useEffect(() => {
-      console.log(values);
-   }, [values, startDate, endDate]);
+      <div className="d-flex justify-content-end mb-2">
+        <ButtonComponent
+          title={"Print"}
+          style={{ width: "100px" }}
+          onClick={handlePrint}
+        />
+      </div>
 
-   return (
-      <>
-         <FormComponent hideHeader>
-            <SearchBar dateData={dateData} handleSubmit={handleSubmit} />
-         </FormComponent>
-
-         <div className="d-flex justify-content-end mb-2">
-            <ButtonComponent
-               title={"Print"}
-               style={{ width: "100px" }}
-               onClick={handlePrint}
-            />
-         </div>
-
-         <div ref={ref}>
-            <ReportTable columns={columns} title={"Closing Report"} />
-         </div>
-      </>
-   );
+      <div ref={ref}>
+        <ReportTable columns={columns} title={"Closing Report"} />
+      </div>
+    </>
+  );
 }
 
 export default ClosingReport;

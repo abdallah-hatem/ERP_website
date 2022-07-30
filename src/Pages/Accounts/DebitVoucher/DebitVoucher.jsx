@@ -45,8 +45,11 @@ function DebitVoucher() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
+    }
+
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"));
     }
   }
 
@@ -91,18 +94,16 @@ function DebitVoucher() {
   ];
 
   const [startDate, setStartDate] = useState(new Date());
+  const [validDate, setValidDate] = useState(true);
 
   const dateData = [
-    { label: "Start Date :", selected: startDate, onChange: setStartDate },
+    {
+      label: "Date :",
+      value: "date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
   ];
-
-  useEffect(() => {
-    function formattedDate(name) {
-      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
-    }
-
-    values["date"] = formattedDate(startDate);
-  }, [startDate]);
 
   useEffect(() => {
     console.log(values);
@@ -110,53 +111,17 @@ function DebitVoucher() {
 
   return (
     <FormComponent title="Debit Voucher">
-      {/* <div className="row">
-        <div className="col-lg-8">
-          {data.map((el, index) => (
-            <>
-              {index === 1 && (
-                <InputComponent width="70%" label={"Date :"}>
-                  <DatePicker
-                    dateFormat={"dd/MM/yyyy"}
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
-                  />
-                </InputComponent>
-              )}
-
-              <InputComponent
-                label={el.label}
-                placeholder={el.placeholder}
-                chooseOptions={el.chooseOptions}
-                textArea={el.textArea}
-                options={el.options}
-                type={el.type}
-                width="70%"
-                handleChange={el.handleChange}
-                name={el.name}
-                value={el.value}
-                disabled={el.disabled}
-              />
-            </>
-          ))}
-        </div> */}
-
       <SearchBar
         listView
         showButton={false}
-        data={data}
         handleSubmit={handleSubmit}
-      >
-        {dateData.map((el) => (
-          <InputComponent label={el.label}>
-            <DatePicker
-              dateFormat={"dd/MM/yyyy"}
-              selected={el.selected}
-              onChange={(date) => el.onChange(date)}
-            />
-          </InputComponent>
-        ))}
-      </SearchBar>
+        handleChange={handleChange}
+        data={data}
+        dateData={dateData}
+        startDate={startDate}
+        values={values}
+        setValidDate={setValidDate}
+      />
 
       <DebitVoucherTable handleChange={handleChangeTable} />
 
@@ -167,7 +132,6 @@ function DebitVoucher() {
           title={"Save"}
         />
       </div>
-      {/* </div> */}
     </FormComponent>
   );
 }

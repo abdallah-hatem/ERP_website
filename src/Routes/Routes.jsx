@@ -10,8 +10,10 @@ import OpeningBalance from "../Pages/Accounts/OpeningBalance";
 import PaymentMethodList from "../Pages/Accounts/PaymentMethodList";
 import BankBook from "../Pages/Accounts/Report/BankBook";
 import CashBook from "../Pages/Accounts/Report/CashBook";
+import CashFlow from "../Pages/Accounts/Report/CashFlow";
 import GeneralLedger from "../Pages/Accounts/Report/GeneralLedger";
 import InventoryLedger from "../Pages/Accounts/Report/InventoryLedger";
+import ProfitLoss from "../Pages/Accounts/Report/ProfitLoss";
 import TrialBalance from "../Pages/Accounts/Report/TrialBalance";
 import ServicePayment from "../Pages/Accounts/ServicePayment/ServicePayment";
 import SupplierPayment from "../Pages/Accounts/SupplierPayment/SupplierPayment";
@@ -39,6 +41,10 @@ import CustomerLedger from "../Pages/Customer/CustomerLedger";
 import CustomerList from "../Pages/Customer/CustomerList";
 import PaidCustomer from "../Pages/Customer/PaidCustomer";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AddDesignation from "../Pages/HumanResources/HRM/AddDesignation";
+import AddEmployee from "../Pages/HumanResources/HRM/AddEmployee";
+import ManageDesignation from "../Pages/HumanResources/HRM/ManageDesignation";
+import ManageEmployee from "../Pages/HumanResources/HRM/ManageEmployee";
 import AddCategory from "../Pages/Product/AddCategory";
 import AddProduct from "../Pages/Product/AddProduct";
 import AddProductCsv from "../Pages/Product/AddProductCsv";
@@ -420,14 +426,14 @@ export const routes = [
             title: "Profit Loss",
             icon: "menu-icon fa fa-cogs",
             path: "/profit-loss",
-            component: "",
+            component: <ProfitLoss />,
           },
           {
             id: 0,
             title: "Cash Flow",
             icon: "menu-icon fa fa-cogs",
             path: "/cash-flow",
-            component: "",
+            component: <CashFlow />,
           },
           {
             id: 0,
@@ -577,6 +583,36 @@ export const routes = [
         icon: "menu-icon fa fa-cogs",
         path: "",
         component: "",
+        data: [
+          {
+            id: 0,
+            title: "Add Designation",
+            icon: "menu-icon fa fa-cogs",
+            path: "/add-designation",
+            component: <AddDesignation />,
+          },
+          {
+            id: 0,
+            title: "Manage Designation",
+            icon: "menu-icon fa fa-cogs",
+            path: "/mange-designation",
+            component: <ManageDesignation />,
+          },
+          {
+            id: 0,
+            title: "Add Employee",
+            icon: "menu-icon fa fa-cogs",
+            path: "/add-employee",
+            component: <AddEmployee />,
+          },
+          {
+            id: 0,
+            title: "Manage Employee",
+            icon: "menu-icon fa fa-cogs",
+            path: "/manage-employee",
+            component: <ManageEmployee />,
+          },
+        ],
       },
       {
         id: 0,

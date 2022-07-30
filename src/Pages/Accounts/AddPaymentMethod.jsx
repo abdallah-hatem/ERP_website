@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./style.scss";
@@ -26,7 +24,6 @@ function AddPaymentMethod() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
     }
   }
@@ -38,7 +35,7 @@ function AddPaymentMethod() {
       name: "payment_method_name",
       handleChange,
       value: values["payment_method_name"],
-      labelWidth: "500px",
+      labelWidth: "300px",
     },
   ];
 
@@ -51,7 +48,6 @@ function AddPaymentMethod() {
         listView
         data={data}
         buttonTitle="Save"
-        buttonWidth="200px"
         handleSubmit={handleSubmit}
       />
     </FormComponent>

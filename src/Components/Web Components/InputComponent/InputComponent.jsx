@@ -20,6 +20,7 @@ function InputComponent({
   chooseOptions = false,
   options = [],
   width,
+  containerWidth,
   children = false,
   hideLabel = false,
   labelWidth,
@@ -27,7 +28,12 @@ function InputComponent({
   const { t, i18n } = useTranslation();
 
   return (
-    <div style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}>
+    <div
+      style={{
+        direction: i18n.language === "en" ? "ltr" : "rtl",
+        // width: "100%",
+      }}
+    >
       <div className="squared-input-container">
         <label
           style={{
@@ -59,7 +65,7 @@ function InputComponent({
             className="options-cont"
             style={{
               textAlign: i18n.language === "ar" && "right",
-              width: width,
+              width: "width",
             }}
           >
             <Select

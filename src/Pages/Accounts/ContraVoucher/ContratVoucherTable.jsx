@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 
 function ContraVoucherTable({ handleChange }) {
-  const { t, i18n } = useTranslation();
-
-  const [val, setVal] = useState("choose a name");
+  const { t } = useTranslation();
 
   const options = [
     {
@@ -89,7 +87,6 @@ function ContraVoucherTable({ handleChange }) {
         summaryItems={summary}
         onSaving={(e) => {
           console.log(e);
-          //   handleChange(e.changes[0].data);
         }}
       />
     </FormComponent>

@@ -18,25 +18,31 @@ function TrialBalance() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
     }
+
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"));
+    }
   }
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  useEffect(() => {
-    function formattedDate(name) {
-      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
-    }
-
-    values["start_date"] = formattedDate(startDate);
-    values["end_date"] = formattedDate(endDate);
-  }, [startDate, endDate]);
+  const [validDate, setValidDate] = useState(true);
 
   const dateData = [
-    { label: "Start Date :", selected: startDate, onChange: setStartDate },
-    { label: "End Date :", selected: endDate, onChange: setEndDate },
+    {
+      label: "Start Date :",
+      value: "start_date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
+    {
+      label: "End Date :",
+      value: "end_date",
+      selected: endDate,
+      onChange: setEndDate,
+    },
   ];
 
   useEffect(() => {
@@ -44,7 +50,15 @@ function TrialBalance() {
   }, [values, startDate, endDate]);
   return (
     <FormComponent hideHeader>
-      <SearchBar listView handleSubmit={handleSubmit} dateData={dateData} />
+      <SearchBar
+        listView
+        handleSubmit={handleSubmit}
+        dateData={dateData}
+        startDate={startDate}
+        endDate={endDate}
+        values={values}
+        setValidDate={setValidDate}
+      />
     </FormComponent>
   );
 }

@@ -10,9 +10,10 @@ function FormComponent({
   style,
   hideHeader = false,
   content,
+  hideCard = false,
 }) {
   const { t, i18n } = useTranslation();
-  return (
+  return !hideCard ? (
     <div style={style}>
       <Card small className="mb-4">
         <CardHeader
@@ -35,9 +36,10 @@ function FormComponent({
           )}
         </CardHeader>
         <CardBody>{children}</CardBody>
-        {/* <div style={{ padding: 10 }}>{children}</div> */}
       </Card>
     </div>
+  ) : (
+    children
   );
 }
 

@@ -32,17 +32,26 @@ function ServicePayment() {
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
+    }
+
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"));
     }
   }
 
   const { t, i18n } = useTranslation();
 
   const [startDate, setStartDate] = useState(new Date());
+  const [validDate, setValidDate] = useState(true);
 
   const dateData = [
-    { label: "Date :", selected: startDate, onChange: setStartDate },
+    {
+      label: "Date :",
+      value: "date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
   ];
 
   const data = [
@@ -57,14 +66,6 @@ function ServicePayment() {
   ];
 
   useEffect(() => {
-    function formattedDate(name) {
-      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
-    }
-
-    values["date"] = formattedDate(startDate);
-  }, [startDate]);
-
-  useEffect(() => {
     console.log(values);
   }, [values, startDate]);
 
@@ -73,19 +74,14 @@ function ServicePayment() {
       <SearchBar
         listView
         showButton={false}
-        data={data}
         handleSubmit={handleSubmit}
-      >
-        {dateData.map((el) => (
-          <InputComponent label={el.label}>
-            <DatePicker
-              dateFormat={"dd/MM/yyyy"}
-              selected={el.selected}
-              onChange={(date) => el.onChange(date)}
-            />
-          </InputComponent>
-        ))}
-      </SearchBar>
+        handleChange={handleChange}
+        data={data}
+        dateData={dateData}
+        startDate={startDate}
+        values={values}
+        setValidDate={setValidDate}
+      />
 
       <CustomerDetailsTable />
 
