@@ -41,10 +41,20 @@ import CustomerLedger from "../Pages/Customer/CustomerLedger";
 import CustomerList from "../Pages/Customer/CustomerList";
 import PaidCustomer from "../Pages/Customer/PaidCustomer";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import Attendance from "../Pages/HumanResources/Attendance/Attendance";
+import AttendanceReport from "../Pages/HumanResources/Attendance/AttendanceReport";
+import ManageAttendance from "../Pages/HumanResources/Attendance/ManageAttendance";
 import AddDesignation from "../Pages/HumanResources/HRM/AddDesignation";
 import AddEmployee from "../Pages/HumanResources/HRM/AddEmployee";
 import ManageDesignation from "../Pages/HumanResources/HRM/ManageDesignation";
 import ManageEmployee from "../Pages/HumanResources/HRM/ManageEmployee";
+import AddBenefits from "../Pages/HumanResources/Payroll/AddBenefits";
+import AddSalarySetup from "../Pages/HumanResources/Payroll/AddSalarySetup";
+import ManageBenefits from "../Pages/HumanResources/Payroll/ManageBenefits";
+import ManageSalaryGenerate from "../Pages/HumanResources/Payroll/ManageSalaryGenerate";
+import ManageSalarySetup from "../Pages/HumanResources/Payroll/ManageSalarySetup";
+import SalaryGenerate from "../Pages/HumanResources/Payroll/SalaryGenerate";
+import SalaryPayment from "../Pages/HumanResources/Payroll/SalaryPayment";
 import AddCategory from "../Pages/Product/AddCategory";
 import AddProduct from "../Pages/Product/AddProduct";
 import AddProductCsv from "../Pages/Product/AddProductCsv";
@@ -581,7 +591,6 @@ export const routes = [
         id: 0,
         title: "HRM",
         icon: "menu-icon fa fa-cogs",
-        path: "",
         component: "",
         data: [
           {
@@ -618,15 +627,87 @@ export const routes = [
         id: 0,
         title: "Attendance",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
         component: "",
+        data: [
+          {
+            id: 0,
+            title: "Attendance",
+            icon: "menu-icon fa fa-cogs",
+            path: "/attendance",
+            component: <Attendance />,
+          },
+          {
+            id: 0,
+            title: "Manage Attendance",
+            icon: "menu-icon fa fa-cogs",
+            path: "/mange-attendance",
+            component: <ManageAttendance />,
+          },
+          {
+            id: 0,
+            title: "Attendance Report",
+            icon: "menu-icon fa fa-cogs",
+            path: "/attendance-report",
+            component: <AttendanceReport />,
+          },
+        ],
       },
       {
         id: 0,
         title: "Payroll",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
         component: "",
+        data: [
+          {
+            id: 0,
+            title: "Add Benefits",
+            icon: "menu-icon fa fa-cogs",
+            path: "/add-benefits",
+            component: <AddBenefits />,
+          },
+          {
+            id: 0,
+            title: "Manage Benefits",
+            icon: "menu-icon fa fa-cogs",
+            path: "/mange-benefits",
+            component: <ManageBenefits />,
+          },
+          {
+            id: 0,
+            title: "Add Salary Setup",
+            icon: "menu-icon fa fa-cogs",
+            path: "/add-salary-setup",
+            component: <AddSalarySetup />,
+          },
+          {
+            id: 0,
+            title: "Manage Salary Setup",
+            icon: "menu-icon fa fa-cogs",
+            path: "/manage-salary-setup",
+            component: <ManageSalarySetup />,
+          },
+          {
+            id: 0,
+            title: "Salary Generate",
+            icon: "menu-icon fa fa-cogs",
+            path: "/salary-generate",
+            component: <SalaryGenerate />,
+          },
+          {
+            id: 0,
+            title: "Manage Salary Generate",
+            icon: "menu-icon fa fa-cogs",
+            path: "/manage-salary-generate",
+            component: <ManageSalaryGenerate />,
+          },
+          {
+            id: 0,
+            title: "Salary Payment",
+            icon: "menu-icon fa fa-cogs",
+            path: "/salary-payment",
+            component: <SalaryPayment />,
+          },
+        ],
       },
       {
         id: 0,

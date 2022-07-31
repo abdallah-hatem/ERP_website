@@ -1,21 +1,20 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslation } from "react-i18next";
-import UploadImageButton from "../../Components/Web Components/UploadImageButton/UploadImageButton";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
 
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import { ImageUploader } from "../../Components/Web Components/ImageUploader/ImageUploader";
-import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
+import AddFormComponent from "../../Components/Web Components/AddFormComponent/AddFormComponent";
 
 function UpdateProduct({ UpdateData }) {
   const defaultValues = useRef({
     barcode: "",
-    product_name: UpdateData.product_name,
-    model: UpdateData.product_model,
-    sale_price: UpdateData.price,
+    product_name: "",
+    product_model: "",
+    price: "",
     image: "",
     igt: "",
     sn: "",
@@ -32,49 +31,39 @@ function UpdateProduct({ UpdateData }) {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
 
+  useEffect(() => {
+    setValues((prev) => ({ ...prev, ...UpdateData }));
+  }, [UpdateData]);
+
   function handleSubmit(e) {
     // e.preventDefault();
 
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
-        return;
       }
     }
   }
 
-  let handleGetImages = (event) => {
-    let files = event.target.files;
-    setValues((prev) => ({ ...prev, image_path: files[0] }));
-  };
-
-  let handleRemoveImage = useCallback(() => {
-    setValues((prev) => ({
-      ...prev,
-      image_path: "",
-    }));
-  }, []);
-
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     console.log(values);
-  }, [values]);
-
-  console.log(UpdateData);
+    console.log(UpdateData);
+  }, [values, UpdateData]);
 
   const options = [
     {
-      ID: 1,
-      Name: UpdateData.supplier_name,
+      label: "Sam",
+      value: "Sam",
     },
     {
-      ID: 2,
-      Name: "Mike",
+      label: "Mike",
+      value: "Mike",
     },
     {
-      ID: 3,
-      Name: "Jack",
+      label: "Jack",
+      value: "Jack",
     },
   ];
 
@@ -116,23 +105,24 @@ function UpdateProduct({ UpdateData }) {
       label: "Model :",
       placeholder: "Model",
       handleChange,
-      name: "model",
-      value: values["model"],
+      name: "product_model",
+      value: values["product_model"],
     },
     {
       label: "Sale Price :",
       placeholder: "Sale Price",
       handleChange,
-      name: "sale_price",
-      value: values["sale_price"],
+      name: "price",
+      value: values["price"],
     },
-    // {
-    //   label: "Image :",
-    //   placeholder: "Image",
-    //   handleChange: handleChange,
-    //   name: "image",
-    //   value: values["image"],
-    // },
+    {
+      label: "Image :",
+      // placeholder: "Image",
+      handleChange: handleChange,
+      name: "image",
+      value: values["image"],
+      component: <ImageUploader />,
+    },
     {
       label: "IGT :",
       placeholder: "IGT",
@@ -198,72 +188,30 @@ function UpdateProduct({ UpdateData }) {
 
   const data = [
     {
-      supplier: 1,
+      supplier: UpdateData.supplier_name,
       supplier_price: UpdateData.supplier_price,
     },
   ];
 
   return (
-    <FormComponent title={"Update Product"}>
-      <div className="row">
-        <div className="col-lg-12">
-          <InputComponent
-            label="Barcode / QR-code :"
-            placeholder="Barcode"
-            name="barcode"
-            value={values["barcode"]}
-            handleChange={handleChange}
-          />
-        </div>
-        <div className="col-lg-6">
-          {DataCol1.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-            />
-          ))}
-          <InputComponent children={false} label={"Image :"}>
-            <ImageUploader />
-            {/* <UploadImageButton
-              isMultiple={false}
-              handleGetImages={handleGetImages}
-              handleRemoveImage={handleRemoveImage}
-              imagesFiles={
-                values && values.image_path
-                  ? [
-                      typeof values.image_path == "string"
-                        ? // ? ApiBaseUrl + values.image_path
-                          "ApiBaseUrl" + values.image_path
-                        : values.image_path,
-                    ]
-                  : []
-              }
-            /> */}
-          </InputComponent>
-          <img
-            style={{ height: "150px", width: "150px", margin: "10px 0" }}
-            src={UpdateData.images}
-            alt="product_img"
-          ></img>
-        </div>
-        <div className="col-lg-6">
-          {DataCol2.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              chooseOptions={el.chooseOptions}
-              textArea={el.textArea}
-              options={el.options}
-            />
-          ))}
-        </div>
-      </div>
+    <div>
+      <AddFormComponent
+        hideCard
+        hideButton
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        values={values}
+        DataCol1={DataCol1}
+        DataCol2={DataCol2}
+        countryChooser={false}
+        regionChooser={false}
+      />
+      <img
+        style={{ height: "150px", width: "150px", margin: "10px 0" }}
+        src={UpdateData.images}
+        alt="product_img"
+      ></img>
+
       <FormComponent
         hideHeader
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
@@ -284,7 +232,7 @@ function UpdateProduct({ UpdateData }) {
       <div style={{ width: "200px", float: "right", marginTop: 20 }}>
         <ButtonComponent onClick={handleSubmit} title={"Update"} />
       </div>
-    </FormComponent>
+    </div>
   );
 }
 

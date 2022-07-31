@@ -27,7 +27,7 @@ function CountryChooser({
       <CountryDropdown
         defaultOptionLabel={t(placeholder)}
         name={name}
-        classes="cls"
+        classes="country-input-cont"
         value={value}
         onChange={(e) => handleChange({ target: { name, value: e } })}
       />

@@ -27,12 +27,15 @@ function SearchBar({
   hideCard = true,
   hideHeader,
   CardTitle,
+  hideDays = false,
 }) {
   const { t } = useTranslation();
 
   useEffect(() => {
     function formattedDate(name) {
-      return `${name.getDate()}/${name.getMonth() + 1}/${name.getFullYear()}`;
+      return `${!hideDays ? name.getDate() : ""}/${
+        name.getMonth() + 1
+      }/${name.getFullYear()}`;
     }
 
     if (startDate > endDate) {
@@ -82,6 +85,7 @@ function SearchBar({
             disabled={el.disabled}
             labelWidth={el.labelWidth || labelWidth}
             containerWidth={containerWidth}
+            children={el.children}
           />
         ))}
 
@@ -94,9 +98,10 @@ function SearchBar({
               label={el.label}
             >
               <DatePicker
-                dateFormat={"dd/MM/yyyy"}
+                dateFormat={!hideDays ? "dd/MM/yyyy" : "MM/yyyy"}
                 selected={el.selected}
                 onChange={(date) => el.onChange(date)}
+                showMonthYearPicker={el.showMonthYearPicker}
               />
             </InputComponent>
           ))}

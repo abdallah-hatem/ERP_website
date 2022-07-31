@@ -5,7 +5,6 @@ import ActionsButtons from "../../Components/Web Components/ActionButtons/Action
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
 import ReportTable from "./ReportTable";
 import SearchBar from "./SearchBar";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 
 function SalesReportProductWise() {
   const { t } = useTranslation();
@@ -154,24 +153,25 @@ function SalesReportProductWise() {
       onChange: setEndDate,
     },
   ];
+
   useEffect(() => {
     console.log(values);
   }, [values, startDate, endDate]);
 
   return (
     <>
-      <FormComponent hideHeader>
-        <SearchBar
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          data={data}
-          dateData={dateData}
-          startDate={startDate}
-          endDate={endDate}
-          values={values}
-          setValidDate={setValidDate}
-        />
-      </FormComponent>
+      <SearchBar
+        hideHeader
+        hideCard={false}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        data={data}
+        dateData={dateData}
+        startDate={startDate}
+        endDate={endDate}
+        values={values}
+        setValidDate={setValidDate}
+      />
 
       <div className="d-flex justify-content-end mb-2">
         <ButtonComponent

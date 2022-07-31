@@ -4,6 +4,7 @@
   font-size: inherit;
   font-weight: lighter;
   min-width: 150px;
+  min-width: 150px;
   margin-right: 5px;
   color: #374767;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -11,7 +12,7 @@
   font-weight: bold;
   /* background-color: aqua; */
 }
-.cls {
+.country-input-cont {
   display: block;
   padding: 10px;
   height: 42px;

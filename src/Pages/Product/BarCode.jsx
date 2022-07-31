@@ -53,7 +53,7 @@ function BarCode({ rowId }) {
   }, [values]);
 
   return (
-    <FormComponent hideHeader>
+    <FormComponent hideCard hideHeader>
       <div className="barcode-cont">
         {data.map((el) => (
           <div className="input-cont">

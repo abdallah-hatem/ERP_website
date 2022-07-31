@@ -1,0 +1,10 @@
+.employee-details-cont {
+  width: 100%;
+  display: flex;
+}
+
+@media only screen and (max-width: 780px) {
+  .employee-details-cont {
+    display: contents;
+  }
+}

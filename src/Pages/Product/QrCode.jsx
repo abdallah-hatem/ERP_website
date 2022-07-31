@@ -53,7 +53,7 @@ function QrCode({ rowId }) {
   }, [values]);
 
   return (
-    <FormComponent hideHeader>
+    <FormComponent hideCard hideHeader>
       <div
         style={{
           display: "flex",

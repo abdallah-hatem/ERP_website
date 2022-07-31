@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
+import DownloadFileButton from "../../Components/Web Components/DownloadFileButton/DownloadFileButton";
 import FileUploader from "../../Components/Web Components/FileUploader/FileUploader";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import { ImageUploader } from "../../Components/Web Components/ImageUploader/ImageUploader";
@@ -34,13 +35,7 @@ function AddProductCsv() {
             </p>
           </div>
 
-          <a
-            href="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/assets/data/csv/sample_product .csv"
-            class="btn btn-primary pull-right"
-            style={{ height: "40px" }}
-          >
-            <i class="fa fa-download"></i> {t("Download Sample File")}
-          </a>
+          <DownloadFileButton link="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/assets/data/csv/sample_product .csv" />
           {/* <button>
         <Link to="/Assets/sample_product.csv" target="_blank" download>
           Download

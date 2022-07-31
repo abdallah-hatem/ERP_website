@@ -8,7 +8,12 @@ function ActionsButtons({ buttons = [], style }) {
   return (
     <div style={style}>
       {buttons.map((el) => (
-        <Link to={el.path} className={el.class} style={{ margin: 5 }}>
+        <Link
+          to={el.path || ""}
+          className={el.class}
+          style={{ margin: 5 }}
+          onClick={el.handleClick}
+        >
           <i class={el.iconClass}> </i>
           {t(el.title)}
         </Link>
