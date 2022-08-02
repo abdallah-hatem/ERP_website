@@ -79,7 +79,7 @@ function SupplierDetailsTable() {
   return (
     <FormComponent
       hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+      style={{marginTop:30, boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
     >
       <MasterTable
         allowUpdate

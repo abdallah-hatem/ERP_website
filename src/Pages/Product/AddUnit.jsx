@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
+import SearchBar from "../Closing/SearchBar";
 
 function AddUnit() {
    const { t } = useTranslation();
@@ -64,40 +63,21 @@ function AddUnit() {
    }, [values]);
 
    return (
-      <FormComponent title="Add Unit">
-         <div className="row">
-            <div className="col-lg-10">
-               {data.map((el) => (
-                  <InputComponent
-                     label={el.label}
-                     placeholder={el.placeholder}
-                     chooseOptions={el.chooseOptions}
-                     options={el.options}
-                     type={el.type}
-                     width="70%"
-                     handleChange={el.handleChange}
-                     name={el.name}
-                     //   value={el.value}
-                  />
-               ))}
-               <>
-                  <div
-                     style={{ width: "200px", float: "right", marginTop: 20 }}
-                  >
-                     <ButtonComponent
-                        onClick={handleSubmit}
-                        title={"Save And Add Another"}
-                     />
-                  </div>
-                  <div
-                     style={{ width: "100px", float: "right", marginTop: 20 }}
-                  >
-                     <ButtonComponent onClick={handleSubmit} title={"Save"} />
-                  </div>
-               </>
-            </div>
+      <SearchBar
+         listView
+         CardTitle="Add Unit"
+         hideCard={false}
+         data={data}
+         buttonTitle="Save"
+         handleSubmit={handleSubmit}
+      >
+         <div style={{ width: "200px", float: "right" }}>
+            <ButtonComponent
+               onClick={handleSubmit}
+               title={"Save And Add Another"}
+            />
          </div>
-      </FormComponent>
+      </SearchBar>
    );
 }
 

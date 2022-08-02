@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslation } from "react-i18next";
+import AddFormComponent from "../../Components/Web Components/AddFormComponent/AddFormComponent";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
 import CountryChooser from "../../Components/Web Components/CountryRegionComp/CountryChooser";
 import RegionChooser from "../../Components/Web Components/CountryRegionComp/RegionChooser";
@@ -10,191 +11,148 @@ import InputComponent from "../../Components/Web Components/InputComponent/Input
 import "./style.css";
 
 function AddSupplier() {
-  const defaultValues = useRef({
-    supplier_name: "",
-    email: "",
-    phone: "",
-    address_1: "",
-    fax: "",
-    country: "",
-    state: "",
-    mobile: "",
-    vat_number: "",
-    contact: "",
-    address_2: "",
-    city: "",
-    zip_code: "",
-    previous_balance: "",
-  });
+   const defaultValues = useRef({
+      supplier_name: "",
+      email: "",
+      phone: "",
+      address_1: "",
+      fax: "",
+      country: "",
+      state: "",
+      mobile: "",
+      vat_number: "",
+      contact: "",
+      address_2: "",
+      city: "",
+      zip_code: "",
+      previous_balance: "",
+   });
+  
   const [values, setValues] = useState(defaultValues.current);
-  const handleChange = useCallback((e) => {
-    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }, []);
+  
+   const handleChange = useCallback((e) => {
+      setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+   }, []);
 
-  function handleSubmit(e) {
-    // e.preventDefault();
-
-    for (const [key, value] of Object.entries(values)) {
-      if (!value) {
-        alert(t("Fill the inputs"));
-        return;
+   function handleSubmit(e) {
+      // e.preventDefault();
+      for (const [key, value] of Object.entries(values)) {
+         if (!value) {
+            alert(t("Fill the inputs"));
+            return;
+         }
       }
-    }
-  }
+   }
 
-  const { t, i18n } = useTranslation();
+   const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    console.log(values);
-  }, [values]);
-  const DataCol1 = [
-    {
-      label: "Supplier Name :",
-      placeholder: "Supplier Name",
-      handleChange: handleChange,
-      name: "supplier_name",
-      value: values["supplier_name"],
-    },
-    {
-      label: "E-Mail Address :",
-      placeholder: "E-Mail",
-      handleChange: handleChange,
-      name: "email",
-      value: values["email"],
-    },
-    {
-      label: "Phone :",
-      placeholder: "Phone",
-      handleChange: handleChange,
-      name: "phone",
-      value: values["phone"],
-    },
-    {
-      label: "Address 1 :",
-      placeholder: "Address 1",
-      handleChange: handleChange,
-      name: "address_1",
-      value: values["address_1"],
-      textArea: true,
-    },
-    {
-      label: "Fax :",
-      placeholder: "Fax",
-      handleChange: handleChange,
-      name: "fax",
-      value: values["fax"],
-    },
-  ];
-  const DataCol2 = [
-    {
-      label: "Mobile :",
-      placeholder: "Mobile",
-      handleChange: handleChange,
-      name: "mobile",
-      value: values["mobile"],
-    },
-    {
-      label: "VAT Number :",
-      placeholder: "VAT Number",
-      handleChange: handleChange,
-      name: "vat_number",
-      value: values["vat_number"],
-    },
-    {
-      label: "Contact :",
-      placeholder: "Contact",
-      handleChange: handleChange,
-      name: "contact",
-      value: values["contact"],
-    },
+   useEffect(() => {
+      console.log(values);
+   }, [values]);
 
-    {
-      label: "Address 2 :",
-      placeholder: "Address 2",
-      handleChange: handleChange,
-      name: "address_2",
-      value: values["address_2"],
-      textArea: true,
-    },
-    {
-      label: "City :",
-      placeholder: "City",
-      handleChange: handleChange,
-      name: "city",
-      value: values["city"],
-    },
-    {
-      label: "Zip Code :",
-      placeholder: "Zip Code",
-      handleChange: handleChange,
-      name: "zip_code",
-      value: values["zip_code"],
-    },
-    {
-      label: "Previous Balance :",
-      placeholder: "Previous Balance",
-      handleChange: handleChange,
-      name: "previous_balance",
-      value: values["previous_balance"],
-    },
-  ];
+   const DataCol1 = [
+      {
+         label: "Supplier Name :",
+         placeholder: "Supplier Name",
+         handleChange: handleChange,
+         name: "supplier_name",
+         value: values["supplier_name"],
+      },
+      {
+         label: "E-Mail Address :",
+         placeholder: "E-Mail",
+         handleChange: handleChange,
+         name: "email",
+         value: values["email"],
+      },
+      {
+         label: "Phone :",
+         placeholder: "Phone",
+         handleChange: handleChange,
+         name: "phone",
+         value: values["phone"],
+      },
+      {
+         label: "Address 1 :",
+         placeholder: "Address 1",
+         handleChange: handleChange,
+         name: "address_1",
+         value: values["address_1"],
+         textArea: true,
+      },
+      {
+         label: "Fax :",
+         placeholder: "Fax",
+         handleChange: handleChange,
+         name: "fax",
+         value: values["fax"],
+      },
+   ];
 
-  return (
-    <FormComponent title={"Add Supplier"}>
-      <div className="row">
-        <div className="col-lg-6">
-          {DataCol1.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              textArea={el.textArea === true}
-              // errorMessage={error.FullName}
-              // onBlur={CheckInputs(values, error)}
-            />
-          ))}
+   const DataCol2 = [
+      {
+         label: "Mobile :",
+         placeholder: "Mobile",
+         handleChange: handleChange,
+         name: "mobile",
+         value: values["mobile"],
+      },
+      {
+         label: "VAT Number :",
+         placeholder: "VAT Number",
+         handleChange: handleChange,
+         name: "vat_number",
+         value: values["vat_number"],
+      },
+      {
+         label: "Contact :",
+         placeholder: "Contact",
+         handleChange: handleChange,
+         name: "contact",
+         value: values["contact"],
+      },
 
-          <CountryChooser
-            label="Country :"
-            name="country"
-            value={values.country}
-            // classes="cls"
-            handleChange={handleChange}
-          />
+      {
+         label: "Address 2 :",
+         placeholder: "Address 2",
+         handleChange: handleChange,
+         name: "address_2",
+         value: values["address_2"],
+         textArea: true,
+      },
+      {
+         label: "City :",
+         placeholder: "City",
+         handleChange: handleChange,
+         name: "city",
+         value: values["city"],
+      },
+      {
+         label: "Zip Code :",
+         placeholder: "Zip Code",
+         handleChange: handleChange,
+         name: "zip_code",
+         value: values["zip_code"],
+      },
+      {
+         label: "Previous Balance :",
+         placeholder: "Previous Balance",
+         handleChange: handleChange,
+         name: "previous_balance",
+         value: values["previous_balance"],
+      },
+   ];
 
-          <RegionChooser
-            label="State :"
-            name="state"
-            value={values.state}
-            disableWhenEmpty={true}
-            country={values.country}
-            // classes="cls"
-            handleChange={handleChange}
-          />
-        </div>
-        <div className="col-lg-6">
-          {DataCol2.map((el) => (
-            <InputComponent
-              label={el.label}
-              placeholder={el.placeholder}
-              handleChange={el.handleChange}
-              name={el.name}
-              value={el.value}
-              textArea={el.textArea === true}
-              // errorMessage={error.FullName}
-              // onBlur={CheckInputs(values, error)}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div style={{ width: "200px", float: "right", marginTop: 20 }}>
-        <ButtonComponent onClick={handleSubmit} title={"Submit"} />
-      </div>
-    </FormComponent>
-  );
+   return (
+      <AddFormComponent
+         title="Add Supplier"
+         DataCol1={DataCol1}
+         DataCol2={DataCol2}
+         handleSubmit={handleSubmit}
+         handleChange={handleChange}
+         values={values}
+      />
+   );
 }
 
 export default AddSupplier;

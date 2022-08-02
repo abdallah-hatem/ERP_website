@@ -2,12 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useReactToPrint } from "react-to-print";
 
-import DatePicker from "react-datepicker";
 import SearchBar from "../../Closing/SearchBar";
-import InputComponent from "../../../Components/Web Components/InputComponent/InputComponent";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
 import ReportTable from "../../Closing/ReportTable";
-import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 
 function BankBook() {
    const { t } = useTranslation();
@@ -33,27 +30,27 @@ function BankBook() {
          }
       }
 
-      if (values.start_date > values.end_date) {
+      if (!validDate) {
          alert(t("Start date cant be bigger than end date"));
       }
    }
    const [startDate, setStartDate] = useState(new Date());
    const [endDate, setEndDate] = useState(new Date());
-
-   useEffect(() => {
-      function formattedDate(name) {
-         return `${name.getDate()}/${
-            name.getMonth() + 1
-         }/${name.getFullYear()}`;
-      }
-
-      values["start_date"] = formattedDate(startDate);
-      values["end_date"] = formattedDate(endDate);
-   }, [startDate, endDate]);
+   const [validDate, setValidDate] = useState(true);
 
    const dateData = [
-      { label: "Start Date :", selected: startDate, onChange: setStartDate },
-      { label: "End Date :", selected: endDate, onChange: setEndDate },
+      {
+         label: "Start Date :",
+         value: "start_date",
+         selected: startDate,
+         onChange: setStartDate,
+      },
+      {
+         label: "End Date :",
+         value: "end_date",
+         selected: endDate,
+         onChange: setEndDate,
+      },
    ];
 
    const columns = [
@@ -159,15 +156,18 @@ function BankBook() {
 
    return (
       <>
-         <FormComponent hideHeader>
-            <SearchBar
-               labelWidth={"300px"}
-               data={data}
-               listView
-               handleSubmit={handleSubmit}
-               dateData={dateData}
-            />
-         </FormComponent>
+         <SearchBar
+            listView
+            hideHeader
+            hideCard={false}
+            data={data}
+            handleSubmit={handleSubmit}
+            dateData={dateData}
+            values={values}
+            startDate={startDate}
+            endDate={endDate}
+            setValidDate={setValidDate}
+         />
 
          <div className="d-flex justify-content-end mb-2">
             <ButtonComponent

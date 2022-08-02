@@ -2902,6 +2902,7 @@ footer.site-footer .footer-inner a {
 
 .Active {
   border-left: 3px solid $sec-color;
+  background-color: rgba(255, 255, 255, 0.163);
 }
 .active2 {
   border-left: 1px solid transparent;
@@ -2935,11 +2936,13 @@ footer.site-footer .footer-inner a {
     display: block;
   }
   .animation-dropdown {
-    max-height: 80vh;
+    // max-height: 80vh;
+    max-height: 100vh;
   }
 
   .navbar {
-    height: 80vh;
+    // height: 80vh;
+    height: 100vh;
     overflow-y: scroll;
 
     padding-bottom: 0 !important;
@@ -2957,6 +2960,10 @@ footer.site-footer .footer-inner a {
 }
 .animate {
   transition: all 3s ease-in-out;
+}
+
+.pro-sidebar{
+  width: 100% !important;
 }
 ////////// Pop up ////////////
 // .dx-overlay-wrapper,

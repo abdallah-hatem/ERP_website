@@ -148,10 +148,10 @@ function Closing() {
       <FormComponent title="Closing Account">
         <div className="border-bottom">
           <div style={{ color: "#374767" }} class="text-center mb-3">
-            <h3> Demo Company </h3>
-            <h4>Company Demo Address </h4>
-            <h4>Cash Closing </h4>
-            <h4> Date:26/07/2022 </h4>
+            <h3>Demo Company</h3>
+            <h4>Company Demo Address</h4>
+            <h4>Cash Closing</h4>
+            <h4>Date:26/07/2022</h4>
           </div>
         </div>
 
