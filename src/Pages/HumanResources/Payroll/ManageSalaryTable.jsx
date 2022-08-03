@@ -2,7 +2,7 @@ import React from "react";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 
-function ManageSalaryTable({ columns, title }) {
+function ManageSalaryTable({ columns, title, summary }) {
   return (
     <FormComponent title={title}>
       <MasterTable
@@ -11,6 +11,7 @@ function ManageSalaryTable({ columns, title }) {
         allowPaging
         columnChooser={false}
         colAttributes={columns}
+        summaryItems={summary}
       />
     </FormComponent>
   );

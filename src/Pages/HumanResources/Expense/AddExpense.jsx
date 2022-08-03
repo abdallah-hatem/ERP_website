@@ -1,17 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import "react-datepicker/dist/react-datepicker.css";
-import "./style.scss";
-import SearchBar from "../Closing/SearchBar";
+import SearchBar from "../../Closing/SearchBar";
 
-function OpeningBalance() {
+function AddExpense() {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
-    account_head: "",
-    voucher_number: "OP-2",
-    amount: null,
-    remark: "",
+    amount: "",
+    payment_type: "",
+    expense_type: "",
     date: "",
   });
 
@@ -32,7 +29,16 @@ function OpeningBalance() {
 
   const [startDate, setStartDate] = useState(new Date());
 
-  const options = [
+  const dateData = [
+    {
+      label: "Date :",
+      value: "date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
+  ];
+
+  const expenseOptions = [
     {
       label: "Hudson",
       value: "hudson",
@@ -47,69 +53,62 @@ function OpeningBalance() {
     },
   ];
 
+  const paymentOptions = [
+    {
+      label: "Cash Payment",
+      value: "Cash Payment",
+    },
+    {
+      label: "Bank Payment",
+      value: "Bank Payment",
+    },
+  ];
+
   const data = [
     {
-      label: "Voucher No. :",
-      //   placeholder: "Select Option",
-      name: "voucher_number",
-      //   handleChange,
-      value: values["voucher_number"],
-      disabled: true,
-    },
-    {
-      label: "Account Head :",
-      placeholder: "Select Option",
-      name: "account_head",
-      chooseOptions: true,
-      options: options,
-      handleChange,
-      value: values["account_head"],
-    },
-
-    {
       label: "Amount :",
-      placeholder: "0.00",
+      placeholder: "Amount",
       name: "amount",
       type: "number",
       handleChange,
       value: values["amount"],
     },
     {
-      label: "Remark :",
-      placeholder: "Remark",
-      name: "remark",
-      textArea: true,
+      label: "Expense Type :",
+      placeholder: "Select Option",
+      name: "expense_type",
+      chooseOptions: true,
+      options: expenseOptions,
       handleChange,
-      value: values["remark"],
+      value: values["expense_type"],
     },
-  ];
-
-  const dateData = [
     {
-      label: "Date :",
-      value: "date",
-      selected: startDate,
-      onChange: setStartDate,
+      label: "payment Type :",
+      placeholder: "Select Option",
+      name: "Payment_type",
+      chooseOptions: true,
+      options: paymentOptions,
+      handleChange,
+      value: values["payment_type"],
     },
   ];
 
   useEffect(() => {
     console.log(values);
   }, [values, startDate]);
+
   return (
     <SearchBar
       listView
+      CardTitle="Add Expense"
       hideCard={false}
-      CardTitle="Opening Balance"
-      buttonTitle="Save"
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
       data={data}
+      handleSubmit={handleSubmit}
       dateData={dateData}
-      startDate={startDate}
       values={values}
+      startDate={startDate}
     />
   );
 }
 
-export default OpeningBalance;
+export default AddExpense;

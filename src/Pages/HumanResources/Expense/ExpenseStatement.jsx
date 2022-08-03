@@ -1,18 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useReactToPrint } from "react-to-print";
-
 import SearchBar from "../../Closing/SearchBar";
-import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
-import ReportTable from "../../Closing/ReportTable";
+import ManageSalaryTable from "../Payroll/ManageSalaryTable";
 
-function BankBook() {
+function ExpenseStatement() {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-    general_head: "",
+    expense_item_name: "",
   });
 
   const [values, setValues] = useState(defaultValues.current);
@@ -33,6 +30,7 @@ function BankBook() {
       alert(t("Start date cant be bigger than end date"));
     }
   }
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [validDate, setValidDate] = useState(true);
@@ -54,56 +52,25 @@ function BankBook() {
 
   const columns = [
     {
-      field: "sl",
-      caption: t("SL."),
-    },
-    {
       field: "date",
       caption: t("Date"),
+      allowEditing: false,
     },
     {
-      field: "voucher_no",
-      caption: t("Voucher No."),
+      field: "expense_item_name",
+      caption: t("Expense Item Name"),
+      allowEditing: false,
     },
     {
-      field: "voucher_type",
-      caption: t("Voucher Type"),
-      format: "currency",
-    },
-    {
-      field: "head_of_account",
-      caption: t("Head Of Account"),
-    },
-    {
-      field: "debit",
-      caption: t("Debit"),
-      format: "currency",
-    },
-    {
-      field: "credit",
-      caption: t("Credit"),
-      format: "currency",
-    },
-    {
-      field: "balance",
-      caption: t("Balance"),
-      format: "currency",
+      field: "amount",
+      caption: t("Amount"),
+      allowEditing: false,
     },
   ];
 
   const summary = [
     {
-      column: "debit",
-      summaryType: "sum",
-      valueFormat: "currency",
-    },
-    {
-      column: "credit",
-      summaryType: "sum",
-      valueFormat: "currency",
-    },
-    {
-      column: "balance",
+      column: "amount",
       summaryType: "sum",
       valueFormat: "currency",
     },
@@ -126,37 +93,20 @@ function BankBook() {
 
   const data = [
     {
-      label: "General Head :",
+      label: "Expense Item Name :",
       placeholder: "Select Option",
-      name: "general_head",
+      name: "expense_item_name",
       chooseOptions: true,
       options,
       handleChange,
-      value: values["general_head"],
-    },
-    {
-      label: "Account Head :",
-      //   placeholder: "Select Option",
-      name: "account_head",
-      //   handleChange,
-      value: values["account_head"],
-      disabled: true,
+      value: values["expense_item_name"],
     },
   ];
-
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
-
-  useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
 
   return (
     <>
       <SearchBar
-        listView
+        // listView
         hideHeader
         hideCard={false}
         data={data}
@@ -168,19 +118,13 @@ function BankBook() {
         setValidDate={setValidDate}
       />
 
-      <div className="d-flex justify-content-end mb-2">
-        <ButtonComponent
-          title={"Print"}
-          style={{ width: "100px" }}
-          onClick={handlePrint}
-        />
-      </div>
-
-      <div ref={componentRef}>
-        <ReportTable hideHeader summary={summary} columns={columns} />
-      </div>
+      <ManageSalaryTable
+        columns={columns}
+        summary={summary}
+        title="Expense Statement"
+      />
     </>
   );
 }
 
-export default BankBook;
+export default ExpenseStatement;
