@@ -39,7 +39,7 @@ function CashAdjustmentTable() {
   return (
     <FormComponent
       hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+      style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
     >
       <MasterTable
         allowUpdate

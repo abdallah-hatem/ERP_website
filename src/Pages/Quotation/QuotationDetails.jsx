@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import ReportTable from "../Closing/ReportTable";
 import { useReactToPrint } from "react-to-print";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import ServiceDetailsCaption from "./ServiceDetailsCaption";
 import DetailsCard from "../../Components/Web Components/DetailsCard/DetailsCard";
+import ServiceDetailsCaption from "../Service/ServiceDetailsCaption";
 
-function ServiceDetails() {
+function QuotationDetails() {
   const { t } = useTranslation();
 
   const [summaryValue, setSummaryValue] = useState();
@@ -112,6 +112,14 @@ function ServiceDetails() {
           columns={columns}
           setSummaryValue={setSummaryValue}
         />
+        <ReportTable
+          hideHeader
+          hideCaption
+          data={data}
+          summary={summary}
+          columns={columns}
+          setSummaryValue={setSummaryValue}
+        />
       </div>
 
       <DetailsCard summaryValue={summaryValue} data={paymentData} />
@@ -119,4 +127,4 @@ function ServiceDetails() {
   );
 }
 
-export default ServiceDetails;
+export default QuotationDetails;

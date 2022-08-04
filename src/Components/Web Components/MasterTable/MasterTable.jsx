@@ -120,6 +120,8 @@ function MasterTable({
   editingMode = "row",
   onEditorPreparing,
   allowSorting = false,
+  onContentReady,
+  onRowPrepared,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -234,6 +236,8 @@ function MasterTable({
         rowAlternationEnabled={ColoredRows}
         onEditorPreparing={onEditorPreparing}
         sorting={"null"}
+        onContentReady={onContentReady}
+        onRowPrepared={onRowPrepared}
       >
         {/* <Selection
                mode="multiple"

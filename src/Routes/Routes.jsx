@@ -89,6 +89,11 @@ import AddService from "../Pages/Service/AddService";
 import ManageService from "../Pages/Service/ManageService";
 import ServiceInvoice from "../Pages/Service/ServiceInvoice";
 import ManageServiceInvoice from "../Pages/Service/ManageServiceInvoice";
+import AddQuotation from "../Pages/Quotation/AddQuotation";
+import ManageQuotation from "../Pages/Quotation/ManageQuotation";
+import ServiceDetails from "../Pages/Service/ServiceDetails";
+import QuotationDetails from "../Pages/Quotation/QuotationDetails";
+import VatAndTaxSettings from "../Pages/TAX/VatAndTaxSettings";
 
 export const routes = [
   {
@@ -925,15 +930,15 @@ export const routes = [
         id: 0,
         title: "Add Quotation",
         icon: "menu-icon fa fa-cogs",
-        path: "",
-        component: "",
+        path: "/add-quotation",
+        component: <AddQuotation />,
       },
       {
         id: 0,
         title: "Manage Quotation",
         icon: "menu-icon fa fa-cogs",
-        path: "/",
-        component: "",
+        path: "/manage-quotation",
+        component: <ManageQuotation />,
       },
     ],
   },
@@ -946,8 +951,8 @@ export const routes = [
         id: 0,
         title: "VAT & TAX Settings",
         icon: "menu-icon fa fa-cogs",
-        path: "",
-        component: "",
+        path: "vat-tax-settings",
+        component: <VatAndTaxSettings />,
       },
       {
         id: 0,
@@ -1082,5 +1087,9 @@ export const singleRoutes = [
   {
     path: "update-product/:id",
     component: <UpdateProduct />,
+  },
+  {
+    path: "quotation-details/:id",
+    component: <QuotationDetails />,
   },
 ];

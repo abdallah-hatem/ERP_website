@@ -6,17 +6,26 @@ import MasterTable from "../../Components/Web Components/MasterTable/MasterTable
 function ReportTable({
   columns,
   title,
-  summary,
+  summary = [],
   printButton,
   caption,
   hideHeader = false,
   data,
+  setSummaryValue,
+  hideCaption = false,
 }) {
   const { t } = useTranslation();
 
+  function handleSummary(e) {
+    setSummaryValue &&
+      setSummaryValue(
+        e.summaryCells?.filter((el) => el.length > 0)[0][0].value
+      );
+  }
+
   return (
     <FormComponent hideHeader={hideHeader} content={printButton} title={title}>
-      {!caption && (
+      {!caption && !hideCaption && (
         <div
           className="border-bottom mb-5"
           style={{
@@ -51,6 +60,7 @@ function ReportTable({
         columnChooser={false}
         colAttributes={columns}
         summaryItems={summary}
+        onRowPrepared={(e) => handleSummary(e)}
       />
     </FormComponent>
   );
