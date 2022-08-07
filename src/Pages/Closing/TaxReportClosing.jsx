@@ -7,7 +7,7 @@ import ReportTable from "./ReportTable";
 import SearchBar from "./SearchBar";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 
-function TaxReport() {
+function TaxReportClosing() {
   const { t } = useTranslation();
 
   const defaultValues = useRef({
@@ -139,4 +139,4 @@ function TaxReport() {
   );
 }
 
-export default TaxReport;
+export default TaxReportClosing;

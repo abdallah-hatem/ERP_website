@@ -1,96 +1,108 @@
-
-$border-color: #FF4040;
+$border-color: #37a000;
 $checkbox-size: 1rem;
 $checkedbox-size: 1.2rem;
 
-$dark:   #15171E;
-$white:  mix($dark, white, 20%);
-
+$dark: #15171e;
+$white: mix($dark, white, 20%);
 
 .checkbox {
-  margin: 15px;
+   margin: 15px;
 }
 
 ul {
-  list-style-type: none;
+   list-style-type: none;
 }
 
 label {
-  font-family: Helvetica; 
-  letter-spacing: 1px;
-  // font-variant: small-caps;
-  // text-transform: uppercase;
+   font-family: Helvetica;
+   letter-spacing: 1px;
+   // font-variant: small-caps;
+   // text-transform: uppercase;
 }
 
 // checkbox styles start
 
-@keyframes pull{
-    0% { height: 0; }
-    100% { height: 1.2rem;  }
+@keyframes pull {
+   0% {
+      height: 0;
+   }
+   100% {
+      height: 1.2rem;
+   }
 }
 
 @keyframes pop {
-  0% { opacity:0; }
-  75% {opacity:1; }
-  100% { transform: scale(1.2); }
+   0% {
+      opacity: 0;
+   }
+   75% {
+      opacity: 1;
+   }
+   100% {
+      transform: scale(1.2);
+   }
 }
 
-.checkbox-flip, .checkbox-pop, .checkbox-pull, .checkbox-spin {
-    display:none;
+.checkbox-flip,
+.checkbox-pop,
+.checkbox-pull,
+.checkbox-spin {
+   display: none;
 }
 
-.checkbox-flip + label span, 
-.checkbox-pop + label span, 
+.checkbox-flip + label span,
+.checkbox-pop + label span,
 .checkbox-pull + label span,
-.checkbox-spin + label span{
-    display:inline-block;
-    width:25px;
-    height:19px;
-    margin: 0 5px -4px 0; /*layout relationship between check and label*/
-    &:before,
-    &:after {
-    //   @include transition(all .3s ease-in-out);
+.checkbox-spin + label span {
+   display: inline-block;
+   cursor: pointer;
+   width: 25px;
+   height: 19px;
+   margin: 0 5px -4px 0; /*layout relationship between check and label*/
+   &:before,
+   &:after {
+      //   @include transition(all .3s ease-in-out);
       content: "";
       position: absolute;
       z-index: 1;
       width: $checkbox-size;
       height: $checkbox-size;
       background: transparent;
-      border: 2px solid $border-color; 
-    }
-     &:after {
+      border: 2px solid $border-color;
+   }
+   &:after {
       z-index: 0;
       border: none;
-    }
+   }
 }
 
 .checkbox-flip:checked + label span {
-     &:before {
-    //   @include transform(rotateY(180deg));
+   &:before {
+      //   @include transform(rotateY(180deg));
       background: $border-color;
-    }
+   }
 }
 
 .checkbox-pop:checked + label span {
-  &:before {
-      animation: pop .3s ease;
+   &:before {
+      animation: pop 0.3s ease;
       z-index: 100;
       background: $border-color;
-     } 
+   }
 }
 
 .checkbox-pull:checked + label span {
-     &:after {
+   &:after {
       width: $checkedbox-size;
       height: $checkedbox-size;
       background: $border-color;
-      animation: pull .4s linear; 
-     }
+      animation: pull 0.4s linear;
+   }
 }
 
 .checkbox-spin:checked + label span {
-     &:before {
-    //   @include transform(rotateZ(180deg));
+   &:before {
+      //   @include transform(rotateZ(180deg));
       background: $border-color;
-    }
+   }
 }
