@@ -40,7 +40,6 @@ function AddProduct() {
       for (const [key, value] of Object.entries(values)) {
          if (!value) {
             alert(t("Fill the inputs"));
-            return;
          }
       }
    }

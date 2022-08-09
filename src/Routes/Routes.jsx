@@ -103,6 +103,8 @@ import Return from "../Pages/Return/Return";
 import StockReturnList from "../Pages/Return/StockReturnList";
 import SupplierReturnList from "../Pages/Return/SupplierReturnList";
 import WastageReturnList from "../Pages/Return/WastageReturnList";
+import ManageCompany from "../Pages/Settings/SoftwareSettings/ManageCompany";
+import AddUser from "../Pages/Settings/SoftwareSettings/AddUser";
 
 export const routes = [
    {
@@ -1049,15 +1051,15 @@ export const routes = [
                   id: 0,
                   title: "Manage Company",
                   icon: "menu-icon fa fa-cogs",
-                  path: "manage-company",
-                  component: "",
+                  path: "/manage-company",
+                  component: <ManageCompany />,
                },
                {
                   id: 0,
                   title: "Add User",
                   icon: "menu-icon fa fa-cogs",
                   path: "/add-user",
-                  component: "",
+                  component: <AddUser/>,
                },
                {
                   id: 0,
