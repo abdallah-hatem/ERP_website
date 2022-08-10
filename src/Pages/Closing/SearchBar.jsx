@@ -16,7 +16,7 @@ function SearchBar({
    buttonTitle = "Search",
    buttonWidth = "100px",
    colWidth = "8",
-   width = "100%",
+   width,
    containerWidth,
    labelWidth,
    dateData = [],
@@ -28,8 +28,6 @@ function SearchBar({
    hideCard = true,
    hideHeader,
    CardTitle,
-   hideDays = false,
-   hideLabel,
 }) {
    const { t } = useTranslation();
 
@@ -51,7 +49,11 @@ function SearchBar({
          <div
             className={
                !listView
-                  ? "d-flex justify-content-between align-items-center flex-wrap"
+                  ? `d-flex ${
+                       data.length === 1 && !dateData
+                          ? ""
+                          : "justify-content-between"
+                    } align-items-center flex-wrap`
                   : `col-lg-${colWidth}`
             }
          >
@@ -73,6 +75,7 @@ function SearchBar({
                   labelWidth={el.labelWidth || labelWidth}
                   containerWidth={containerWidth}
                   children={el.children}
+                  removeContainer={el.removeContainer}
                />
             ))}
 
@@ -81,7 +84,7 @@ function SearchBar({
                   <InputComponent
                      labelWidth={labelWidth}
                      hideLabel={el.hideLabel}
-                     // width={width}
+                     width={width}
                      containerWidth={containerWidth}
                      label={el.label}
                   >
@@ -99,7 +102,11 @@ function SearchBar({
 
             {showButton && (
                <ButtonComponent
-                  style={{ width: buttonWidth, float: listView && "right" }}
+                  style={{
+                     width: buttonWidth,
+                     float: listView && "right",
+                     marginLeft: data.length === 1 && 15,
+                  }}
                   onClick={handleSubmit}
                   title={t(buttonTitle)}
                />

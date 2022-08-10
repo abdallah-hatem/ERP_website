@@ -105,6 +105,12 @@ import SupplierReturnList from "../Pages/Return/SupplierReturnList";
 import WastageReturnList from "../Pages/Return/WastageReturnList";
 import ManageCompany from "../Pages/Settings/SoftwareSettings/ManageCompany";
 import AddUser from "../Pages/Settings/SoftwareSettings/AddUser";
+import ManageUsers from "../Pages/Settings/SoftwareSettings/ManageUsers";
+import Language from "../Pages/Settings/SoftwareSettings/Language/Language";
+import AddPhrase from "../Pages/Settings/SoftwareSettings/Language/AddPhrase";
+import EditPhrase from "../Pages/Settings/SoftwareSettings/Language/EditPhrase";
+import Currency from "../Pages/Settings/SoftwareSettings/Currency";
+import AppSettings from "../Pages/Settings/SoftwareSettings/AppSettings";
 
 export const routes = [
    {
@@ -798,28 +804,28 @@ export const routes = [
                   id: 0,
                   title: "Add Person",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/add-person",
+                  path: "/add-person-office",
                   component: <AddPerson />,
                },
                {
                   id: 0,
                   title: "Add Loan",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/add-loan",
+                  path: "/add-loan-office",
                   component: <AddLoan />,
                },
                {
                   id: 0,
                   title: "Add Payment",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/add-payment",
+                  path: "/add-payment-office",
                   component: <AddPayment />,
                },
                {
                   id: 0,
                   title: "Manage Person",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/manage-person",
+                  path: "/manage-person-office",
                   component: <ManagePerson />,
                },
             ],
@@ -834,28 +840,28 @@ export const routes = [
                   id: 0,
                   title: "Add Person",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/add-person",
+                  path: "/add-person-personal",
                   component: <AddPerson />,
                },
                {
                   id: 0,
                   title: "Add Loan",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/add-loan",
+                  path: "/add-loan-personal",
                   component: <AddLoan />,
                },
                {
                   id: 0,
                   title: "Add Payment",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/add-payment",
+                  path: "/add-payment-personal",
                   component: <AddPayment />,
                },
                {
                   id: 0,
                   title: "Manage Person",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/manage-person",
+                  path: "/manage-person-personal",
                   component: <ManagePerson />,
                },
             ],
@@ -1059,28 +1065,28 @@ export const routes = [
                   title: "Add User",
                   icon: "menu-icon fa fa-cogs",
                   path: "/add-user",
-                  component: <AddUser/>,
+                  component: <AddUser />,
                },
                {
                   id: 0,
                   title: "Manage Users",
                   icon: "menu-icon fa fa-cogs",
                   path: "/manage-users",
-                  component: "",
+                  component: <ManageUsers />,
                },
                {
                   id: 0,
                   title: "Language",
                   icon: "menu-icon fa fa-cogs",
                   path: "/language",
-                  component: "",
+                  component: <Language />,
                },
                {
                   id: 0,
                   title: "Currency",
                   icon: "menu-icon fa fa-cogs",
-                  path: "/currencu",
-                  component: "",
+                  path: "/currency",
+                  component: <Currency />,
                },
                {
                   id: 0,
@@ -1108,7 +1114,7 @@ export const routes = [
                   title: "App Settings",
                   icon: "menu-icon fa fa-cogs",
                   path: "/app-settings",
-                  component: "",
+                  component: <AppSettings />,
                },
             ],
          },
@@ -1216,5 +1222,13 @@ export const singleRoutes = [
    {
       path: "quotation-details/:id",
       component: <QuotationDetails />,
+   },
+   {
+      path: "language/add-phrase",
+      component: <AddPhrase />,
+   },
+   {
+      path: "language/edit-phrase/:id",
+      component: <EditPhrase />,
    },
 ];

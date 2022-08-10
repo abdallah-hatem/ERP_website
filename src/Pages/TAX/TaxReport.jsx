@@ -65,11 +65,6 @@ function TaxReport() {
       },
    ];
 
-   const ref = useRef();
-   const handlePrint = useReactToPrint({
-      content: () => ref.current,
-   });
-
    const [startDate, setStartDate] = useState(new Date());
    const [endDate, setEndDate] = useState(new Date());
    const [validDate, setValidDate] = useState(true);
@@ -89,6 +84,11 @@ function TaxReport() {
       },
    ];
 
+   const ref = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => ref.current,
+   });
+
    useEffect(() => {
       console.log(values);
    }, [values, startDate, endDate]);
@@ -98,6 +98,7 @@ function TaxReport() {
          <SearchBar
             hideHeader
             hideCard={false}
+            width="57%"
             handleSubmit={handleSubmit}
             dateData={dateData}
             startDate={startDate}

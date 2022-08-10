@@ -102,17 +102,17 @@ function InvoiceWiseTaxReport() {
 
    return (
       <>
-         <FormComponent hideHeader>
-            <SearchBar
-               handleSubmit={handleSubmit}
-               dateData={dateData}
-               startDate={startDate}
-               endDate={endDate}
-               values={values}
-               data={data}
-               setValidDate={setValidDate}
-            />
-         </FormComponent>
+         <SearchBar
+            hideHeader
+            hideCard={false}
+            handleSubmit={handleSubmit}
+            dateData={dateData}
+            startDate={startDate}
+            endDate={endDate}
+            values={values}
+            data={data}
+            setValidDate={setValidDate}
+         />
 
          <div className="d-flex justify-content-end mb-2">
             <ButtonComponent
@@ -124,14 +124,14 @@ function InvoiceWiseTaxReport() {
 
          <div ref={ref}>
             <FormComponent title="TAX Report">
-               <MasterTable
+               {/* <MasterTable
                   searchPanel={false}
                   ColoredRows
                   allowPaging
                   columnChooser={false}
                   colAttributes={columns}
                   summaryItems={summary}
-               />
+               /> */}
             </FormComponent>
          </div>
       </>

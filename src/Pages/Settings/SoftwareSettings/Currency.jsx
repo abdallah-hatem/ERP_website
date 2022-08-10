@@ -1,15 +1,17 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import SearchBar from "../../Closing/SearchBar";
 
-import "react-datepicker/dist/react-datepicker.css";
-import "./style.scss";
-import SearchBar from "../Closing/SearchBar";
-
-function AddPaymentMethod() {
+function Currency() {
    const { t } = useTranslation();
 
    const defaultValues = useRef({
-      payment_method_name: "",
+      bank_name: "",
+      description: "",
+      currency_name: "",
+      currency_symbol: "",
+      date: "",
+      account_type: "",
    });
 
    const [values, setValues] = useState(defaultValues.current);
@@ -19,38 +21,39 @@ function AddPaymentMethod() {
    }, []);
 
    function handleSubmit(e) {
-      // e.preventDefault();
       for (const [key, value] of Object.entries(values)) {
          if (!value) {
             alert(t("Fill the inputs"));
          }
       }
    }
-
    const data = [
       {
-         label: "Payment Method Name :",
-         placeholder: "Payment Method Name",
-         name: "payment_method_name",
+         label: "Currency Name :",
+         placeholder: "Currency Name",
+         name: "currency_name",
          handleChange,
-         value: values["payment_method_name"],
+         value: values["currency_name"],
+      },
+      {
+         label: "Currency Symbol :",
+         placeholder: "Currency Symbol",
+         name: "currency_symbol",
+         handleChange,
+         value: values["currency_symbol"],
       },
    ];
 
-   useEffect(() => {
-      console.log(values);
-   }, [values]);
    return (
       <SearchBar
          listView
-         CardTitle={"Add Payment Method"}
-         colWidth="9"
+         CardTitle="Add Currency"
+         buttonTitle="Save"
          hideCard={false}
          data={data}
-         buttonTitle="Save"
          handleSubmit={handleSubmit}
       />
    );
 }
 
-export default AddPaymentMethod;
+export default Currency;

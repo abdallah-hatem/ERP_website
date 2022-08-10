@@ -118,12 +118,13 @@ function CashBook() {
       <>
          <SearchBar
             hideHeader
+            width="57%"
             hideCard={false}
             handleSubmit={handleSubmit}
             dateData={dateData}
-            values={values}
             startDate={startDate}
             endDate={endDate}
+            values={values}
             setValidDate={setValidDate}
          />
 

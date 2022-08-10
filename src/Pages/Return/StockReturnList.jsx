@@ -92,6 +92,7 @@ function StockReturnList() {
             endDate={endDate}
             values={values}
             setValidDate={setValidDate}
+            width="57%"
          />
 
          <FormComponent title={"Stock Return"}>

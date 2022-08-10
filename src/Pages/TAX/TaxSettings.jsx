@@ -35,7 +35,6 @@ function TaxSettings() {
          handleChange,
          type: "number",
          value: values["payment_method_name"],
-         labelWidth: "250px",
       },
    ];
 
@@ -46,7 +45,6 @@ function TaxSettings() {
          name: "tax_name_1",
          handleChange,
          value: values["tax_name_1"],
-         labelWidth: "250px",
       },
       {
          label: "Default Value(%) :",
@@ -55,7 +53,6 @@ function TaxSettings() {
          handleChange,
          type: "number",
          value: values["default_value"],
-         labelWidth: "250px",
       },
       {
          label: "Reg No. :",
@@ -64,13 +61,11 @@ function TaxSettings() {
          handleChange,
          type: "number",
          value: values["reg_no"],
-         labelWidth: "250px",
       },
       {
          label: "Is Shown :",
          handleChange,
          type: "checkbox",
-         labelWidth: "250px",
       },
    ];
 
@@ -81,7 +76,6 @@ function TaxSettings() {
          name: "tax_name_2",
          handleChange,
          value: values["tax_name_2"],
-         labelWidth: "250px",
       },
       {
          label: "Default Value(%) :",
@@ -90,7 +84,6 @@ function TaxSettings() {
          handleChange,
          type: "number",
          value: values["default_value"],
-         labelWidth: "250px",
       },
       {
          label: "Reg No. :",
@@ -99,13 +92,11 @@ function TaxSettings() {
          handleChange,
          type: "number",
          value: values["reg_no"],
-         labelWidth: "250px",
       },
       {
          label: "Is Shown :",
          handleChange,
          type: "checkbox",
-         labelWidth: "250px",
       },
    ];
 
@@ -142,9 +133,7 @@ function TaxSettings() {
                   )}
                </div>
 
-               <div
-                  className={el.data === data ? "mb-5" : "mb-5 border-bottom"}
-               />
+               <div className={el.data === data ? "mb-5" : "mb-5 border-bottom"} />
             </>
          ))}
 

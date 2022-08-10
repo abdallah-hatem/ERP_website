@@ -16,6 +16,7 @@ function CountryChooser({
       style={{
         display: "flex",
         justifyContent: "space-between",
+        flexWrap:"wrap",
         marginBottom: 10,
         direction: i18n.language === "en" ? "ltr" : "rtl",
         textAlign: i18n.language === "ar" && "right",

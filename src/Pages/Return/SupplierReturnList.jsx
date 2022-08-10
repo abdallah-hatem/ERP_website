@@ -92,6 +92,7 @@ function SupplierReturnList() {
             endDate={endDate}
             values={values}
             setValidDate={setValidDate}
+            width="57%"
          />
 
          <FormComponent title={"Supplier Return"}>

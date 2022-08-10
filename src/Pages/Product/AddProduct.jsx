@@ -44,18 +44,6 @@ function AddProduct() {
       }
    }
 
-   let handleGetImages = (event) => {
-      let files = event.target.files;
-      setValues((prev) => ({ ...prev, image_path: files[0] }));
-   };
-
-   let handleRemoveImage = useCallback(() => {
-      setValues((prev) => ({
-         ...prev,
-         image_path: "",
-      }));
-   }, []);
-
    const { t, i18n } = useTranslation();
 
    useEffect(() => {
@@ -214,6 +202,7 @@ function AddProduct() {
                   name="barcode"
                   value={values["barcode"]}
                   handleChange={handleChange}
+                  // width={"81%"}
                />
             </div>
          </div>
@@ -234,7 +223,7 @@ function AddProduct() {
             hideHeader
             style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
          >
-            <MasterTable
+            {/* <MasterTable
                allowAdd
                allowDelete
                allowUpdate
@@ -245,7 +234,7 @@ function AddProduct() {
                ColoredRows
                options={options}
                onSaving={(e) => console.log(e)}
-            />
+            /> */}
          </FormComponent>
 
          <ButtonComponent
