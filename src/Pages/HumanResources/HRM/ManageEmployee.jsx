@@ -9,6 +9,7 @@ import FormComponent from "../../../Components/Web Components/FormComponent/Form
 import AddEmployee from "./AddEmployee";
 import EmployeeProfile from "./EmployeeProfile";
 import { useNavigate } from "react-router-dom";
+import { SecondaryColor } from "../../../Styles/Colors";
 
 function ManageEmployee() {
   const { t } = useTranslation();
@@ -17,6 +18,20 @@ function ManageEmployee() {
 
   const [clickedEdit, setClickedEdit] = useState(false);
   const [currentRowData, setCurrentRowData] = useState("");
+
+  function cell(data) {
+    return (
+      <span
+        onClick={(e) => {
+          nav(`employee-profile/${data.data.sl}`);
+          e.preventDefault();
+        }}
+        style={{ cursor: "pointer", color: SecondaryColor }}
+      >
+        {data.value}
+      </span>
+    );
+  }
 
   const columns = [
     {
@@ -30,17 +45,7 @@ function ManageEmployee() {
     {
       field: "name",
       caption: t("Name"),
-      cellRender: (data) => (
-        <span
-          onClick={(e) => {
-            nav(`employee-profile/${data.data.sl}`);
-            e.preventDefault();
-          }}
-          style={{ cursor: "pointer", color: "#37a000" }}
-        >
-          {data.value}
-        </span>
-      ),
+      cellRender: (data) => cell(data),
     },
     {
       field: "phone",

@@ -115,35 +115,35 @@ function InventoryLedger() {
   }, [values, startDate, endDate]);
 
   return (
-     <>
-        <SearchBar
-           hideHeader
-           width="57%"
-           hideCard={false}
-           handleSubmit={handleSubmit}
-           dateData={dateData}
-           values={values}
-           startDate={startDate}
-           endDate={endDate}
-           setValidDate={setValidDate}
+    <>
+      <SearchBar
+        hideHeader
+        width="56%"
+        hideCard={false}
+        handleSubmit={handleSubmit}
+        dateData={dateData}
+        values={values}
+        startDate={startDate}
+        endDate={endDate}
+        setValidDate={setValidDate}
+      />
+
+      <div className="d-flex justify-content-end mb-2">
+        <ButtonComponent
+          title={"Print"}
+          style={{ width: "100px" }}
+          onClick={handlePrint}
         />
+      </div>
 
-        <div className="d-flex justify-content-end mb-2">
-           <ButtonComponent
-              title={"Print"}
-              style={{ width: "100px" }}
-              onClick={handlePrint}
-           />
-        </div>
-
-        <div ref={componentRef}>
-           <ReportTable
-              title="Profit Report (Sale Wise)"
-              summary={summary}
-              columns={columns}
-           />
-        </div>
-     </>
+      <div ref={componentRef}>
+        <ReportTable
+          title="Profit Report (Sale Wise)"
+          summary={summary}
+          columns={columns}
+        />
+      </div>
+    </>
   );
 }
 

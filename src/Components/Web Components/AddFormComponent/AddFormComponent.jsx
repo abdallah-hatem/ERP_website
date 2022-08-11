@@ -16,6 +16,8 @@ function AddFormComponent({
   countryChooser = true,
   regionChooser = true,
   hideButton = false,
+  buttonTitle = "Submit",
+  labelWidth,
 }) {
   return (
     <FormComponent hideCard={hideCard} title={title}>
@@ -33,6 +35,9 @@ function AddFormComponent({
               chooseOptions={el.chooseOptions}
               options={el.options}
               disabled={el.disabled}
+              removeContainer={el.removeContainer}
+              labelWidth={el.labelWidth || labelWidth}
+              children={el.children}
             >
               {el.component}
             </InputComponent>
@@ -73,6 +78,9 @@ function AddFormComponent({
               chooseOptions={el.chooseOptions}
               options={el.options}
               disabled={el.disabled}
+              labelWidth={el.labelWidth || labelWidth}
+              children={el.children}
+              removeContainer={el.removeContainer}
             >
               {el.component}
             </InputComponent>
@@ -88,7 +96,7 @@ function AddFormComponent({
           display: hideButton && "none",
         }}
       >
-        <ButtonComponent onClick={handleSubmit} title={"Submit"} />
+        <ButtonComponent onClick={handleSubmit} title={buttonTitle} />
       </div>
     </FormComponent>
   );

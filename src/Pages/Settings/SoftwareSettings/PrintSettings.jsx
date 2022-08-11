@@ -1,17 +1,15 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SearchBar from "../../Closing/SearchBar";
 
-function Currency() {
+function PrintSettings() {
   const { t } = useTranslation();
 
+  const [val, setVal] = useState(false);
+
   const defaultValues = useRef({
-    bank_name: "",
-    description: "",
-    currency_name: "",
-    currency_symbol: "",
-    date: "",
-    account_type: "",
+    header: "",
+    footer: "",
   });
 
   const [values, setValues] = useState(defaultValues.current);
@@ -21,41 +19,50 @@ function Currency() {
   }, []);
 
   function handleSubmit(e) {
+    // e.preventDefault();
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
         alert(t("Fill the inputs"));
       }
     }
   }
+
   const data = [
     {
-      label: "Currency Name :",
-      placeholder: "Currency Name",
-      name: "currency_name",
+      label: "Header :",
+      placeholder: "200 Px",
+      name: "header",
+      value: values["header"],
+      type: "number",
       handleChange,
-      value: values["currency_name"],
     },
     {
-      label: "Currency Symbol :",
-      placeholder: "Currency Symbol",
-      name: "currency_symbol",
+      label: "Footer :",
+      placeholder: "200 Px",
+      name: "footer",
+      value: values["footer"],
+      type: "number",
       handleChange,
-      value: values["currency_symbol"],
     },
   ];
+
+  useEffect(() => {
+    console.log(values);
+  }, [values]);
 
   return (
     <SearchBar
       listView
-      CardTitle="Add Currency"
-      buttonTitle="Save"
       hideCard={false}
-      data={data}
+      CardTitle="Print Settings"
+      buttonTitle="Save Changes"
+      buttonWidth="180px"
       handleSubmit={handleSubmit}
-      labelWidth="160px"
-      // colWidth="9"
+      handleChange={handleChange}
+      data={data}
+      colWidth="7"
     />
   );
 }
 
-export default Currency;
+export default PrintSettings;
