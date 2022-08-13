@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import AddFormComponent from "../Components/Web Components/AddFormComponent/AddFormComponent";
-import { SecondaryColor } from "../Styles/Colors";
+import AddFormComponent from "../../Components/Web Components/AddFormComponent/AddFormComponent";
+import { SecondaryColor } from "../../Styles/Colors";
 
 function SmsSettings() {
   const { t } = useTranslation();
@@ -32,9 +32,9 @@ function SmsSettings() {
     }
   }
 
-  const [currentBox1, setCurrentBox1] = useState();
-  const [currentBox2, setCurrentBox2] = useState();
-  const [currentBox3, setCurrentBox3] = useState();
+  const [currentBox1, setCurrentBox1] = useState("sale_no");
+  const [currentBox2, setCurrentBox2] = useState("service_no");
+  const [currentBox3, setCurrentBox3] = useState("customer_receive_no");
 
   const checkBoxes = [
     { name: "sale", title: "Yes" },

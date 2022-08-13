@@ -67,9 +67,22 @@ function SideBar2({ clicked }) {
 
    function handleClassName(el) {
       let className = "";
-      el.data &&
-         el.data.filter((e) => e.path === currentRoute).length > 0 &&
-         (className = "Active");
+
+      if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
+         className = "Active";
+         if (className === "Active") {
+            return className;
+         }
+      }
+
+      el.data?.map((el) => {
+         if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
+            className = "Active";
+            if (className === "Active") {
+               return className;
+            }
+         }
+      });
 
       return className;
    }
@@ -102,7 +115,7 @@ function SideBar2({ clicked }) {
                         }
                         open={index === currentIndex}
                         title={t(el.title)}
-                        icon={<i className={el.icon}></i>}
+                        icon={<i className={el.icon} />}
                         className={handleClassName(el)}
                      >
                         {el.data &&
