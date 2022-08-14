@@ -223,18 +223,17 @@ function AddProduct() {
             hideHeader
             style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
          >
-            {/* <MasterTable
+            <MasterTable
                allowAdd
                allowDelete
                allowUpdate
+               ColoredRows
                searchPanel={false}
                columnChooser={false}
                dataSource={data}
                colAttributes={columns}
-               ColoredRows
                options={options}
-               onSaving={(e) => console.log(e)}
-            /> */}
+            />
          </FormComponent>
 
          <ButtonComponent

@@ -76,6 +76,7 @@ function SearchBar({
                   containerWidth={containerWidth}
                   children={el.children}
                   removeContainer={el.removeContainer}
+                  width={width}
                />
             ))}
 

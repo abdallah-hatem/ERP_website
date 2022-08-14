@@ -17,17 +17,7 @@ import UserProfile from "./UserProfile";
 
 function SideBar2({ clicked }) {
    const { t } = useTranslation();
-
-   const defaultValues = useRef({
-      currentIndex: "",
-      currentIndex2: "",
-   });
-
-   const [values, setValues] = useState(defaultValues.current);
-
-   const handleChange = useCallback((e) => {
-      setValues((prev) => ({ ...prev }));
-   }, []);
+   const location = useLocation();
 
    const [currentRoute, setCurrentRoute] = useState("");
    const [collapsed, setCollapsed] = useState(false);
@@ -35,7 +25,6 @@ function SideBar2({ clicked }) {
    const [currentIndex, setCurrentIndex] = useState("");
    const [currentIndex2, setCurrentIndex2] = useState("");
 
-   const location = useLocation();
    useEffect(() => {
       setCurrentRoute(location.pathname);
    }, [location]);
@@ -70,17 +59,13 @@ function SideBar2({ clicked }) {
 
       if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
          className = "Active";
-         if (className === "Active") {
-            return className;
-         }
+         return className;
       }
 
       el.data?.map((el) => {
          if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
             className = "Active";
-            if (className === "Active") {
-               return className;
-            }
+            return className;
          }
       });
 
