@@ -64,7 +64,11 @@ function InputComponent({
                   id={id}
                   disabled={disabled}
                   onFocus={onFocus}
-                  style={{ width: width, minHeight: "62px" }}
+                  style={{
+                     width: width,
+                     minHeight: "62px",
+                     whiteSpace: "pre-wrap",
+                  }}
                />
             ) : chooseOptions ? (
                <div

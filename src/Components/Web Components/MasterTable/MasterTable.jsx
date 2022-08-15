@@ -300,8 +300,8 @@ function MasterTable({
                         dataField={col.field}
                         caption={
                            i18n.language === "en"
-                              ? col.captionEn ?? col.caption
-                              : col.caption
+                              ? col.captionEn ?? t(col.caption)
+                              : t(col.caption)
                         }
                         alignment={
                            col.alignment ||

@@ -122,6 +122,8 @@ import Restore from "../Pages/Settings/DataSynchronizer/Restore";
 import Import from "../Pages/Settings/DataSynchronizer/Import";
 import UpdateNow from "../Pages/Settings/UpdateNow";
 import Addons from "../Pages/Settings/Addons";
+import AddSalesTerms from "../Pages/Sales/AddSalesTerms";
+import SalesTermsList from "../Pages/Sales/SalesTermsList";
 
 export const routes = [
    {
@@ -161,15 +163,15 @@ export const routes = [
             id: 0,
             title: "Sales Terms List",
             icon: "menu-icon fa fa-cogs",
-            path: "/",
-            component: "",
+            path: "/sales-terms-list",
+            component: <SalesTermsList />,
          },
          {
             id: 0,
             title: "Add Sales Terms",
             icon: "menu-icon fa fa-cogs",
-            path: "/",
-            component: "",
+            path: "/add-sales-terms",
+            component: <AddSalesTerms />,
          },
       ],
    },
