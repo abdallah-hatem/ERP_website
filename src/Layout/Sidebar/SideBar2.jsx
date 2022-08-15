@@ -40,9 +40,17 @@ function SideBar2({ clicked }) {
    function handleOpen(el) {
       let opened = false;
 
-      el.data &&
-         el.data.filter((e) => e.path === currentRoute).length > 0 &&
-         (opened = true);
+      if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
+         opened = true;
+         return opened;
+      }
+
+      el.data?.map((el) => {
+         if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
+            opened = true;
+            return opened;
+         }
+      });
 
       return opened;
    }
@@ -92,12 +100,7 @@ function SideBar2({ clicked }) {
                      </MenuItem>
                   ) : (
                      <SubMenu
-                        onClick={() =>
-                           //  index === currentIndex
-                           //     ? setCurrentIndex("")
-                           //  :
-                           setCurrentIndex(index)
-                        }
+                        onClick={() => setCurrentIndex(index)}
                         open={index === currentIndex}
                         title={t(el.title)}
                         icon={<i className={el.icon} />}
@@ -107,15 +110,10 @@ function SideBar2({ clicked }) {
                            el.data.map((el2, index2) =>
                               el2.data ? (
                                  <SubMenu
-                                    onClick={() =>
-                                       //    index2 === currentIndex2
-                                       //       ? setCurrentIndex2("")
-                                       //  :
-                                       setCurrentIndex2(index2)
-                                    }
+                                    onClick={() => setCurrentIndex2(index2)}
                                     open={index2 === currentIndex2}
                                     title={t(el2.title)}
-                                    icon={<i className={el2.icon}></i>}
+                                    icon={<i className={el2.icon} />}
                                  >
                                     {el2.data.map((el3) => (
                                        <MenuItem
