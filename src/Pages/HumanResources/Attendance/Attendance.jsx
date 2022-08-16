@@ -131,6 +131,7 @@ function Attendance() {
         dateData={dateData}
         startDate={startDate}
         values={values}
+        labelWidth="170px"
       />
 
       <Popup

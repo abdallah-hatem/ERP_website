@@ -80,10 +80,7 @@ function DebitVoucherTable({ handleChange }) {
   ];
 
   return (
-    <FormComponent
-      hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-    >
+    <div className="col-12 mt-5">
       <MasterTable
         allowUpdate
         ColoredRows
@@ -97,7 +94,7 @@ function DebitVoucherTable({ handleChange }) {
           //   handleChange(e.changes[0].data);
         }}
       />
-    </FormComponent>
+    </div>
   );
 }
 

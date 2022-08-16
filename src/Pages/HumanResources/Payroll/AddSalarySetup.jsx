@@ -79,6 +79,7 @@ function AddSalarySetup() {
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       data={data}
+      labelWidth="170px"
     />
   );
 }

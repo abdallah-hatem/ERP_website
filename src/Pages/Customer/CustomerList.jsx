@@ -96,6 +96,7 @@ function CustomerList() {
       valueFormat: "currency",
     },
   ];
+
   return (
     <FormComponent title={"Customer List"}>
       <MasterTable

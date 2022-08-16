@@ -7,56 +7,58 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 function Language() {
-   const { t } = useTranslation();
-   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-   const tableData = [{ ID: 1, Language: "English" }];
+  const tableData = [{ ID: 1, Language: "English" }];
 
-   const columns = [
-      {
-         field: "ID",
-         caption: "ID",
-      },
-      {
-         field: "Language",
-         caption: "Language",
-      },
-   ];
+  const columns = [
+    {
+      field: "ID",
+      caption: "ID",
+    },
+    {
+      field: "Language",
+      caption: "Language",
+    },
+  ];
 
-   const buttons = [
-      {
-         title: "Add Phrase",
-         path: "add-phrase",
-         iconClass: "ti-plus",
-         class: "btn btn-info m-b-5 m-r-2",
-      },
-   ];
+  const buttons = [
+    {
+      title: "Add Phrase",
+      path: "add-phrase",
+      iconClass: "ti-plus",
+      class: "btn btn-info m-b-5 m-r-2",
+    },
+  ];
 
-   return (
-      <>
-         <FormComponent hideHeader>
-            <MasterTable
-               allowAdd
-               colAttributes={columns}
-               dataSource={tableData}
-               columnChooser={false}
-               searchPanel={false}
-            >
-               <Column type="buttons" width={120}>
-                  <Button
-                     hint={t("Update")}
-                     icon="edit"
-                     visible={true}
-                     disabled={false}
-                     onClick={(e) => navigate(`edit-phrase/${e.row.data.ID}`)}
-                  />
-               </Column>
-            </MasterTable>
-         </FormComponent>
+  return (
+    <>
+      <FormComponent title="Language">
+        <MasterTable
+          allowAdd
+          allowUpdate
+          colAttributes={columns}
+          dataSource={tableData}
+          columnChooser={false}
+          searchPanel={false}
+        >
+          <Column type="buttons" width={120}>
+            <Button
+              hint={t("Update")}
+              icon="edit"
+              visible={true}
+              disabled={false}
+              onClick={(e) => navigate(`edit-phrase/${e.row.data.ID}`)}
+            />
+            <Button name="edit" visible={false} />
+          </Column>
+        </MasterTable>
+      </FormComponent>
 
-         <ActionsButtons style={{ float: "right" }} buttons={buttons} />
-      </>
-   );
+      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
+    </>
+  );
 }
 
 export default Language;

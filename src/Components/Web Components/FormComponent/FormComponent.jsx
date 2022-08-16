@@ -35,7 +35,11 @@ function FormComponent({
             <h6 className="m-0">{t(title)}</h6>
           )}
         </CardHeader>
-        <CardBody>{children}</CardBody>
+        <CardBody>
+          <div style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}>
+            {children}
+          </div>
+        </CardBody>
       </Card>
     </div>
   ) : (

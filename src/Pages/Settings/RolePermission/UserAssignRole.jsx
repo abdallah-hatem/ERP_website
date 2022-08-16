@@ -104,7 +104,9 @@ function UserAssignRole() {
       </div>
 
       <div className="col-lg-6">
-        <h3 style={{ color: TitleColor, marginBottom: 10 }}>Existing Role</h3>
+        <h3 style={{ color: TitleColor, marginBottom: 10 }}>
+          {t("Existing Role")}
+        </h3>
         <MasterTable
           ColoredRows
           searchPanel={false}

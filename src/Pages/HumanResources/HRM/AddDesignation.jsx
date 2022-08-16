@@ -53,6 +53,7 @@ function AddDesignation({ hideHeader = false, hideCard = false }) {
       hideCard={hideCard}
       hideHeader={hideHeader}
       CardTitle="Add Designation"
+      buttonTitle="Submit"
     />
   );
 }

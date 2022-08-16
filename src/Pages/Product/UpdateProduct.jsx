@@ -174,7 +174,7 @@ function UpdateProduct({ UpdateData }) {
     },
   ];
 
-  const columns = [
+  const columns = useRef([
     {
       field: "supplier",
       caption: t("Supplier"),
@@ -183,8 +183,9 @@ function UpdateProduct({ UpdateData }) {
     {
       field: "supplier_price",
       caption: t("Supplier Price"),
+      dataType: "number",
     },
-  ];
+  ]);
 
   const data = [
     {
@@ -212,10 +213,7 @@ function UpdateProduct({ UpdateData }) {
         alt="product_img"
       ></img>
 
-      <FormComponent
-        hideHeader
-        style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-      >
+      <div className="">
         <MasterTable
           allowAdd
           allowDelete
@@ -223,11 +221,11 @@ function UpdateProduct({ UpdateData }) {
           searchPanel={false}
           columnChooser={false}
           dataSource={data}
-          colAttributes={columns}
+          colAttributes={columns.current}
           ColoredRows
           options={options}
         />
-      </FormComponent>
+      </div>
 
       <div style={{ width: "200px", float: "right", marginTop: 20 }}>
         <ButtonComponent onClick={handleSubmit} title={"Update"} />

@@ -77,10 +77,7 @@ function CustomerDetailsTable() {
   ];
 
   return (
-    <FormComponent
-      hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-    >
+    <div className="col-12 mt-5">
       <MasterTable
         allowUpdate
         searchPanel={false}
@@ -91,7 +88,7 @@ function CustomerDetailsTable() {
         onSaving={(e) => console.log(e)}
         summaryItems={summary}
       />
-    </FormComponent>
+    </div>
   );
 }
 

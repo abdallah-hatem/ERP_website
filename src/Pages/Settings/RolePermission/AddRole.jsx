@@ -8,13 +8,39 @@ import { TitleColor } from "../../../Styles/Colors";
 function AddRole() {
   const { t } = useTranslation();
 
-  const [value, setValue] = useState(false);
+  const [value, setValue] = useState({ value: false, title: "Create" });
+  const [data, setdata] = useState([
+    {
+      sl: 1,
+      menu_name: "New Sale",
+      read: false,
+    },
+    {
+      sl: 2,
+      menu_name: "Manage Sale",
+      read: false,
+    },
+    {
+      sl: 3,
+      menu_name: "POS Sale",
+      read: true,
+    },
+  ]);
 
-  function header(title) {
+  function Header(e) {
+    console.log(e);
     return (
       <>
-        <span className="pr-2">{title}</span>
-        <CheckBox defaultValue={false} />
+        <span className="pr-2">{t(value.title)}</span>
+        <CheckBox
+          value={value.value}
+          onValueChange={(ex) => {
+            console.log(data.map((e) => ({ ...e, read: ex })));
+            //console.log(data.map({ ...e, read: ex }));
+            setValue({ ...value, value: ex });
+            setdata(data.map((e) => ({ ...e, read: ex })));
+          }}
+        />
       </>
     );
   }
@@ -33,31 +59,18 @@ function AddRole() {
       field: "create",
       caption: t("Create"),
       alignment: "center",
-      headerCellRender: () => header("Create"),
+      headerCellRender: () => Header({ value: false, title: "Create" }),
       cellRender: () => <CheckBox defaultValue={false} />,
     },
     {
       field: "read",
       caption: t("Read"),
       alignment: "center",
-      // dataType: "boolean",
-      // headerCellRender: () => header("Read"),
-      // cellRender: () => <CheckBox defaultValue={false} />,
-    },
-  ];
-
-  const data = [
-    {
-      sl: 1,
-      menu_name: "New Sale",
-    },
-    {
-      sl: 2,
-      menu_name: "Manage Sale",
-    },
-    {
-      sl: 3,
-      menu_name: "POS Sale",
+      dataType: "boolean",
+      headerCellRender: (e) => <Header {...e} title={"Read"} />,
+      cellRender: (e) => {
+        return <CheckBox defaultValue={e.data.read} />;
+      },
     },
   ];
 

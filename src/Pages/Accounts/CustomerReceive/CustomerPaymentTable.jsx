@@ -40,10 +40,7 @@ function CustomerPaymentTable() {
   ];
 
   return (
-    <FormComponent
-      hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-    >
+    <div className="col-12 mt-5">
       <MasterTable
         allowUpdate
         allowDelete
@@ -57,7 +54,7 @@ function CustomerPaymentTable() {
       <div style={{ width: "250px", float: "right", marginTop: 20 }}>
         <ButtonComponent title={"Add New Payment Method"} />
       </div>
-    </FormComponent>
+    </div>
   );
 }
 

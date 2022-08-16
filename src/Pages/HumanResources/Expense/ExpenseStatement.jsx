@@ -116,6 +116,7 @@ function ExpenseStatement() {
         startDate={startDate}
         endDate={endDate}
         setValidDate={setValidDate}
+        labelWidth="200px"
       />
 
       <ManageSalaryTable

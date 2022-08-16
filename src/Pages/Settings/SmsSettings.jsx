@@ -49,7 +49,7 @@ function SmsSettings() {
     { name: "customer_receive_no", title: "No" },
   ];
 
-  function children1(data, current, handleClick) {
+  function children(data, current, setCurrent) {
     return (
       <div style={{ width: "200px" }} className="d-flex">
         {data.map((el) => (
@@ -57,10 +57,10 @@ function SmsSettings() {
             <input
               type="radio"
               name={el.name}
-              onClick={(e) => handleClick(e.target.name)}
+              onClick={(e) => setCurrent(e.target.name)}
               checked={el.name === current}
             />
-            {el.title}
+            {t(el.title)}
           </label>
         ))}
       </div>
@@ -95,19 +95,19 @@ function SmsSettings() {
     {
       label: "Sale :",
       handleChange,
-      component: children1(checkBoxes, currentBox1, setCurrentBox1),
+      component: children(checkBoxes, currentBox1, setCurrentBox1),
       removeContainer: true,
     },
     {
       label: "Service :",
       handleChange,
-      component: children1(checkBoxes2, currentBox2, setCurrentBox2),
+      component: children(checkBoxes2, currentBox2, setCurrentBox2),
       removeContainer: true,
     },
     {
       label: "Customer Receive :",
       handleChange,
-      component: children1(checkBoxes3, currentBox3, setCurrentBox3),
+      component: children(checkBoxes3, currentBox3, setCurrentBox3),
       removeContainer: true,
     },
   ];

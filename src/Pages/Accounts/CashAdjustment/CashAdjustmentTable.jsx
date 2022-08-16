@@ -37,10 +37,7 @@ function CashAdjustmentTable() {
   ];
 
   return (
-    <FormComponent
-      hideHeader
-      style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-    >
+    <div className="col-12 mt-5">
       <MasterTable
         allowUpdate
         ColoredRows
@@ -49,7 +46,7 @@ function CashAdjustmentTable() {
         dataSource={data}
         colAttributes={columns}
       />
-    </FormComponent>
+    </div>
   );
 }
 

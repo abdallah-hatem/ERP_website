@@ -10,6 +10,7 @@ function UnitList() {
     {
       field: "sl",
       caption: t("SL."),
+      allowEditing: false,
     },
     {
       field: "unit_name",
