@@ -39,15 +39,18 @@ function AddExpenseItem() {
   }, [values]);
 
   return (
-    <SearchBar
-      listView
-      CardTitle="Add Expense Item"
-      hideCard={false}
-      buttonTitle="Save"
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
-      data={data}
-    />
+     <SearchBar
+        listView
+        CardTitle="Add Expense Item"
+        hideCard={false}
+        buttonTitle="Save"
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        data={data}
+        colWidth="10"
+        labelWidth="200px"
+        width="60%"
+     />
   );
 }
 

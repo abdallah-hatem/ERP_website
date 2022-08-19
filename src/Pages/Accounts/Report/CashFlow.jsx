@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import SearchBar from "../../Closing/SearchBar";
 
 function CashFlow() {
@@ -52,6 +51,9 @@ function CashFlow() {
          endDate={endDate}
          values={values}
          setValidDate={setValidDate}
+         colWidth="9"
+         labelWidth="130px"
+         width="70%"
       />
    );
 }

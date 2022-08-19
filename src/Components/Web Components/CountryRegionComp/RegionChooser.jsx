@@ -11,6 +11,7 @@ function RegionChooser({
    label,
    disableWhenEmpty = true,
    placeholder = "Select Region",
+   width,
 }) {
    const { t, i18n } = useTranslation();
    return (
@@ -33,7 +34,11 @@ function RegionChooser({
             country={country}
             value={value}
             // classes="cls"
-            classes="country-input-cont"
+            classes={
+               width === "100%"
+                  ? "country-input-cont full-width"
+                  : "country-input-cont"
+            }
             onChange={(e) => handleChange({ target: { name, value: e } })}
          />
       </div>

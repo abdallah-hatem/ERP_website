@@ -67,13 +67,15 @@ function AddCategory() {
          data={data}
          buttonTitle="Save"
          handleSubmit={handleSubmit}
+         colWidth="10"
+         labelWidth="200px"
+         width={"60%"}
       >
-         <div style={{ width: "200px", float: "right" }}>
-            <ButtonComponent
-               onClick={handleSubmit}
-               title={"Save And Add Another"}
-            />
-         </div>
+         <ButtonComponent
+            style={{ width: "200px", float: "right"}}
+            onClick={handleSubmit}
+            title={"Save And Add Another"}
+         />
       </SearchBar>
    );
 }

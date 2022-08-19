@@ -137,21 +137,24 @@ function BankTransaction() {
   }, [values, startDate]);
 
   return (
-    <>
-      <SearchBar
-        listView
-        CardTitle="Bank Transaction"
-        buttonTitle="Save"
-        hideCard={false}
-        data={data}
-        dateData={dateData}
-        values={values}
-        startDate={startDate}
-        handleSubmit={handleSubmit}
-      />
+     <>
+        <SearchBar
+           listView
+           CardTitle="Bank Transaction"
+           buttonTitle="Save"
+           hideCard={false}
+           data={data}
+           dateData={dateData}
+           values={values}
+           startDate={startDate}
+           handleSubmit={handleSubmit}
+           colWidth="11"
+           labelWidth="220px"
+           width="60%"
+        />
 
-      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
-    </>
+        <ActionsButtons style={{ float: "right" }} buttons={buttons} />
+     </>
   );
 }
 

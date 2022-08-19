@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useReactToPrint } from "react-to-print";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
+import CodeGenerator from "../../Components/Web Components/CodeGenerator/CodeGenerator";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import InputComponent from "../../Components/Web Components/InputComponent/InputComponent";
 import SearchBar from "../Closing/SearchBar";
 
 function BarCode({ rowId }) {
@@ -47,6 +48,11 @@ function BarCode({ rowId }) {
       },
    ];
 
+   const componentRef = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+   });
+
    useEffect(() => {
       console.log(values);
    }, [values]);
@@ -60,34 +66,35 @@ function BarCode({ rowId }) {
          />
 
          <div
-            style={{
-               border: "1px solid lightgray",
-               padding: 10,
-               width: "20%",
-               minWidth: "180px",
-               marginTop: 30,
-            }}
+            ref={componentRef}
+            className="row border-top pt-4 justify-content-center"
          >
-            <div
-               style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-               }}
-            >
-               <p style={{ fontSize: "10px" }}>Demo Company</p>
-               <p style={{ fontSize: "10px" }}>Sm</p>
+            <div className="border p-4">
+               <div className="d-flex justify-content-between">
+                  <p className="text-center" style={{ fontSize: "12px" }}>
+                     Demo Company
+                  </p>
+                  <p style={{ fontSize: "12px" }}>SM</p>
+               </div>
+               <CodeGenerator type="barCode" value="659494454" />
+               <div className="d-flex flex-column">
+                  <span
+                     className="text-center pt-2"
+                     style={{ fontSize: "12px" }}
+                  >
+                     Oven
+                  </span>
+                  <p className="text-center" style={{ fontSize: "12px" }}>
+                     $ 10000 Incl. Vat
+                  </p>
+               </div>
             </div>
-            <img
-               src="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/vendor/barcode.php?size=30&text=63538869&print=true"
-               class="img-responsive center-block qrcode-image"
-               alt=""
-            />
          </div>
 
          <ButtonComponent
             style={{ width: "100px", float: "right", marginTop: 20 }}
             title={"Print"}
+            onClick={handlePrint}
          />
       </FormComponent>
    );

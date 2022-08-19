@@ -1,95 +1,60 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { React, useEffect, useState } from "react";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
-import { CheckBox } from "devextreme-react/check-box";
-import { TitleColor } from "../../../Styles/Colors";
+import { routes } from "../../../Routes/Routes";
+import AddRoleTable from "./AddRoleTable";
 
 function AddRole() {
-  const { t } = useTranslation();
+   let dataArray = [];
 
-  const [value, setValue] = useState({ value: false, title: "Create" });
-  const [data, setdata] = useState([
-    {
-      sl: 1,
-      menu_name: "New Sale",
-      read: false,
-    },
-    {
-      sl: 2,
-      menu_name: "Manage Sale",
-      read: false,
-    },
-    {
-      sl: 3,
-      menu_name: "POS Sale",
-      read: true,
-    },
-  ]);
+   useEffect(() => {
+      let arr = [];
+      routes.map((el) => {
+         arr.push(el.data?.map((el2) => el2.title));
+      });
+      console.log(arr, "arr");
 
-  function Header(e) {
-    console.log(e);
-    return (
-      <>
-        <span className="pr-2">{t(value.title)}</span>
-        <CheckBox
-          value={value.value}
-          onValueChange={(ex) => {
-            console.log(data.map((e) => ({ ...e, read: ex })));
-            //console.log(data.map({ ...e, read: ex }));
-            setValue({ ...value, value: ex });
-            setdata(data.map((e) => ({ ...e, read: ex })));
-          }}
-        />
-      </>
-    );
-  }
+      arr.length > 0 &&
+         arr.map((el) => {
+            let temp = [];
+            el?.map((el2, index) =>
+               temp.push({
+                  sl: index + 1,
+                  menu_name: el2 || "",
+                  create: false,
+                  read: false,
+                  update: false,
+                  delete: false,
+               })
+            );
+            dataArray.push(temp);
+         });
 
-  const columns = [
-    {
-      field: "sl",
-      caption: t("SL No."),
-      allowEditing: false,
-    },
-    {
-      field: "menu_name",
-      caption: t("Menu Name"),
-    },
-    {
-      field: "create",
-      caption: t("Create"),
-      alignment: "center",
-      headerCellRender: () => Header({ value: false, title: "Create" }),
-      cellRender: () => <CheckBox defaultValue={false} />,
-    },
-    {
-      field: "read",
-      caption: t("Read"),
-      alignment: "center",
-      dataType: "boolean",
-      headerCellRender: (e) => <Header {...e} title={"Read"} />,
-      cellRender: (e) => {
-        return <CheckBox defaultValue={e.data.read} />;
-      },
-    },
-  ];
+      console.log(dataArray, "dataArray");
+   }, []);
 
-  const titleStyle = { color: TitleColor, fontWeight: "550", marginBottom: 10 };
+   const [tables, setTables] = useState();
+   useEffect(() => {
+      setTables([
+         dataArray?.map((el) => el.length > 0 && el.map((el2) => el2)),
+      ]);
+   }, [dataArray.length > 0]);
+   tables && console.log(tables, "tables");
 
-  return (
-    <FormComponent title="Add Role">
-      <h3 style={titleStyle}>Sale</h3>
-      <MasterTable
-        // allowSelection
-        allowColumnReordering
-        onCellClick={(e) => console.log(e)}
-        searchPanel={false}
-        columnChooser={false}
-        dataSource={data}
-        colAttributes={columns}
-      />
-    </FormComponent>
-  );
+   return (
+      <FormComponent title="Add Role">
+         {tables?.map((el) =>
+            el?.map(
+               (el2) =>
+                  el2 && (
+                     <>
+                        <AddRoleTable data={el2} />
+                        <div className="mb-5" />
+                     </>
+                  )
+            )
+         )}
+      </FormComponent>
+   );
 }
 
 export default AddRole;

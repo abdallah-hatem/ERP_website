@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SearchBar from "../../Closing/SearchBar";
 
-function ProfitLoss() {
+function BalanceSheet() {
    const { t } = useTranslation();
 
    const defaultValues = useRef({
@@ -42,7 +42,6 @@ function ProfitLoss() {
    }, [values, startDate, endDate]);
    return (
       <SearchBar
-         listView
          hideHeader
          hideCard={false}
          handleSubmit={handleSubmit}
@@ -51,11 +50,10 @@ function ProfitLoss() {
          endDate={endDate}
          values={values}
          setValidDate={setValidDate}
-         colWidth="9"
-         labelWidth="130px"
-         width="70%"
+         labelWidth="120px"
+         width="60%"
       />
    );
 }
 
-export default ProfitLoss;
+export default BalanceSheet;

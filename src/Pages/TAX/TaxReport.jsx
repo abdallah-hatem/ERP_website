@@ -94,40 +94,41 @@ function TaxReport() {
   }, [values, startDate, endDate]);
 
   return (
-    <>
-      <SearchBar
-        hideHeader
-        hideCard={false}
-        width="56%"
-        handleSubmit={handleSubmit}
-        dateData={dateData}
-        startDate={startDate}
-        endDate={endDate}
-        values={values}
-        setValidDate={setValidDate}
-      />
-
-      <div className="d-flex justify-content-end mb-2">
-        <ButtonComponent
-          title={"Print"}
-          style={{ width: "100px" }}
-          onClick={handlePrint}
+     <>
+        <SearchBar
+           hideHeader
+           hideCard={false}
+           handleSubmit={handleSubmit}
+           dateData={dateData}
+           startDate={startDate}
+           endDate={endDate}
+           values={values}
+           setValidDate={setValidDate}
+           labelWidth="120px"
+           width="60%"
         />
-      </div>
 
-      <div ref={ref}>
-        <FormComponent title="TAX Report">
-          <MasterTable
-            searchPanel={false}
-            ColoredRows
-            allowPaging
-            columnChooser={false}
-            colAttributes={columns}
-            summaryItems={summary}
-          />
-        </FormComponent>
-      </div>
-    </>
+        <div className="d-flex justify-content-end mb-2">
+           <ButtonComponent
+              title={"Print"}
+              style={{ width: "100px" }}
+              onClick={handlePrint}
+           />
+        </div>
+
+        <div ref={ref}>
+           <FormComponent title="TAX Report">
+              <MasterTable
+                 searchPanel={false}
+                 ColoredRows
+                 allowPaging
+                 columnChooser={false}
+                 colAttributes={columns}
+                 summaryItems={summary}
+              />
+           </FormComponent>
+        </div>
+     </>
   );
 }
 

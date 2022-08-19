@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import SearchBar from "../../Closing/SearchBar";
 
 function TrialBalance() {
@@ -9,6 +8,7 @@ function TrialBalance() {
    const defaultValues = useRef({
       start_date: "",
       end_date: "",
+      with_details: false,
    });
 
    const [values, setValues] = useState(defaultValues.current);
@@ -25,6 +25,13 @@ function TrialBalance() {
          alert(t("Start date cant be bigger than end date"));
       }
    }
+
+   const handleBoxChange = useCallback((e) => {
+      setValues((prev) => ({
+         ...prev,
+         [e.target.name]: !prev.with_details,
+      }));
+   }, []);
 
    const [startDate, setStartDate] = useState(new Date());
    const [endDate, setEndDate] = useState(new Date());
@@ -45,6 +52,16 @@ function TrialBalance() {
       },
    ];
 
+   const data = [
+      {
+         label: "With Details :",
+         type: "checkbox",
+         name: "with_details",
+         value: values["with_details"],
+         handleChange: handleBoxChange,
+      },
+   ];
+
    useEffect(() => {
       console.log(values);
    }, [values, startDate, endDate]);
@@ -55,10 +72,14 @@ function TrialBalance() {
          hideCard={false}
          handleSubmit={handleSubmit}
          dateData={dateData}
+         data={data}
          startDate={startDate}
          endDate={endDate}
          values={values}
          setValidDate={setValidDate}
+         colWidth="9"
+         labelWidth="130px"
+         width="70%"
       />
    );
 }

@@ -71,16 +71,18 @@ function AddSalarySetup() {
   }, [values]);
 
   return (
-    <SearchBar
-      listView
-      CardTitle="Add Salary Setup"
-      hideCard={false}
-      buttonTitle="Save"
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
-      data={data}
-      labelWidth="170px"
-    />
+     <SearchBar
+        listView
+        CardTitle="Add Salary Setup"
+        hideCard={false}
+        buttonTitle="Save"
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        data={data}
+        colWidth="10"
+        labelWidth="200px"
+        width="60%"
+     />
   );
 }
 

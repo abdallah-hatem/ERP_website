@@ -119,41 +119,46 @@ function Attendance() {
   }, [values, startDate]);
 
   return (
-    <>
-      <SearchBar
-        listView
-        hideHeader
-        buttonTitle="Check In"
-        hideCard={false}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        data={data}
-        dateData={dateData}
-        startDate={startDate}
-        values={values}
-        labelWidth="170px"
-      />
-
-      <Popup
-        title={t("Attendance")}
-        height={"auto"}
-        visible={clickedEdit}
-        hideOnOutsideClick
-        onHiding={() => setClickedEdit(false)}
-      >
+     <>
         <SearchBar
-          listView
-          buttonTitle="Submit"
-          handleSubmit={handleClick}
-          handleChange={handleChange}
-          data={popupData}
+           listView
+           hideHeader
+           buttonTitle="Check In"
+           hideCard={false}
+           handleSubmit={handleSubmit}
+           handleChange={handleChange}
+           data={data}
+           dateData={dateData}
+           startDate={startDate}
+           values={values}
+           colWidth="10"
+           labelWidth="200px"
+           width="60%"
         />
 
-        <DownloadFileButton link="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/assets/data/csv/sample_product .csv" />
-      </Popup>
+        <Popup
+           title={t("Attendance")}
+           height={"auto"}
+           visible={clickedEdit}
+           hideOnOutsideClick
+           onHiding={() => setClickedEdit(false)}
+        >
+           <SearchBar
+              listView
+              buttonTitle="Submit"
+              handleSubmit={handleClick}
+              handleChange={handleChange}
+              data={popupData}
+              colWidth="10"
+              labelWidth="200px"
+              width="60%"
+           />
 
-      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
-    </>
+           <DownloadFileButton link="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/assets/data/csv/sample_product .csv" />
+        </Popup>
+
+        <ActionsButtons style={{ float: "right" }} buttons={buttons} />
+     </>
   );
 }
 

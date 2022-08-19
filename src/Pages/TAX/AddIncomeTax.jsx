@@ -14,7 +14,6 @@ function AddIncomeTax() {
          field: "SL",
          caption: t("SL"),
          dataType: "number",
-         allowEditing: false,
       },
       {
          field: "Start Amount",

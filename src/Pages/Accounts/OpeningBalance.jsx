@@ -108,6 +108,9 @@ function OpeningBalance() {
       dateData={dateData}
       startDate={startDate}
       values={values}
+      colWidth="10"
+      labelWidth="200px"
+      width="60%"
     />
   );
 }

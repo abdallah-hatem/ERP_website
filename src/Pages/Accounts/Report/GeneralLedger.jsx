@@ -9,6 +9,7 @@ function GeneralLedger() {
       start_date: "",
       end_date: "",
       transaction_head: "",
+      with_details: false,
    });
 
    const [values, setValues] = useState(defaultValues.current);
@@ -29,6 +30,13 @@ function GeneralLedger() {
          alert(t("Start date cant be bigger than end date"));
       }
    }
+
+   const handleBoxChange = useCallback((e) => {
+      setValues((prev) => ({
+         ...prev,
+         [e.target.name]: !prev.with_details,
+      }));
+   }, []);
 
    const [startDate, setStartDate] = useState(new Date());
    const [endDate, setEndDate] = useState(new Date());
@@ -81,6 +89,13 @@ function GeneralLedger() {
          handleChange,
          value: values["transaction_head"],
       },
+      {
+         label: "With Details :",
+         type: "checkbox",
+         name: "with_details",
+         value: values["with_details"],
+         handleChange: handleBoxChange,
+      },
    ];
 
    useEffect(() => {
@@ -98,6 +113,9 @@ function GeneralLedger() {
          endDate={endDate}
          values={values}
          setValidDate={setValidDate}
+         colWidth="10"
+         labelWidth="200px"
+         width="60%"
       />
    );
 }

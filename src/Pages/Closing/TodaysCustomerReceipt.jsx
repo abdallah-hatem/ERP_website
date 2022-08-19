@@ -140,15 +140,14 @@ function TodaysCustomerReceipt() {
          <SearchBar
             hideHeader
             hideCard={false}
-            // width="46%"
-            labelWidth={"160px"}
             handleSubmit={handleSubmit}
             handleChange={handleChange}
             data={data}
             dateData={dateData}
             startDate={startDate}
             values={values}
-            //  containerWidth="100%"
+            // labelWidth="120px"
+            // width="60%"
          />
 
          <div className="d-flex justify-content-end mb-2">

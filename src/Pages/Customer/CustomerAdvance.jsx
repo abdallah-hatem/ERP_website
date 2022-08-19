@@ -85,16 +85,17 @@ function CustomerAdvance() {
     console.log(values);
   }, [values]);
   return (
-    <SearchBar
-      listView
-      CardTitle="Customer Advance"
-      hideCard={false}
-      data={data}
-      buttonTitle="Submit"
-      handleSubmit={handleSubmit}
-      labelWidth="180px"
-      colWidth="10"
-    />
+     <SearchBar
+        listView
+        CardTitle="Customer Advance"
+        hideCard={false}
+        data={data}
+        buttonTitle="Submit"
+        handleSubmit={handleSubmit}
+        colWidth="10"
+        labelWidth="200px"
+        width={"60%"}
+     />
   );
 }
 

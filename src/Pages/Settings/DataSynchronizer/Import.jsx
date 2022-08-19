@@ -43,6 +43,8 @@ function Import() {
          buttonTitle="Import"
          data={data}
          handleSubmit={handleSubmit}
+         labelWidth="80px"
+         width="75%"
       />
    );
 }

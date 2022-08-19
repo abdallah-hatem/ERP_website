@@ -152,7 +152,6 @@ function UserWiseSalesReport() {
          <SearchBar
             hideHeader
             hideCard={false}
-            // width="50%"
             data={data}
             handleSubmit={handleSubmit}
             handleChange={handleChange}

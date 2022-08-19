@@ -88,11 +88,15 @@ function Return() {
             {tables.map((el) => (
                <div className="col-lg-6">
                   <SearchBar
+                     listView
                      hideCard={false}
                      CardTitle={el.title}
                      data={el.data}
                      handleSubmit={handleSubmit}
                      buttonTitle="Search"
+                     width={"100%"}
+                     labelWidth="100%"
+                     colWidth="12"
                   />
                </div>
             ))}

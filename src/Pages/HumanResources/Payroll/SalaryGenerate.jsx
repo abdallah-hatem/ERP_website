@@ -41,18 +41,21 @@ function SalaryGenerate() {
   }, [values, startDate]);
 
   return (
-    <SearchBar
-      listView
-      hideHeader
-      hideDays
-      buttonTitle="Generate"
-      hideCard={false}
-      handleSubmit={handleSubmit}
-      handleChange={handleChange}
-      dateData={dateData}
-      startDate={startDate}
-      values={values}
-    />
+     <SearchBar
+        listView
+        hideHeader
+        hideDays
+        buttonTitle="Generate"
+        hideCard={false}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        dateData={dateData}
+        startDate={startDate}
+        values={values}
+        colWidth="10"
+        labelWidth="200px"
+        width="60%"
+     />
   );
 }
 

@@ -1,12 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-
 import "react-datepicker/dist/react-datepicker.css";
-import "../style.scss";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
 import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
-import CashAdjustmentTable from "./CashAdjustmentTable";
 import SearchBar from "../../Closing/SearchBar";
+import SupplierDetailsTable from "../../Accounts/SupplierPayment/SupplierDetailsTable";
 
 function CashAdjustment() {
    const { t } = useTranslation();
@@ -24,14 +22,24 @@ function CashAdjustment() {
       setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
    }, []);
 
-   function handleSubmit(e) {
-      // e.preventDefault();
+   function handleSubmit() {
       for (const [key, value] of Object.entries(values)) {
          if (!value) {
             alert(t("Fill the inputs"));
          }
       }
    }
+
+   const [startDate, setStartDate] = useState(new Date());
+
+   const dateData = [
+      {
+         label: "Date :",
+         value: "date",
+         selected: startDate,
+         onChange: setStartDate,
+      },
+   ];
 
    const options = [
       {
@@ -76,14 +84,33 @@ function CashAdjustment() {
       },
    ];
 
-   const [startDate, setStartDate] = useState(new Date());
-
-   const dateData = [
+   const columns = [
       {
-         label: "Date :",
-         value: "date",
-         selected: startDate,
-         onChange: setStartDate,
+         field: "code",
+         caption: t("Code"),
+         allowEditing: false,
+         // cellRender: (data) => (
+         //   <input style={{ width: "100%" }} disabled value={data.value}></input>
+         // ),
+      },
+      {
+         field: "amount",
+         caption: t("Amount"),
+         dataType: "number",
+         // cellRender: (data) => (
+         //   <input
+         //     style={{ width: "100%" }}
+         //     type="number"
+         //     //   value={data.value}
+         //   ></input>
+         // ),
+      },
+   ];
+
+   const tableData = [
+      {
+         code: 1110000001,
+         //   amount: 100,
       },
    ];
 
@@ -102,17 +129,18 @@ function CashAdjustment() {
             dateData={dateData}
             startDate={startDate}
             values={values}
+            colWidth="10"
+            labelWidth="190px"
+            width="60%"
          />
 
-         <CashAdjustmentTable />
+         <SupplierDetailsTable columns={columns} data={tableData} />
 
-         <div style={{ width: "100%", marginTop: 20 }}>
-            <ButtonComponent
-               style={{ width: "200px", float: "right" }}
-               onClick={handleSubmit}
-               title={"Save"}
-            />
-         </div>
+         <ButtonComponent
+            style={{ width: "200px", float: "right", marginTop: 20 }}
+            onClick={handleSubmit}
+            title={"Save"}
+         />
       </FormComponent>
    );
 }

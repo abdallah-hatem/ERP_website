@@ -178,6 +178,8 @@ function AddEmployee({ UpdateData, hideCard }) {
          handleChange={handleChange}
          values={values}
          hideCard={hideCard}
+         width="100%"
+         labelWidth="100%"
       />
    );
 }

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import QrCodeGenerator from "../../../Components/Web Components/QrCodeGenerator/QrCodeGenerator";
+import CodeGenerator from "../../../Components/Web Components/CodeGenerator/CodeGenerator";
 import { TitleColor } from "../../../Styles/Colors";
 import SearchBar from "../../Closing/SearchBar";
 
@@ -68,7 +68,7 @@ function AppSettings() {
       <div className="row border-bottom pb-4">
         {data.map((el) => (
           <div className="col">
-            <QrCodeGenerator
+            <CodeGenerator
               displayValue
               value={el.value}
               label={el.placeholder}

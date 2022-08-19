@@ -137,21 +137,24 @@ function AddPayment() {
   }, [values, startDate]);
 
   return (
-    <>
-      <SearchBar
-        listView
-        CardTitle="Add Payment"
-        buttonTitle="Save"
-        hideCard={false}
-        data={data}
-        dateData={dateData}
-        values={values}
-        startDate={startDate}
-        handleSubmit={handleSubmit}
-      />
+     <>
+        <SearchBar
+           listView
+           CardTitle="Add Payment"
+           buttonTitle="Save"
+           hideCard={false}
+           data={data}
+           dateData={dateData}
+           values={values}
+           startDate={startDate}
+           handleSubmit={handleSubmit}
+           colWidth="10"
+           labelWidth="200px"
+           width="60%"
+        />
 
-      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
-    </>
+        <ActionsButtons style={{ float: "right" }} buttons={buttons} />
+     </>
   );
 }
 

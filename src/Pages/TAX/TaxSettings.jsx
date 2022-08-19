@@ -3,153 +3,105 @@ import { useTranslation } from "react-i18next";
 import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import InformationButton from "../../Components/Web Components/InformationButton/InformationButton.jsx";
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
 import SearchBar from "../Closing/SearchBar";
 
 function TaxSettings() {
-  const { t } = useTranslation();
+   const { t } = useTranslation();
 
-  const defaultValues = useRef({
-    payment_method_name: "",
-  });
+   const columns = [
+      {
+         field: "tax_name",
+         caption: "Tax Name",
+      },
+      {
+         field: "default_value",
+         caption: "Default Value (%)",
+         dataType: "number",
+      },
+      {
+         field: "reg_no",
+         caption: "Reg No",
+      },
+      {
+         field: "is_shown",
+         caption: "Is Shown",
+         alignment: "center",
+         dataType: "boolean",
+      },
+   ];
 
-  const [values, setValues] = useState(defaultValues.current);
+   const data = [
+      {
+         tax_name: "",
+         default_value: "",
+         reg_no: "",
+         is_shown: false,
+      },
+   ];
+   function handleSubmit() {}
 
-  const handleChange = useCallback((e) => {
-    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }, []);
+   return (
+      <FormComponent title={"Tax Settings"}>
+         {/* {tables.map((el) => (
+            <>
+               <div className={el.data === data && "d-flex align-items-center"}>
+                  <SearchBar
+                     listView
+                     hideCard={true}
+                     data={el.data}
+                     buttonTitle="Save"
+                     handleSubmit={handleSubmit}
+                     showButton={false}
+                     colWidth="10"
+                     labelWidth="200px"
+                     width={"60%"}
+                  />
 
-  function handleSubmit(e) {
-    // e.preventDefault();
-    for (const [key, value] of Object.entries(values)) {
-      if (!value) {
-        alert(t("Fill the inputs"));
-      }
-    }
-  }
+                  {el.data === data && (
+                     <InformationButton
+                        text={"Put the number of global TAX want to add"}
+                     />
+                  )}
+               </div>
 
-  const data = [
-    {
-      label: "Number of TAX :",
-      placeholder: "Number of TAX",
-      name: "payment_method_name",
-      handleChange,
-      type: "number",
-      value: values["payment_method_name"],
-    },
-  ];
+               <div
+                  className={el.data === data ? "mb-5" : "mb-5 border-bottom"}
+               />
+            </>
+         ))}
 
-  const data2 = [
-    {
-      label: "TAX Name 1 :",
-      placeholder: "TAX Name 1",
-      name: "tax_name_1",
-      handleChange,
-      value: values["tax_name_1"],
-    },
-    {
-      label: "Default Value(%) :",
-      placeholder: "Default Value(%)",
-      name: "default_value",
-      handleChange,
-      type: "number",
-      value: values["default_value"],
-    },
-    {
-      label: "Reg No. :",
-      placeholder: "Reg No.",
-      name: "reg_no",
-      handleChange,
-      type: "number",
-      value: values["reg_no"],
-    },
-    {
-      label: "Is Shown :",
-      handleChange,
-      type: "checkbox",
-    },
-  ];
-
-  const data3 = [
-    {
-      label: "TAX Name 2 :",
-      placeholder: "TAX Name 2",
-      name: "tax_name_2",
-      handleChange,
-      value: values["tax_name_2"],
-    },
-    {
-      label: "Default Value(%) :",
-      placeholder: "Default Value(%)",
-      name: "default_value",
-      handleChange,
-      type: "number",
-      value: values["default_value"],
-    },
-    {
-      label: "Reg No. :",
-      placeholder: "Reg No.",
-      name: "reg_no",
-      handleChange,
-      type: "number",
-      value: values["reg_no"],
-    },
-    {
-      label: "Is Shown :",
-      handleChange,
-      type: "checkbox",
-    },
-  ];
-
-  const tables = [
-    {
-      data: data,
-    },
-    {
-      data: data2,
-    },
-    {
-      data: data3,
-    },
-  ];
-
-  return (
-    <FormComponent title={"Tax Settings"}>
-      {tables.map((el) => (
-        <>
-          <div className={el.data === data && "d-flex align-items-center"}>
-            <SearchBar
-              listView
-              hideCard={true}
-              data={el.data}
-              buttonTitle="Save"
-              handleSubmit={handleSubmit}
-              showButton={false}
-            />
-
-            {el.data === data && (
-              <InformationButton
-                text={"Put the number of global TAX want to add"}
-              />
+         <p style={{ color: "red", fontSize: 22 }}>
+            {t(
+               "If you Update TAX settings ,All of your previous TAX record will be destroy.You Will Need to set TAX product wise and Service wise"
             )}
-          </div>
+         </p>
 
-          <div className={el.data === data ? "mb-5" : "mb-5 border-bottom"} />
-        </>
-      ))}
+        */}
 
-      <p style={{ color: "red", fontSize: 22 }}>
-        {t(
-          "If you Update TAX settings ,All of your previous TAX record will be destroy.You Will Need to set TAX product wise and Service wise"
-        )}
-      </p>
+         <MasterTable
+            allowDelete
+            allowAdd
+            allowUpdate
+            ColoredRows
+            searchPanel={false}
+            columnChooser={false}
+            dataSource={data}
+            colAttributes={columns}
+         />
 
-      <ButtonComponent
-        style={{ width: "200px", float: "right" }}
-        onClick={handleSubmit}
-        title={"Save"}
-      />
-    </FormComponent>
-  );
+         <p style={{ color: "red", fontSize: 21, marginTop: 50 }}>
+            {t(
+               "If you Update TAX settings ,All of your previous TAX record will be destroy.You Will Need to set TAX product wise and Service wise"
+            )}
+         </p>
+         <ButtonComponent
+            style={{ width: "200px", float: "right", marginTop: 20 }}
+            onClick={handleSubmit}
+            title={"Save"}
+         />
+      </FormComponent>
+   );
 }
 
 export default TaxSettings;

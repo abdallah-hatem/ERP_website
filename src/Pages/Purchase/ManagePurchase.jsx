@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
 import { Popup } from "devextreme-react/popup";
 import { useState } from "react";
-
 import { Column, Button } from "devextreme-react/data-grid";
-import PurchaseDetails from "./PurchaseDetails";
+import ScrollView from "devextreme-react/scroll-view";
+import ReportTable from "../Closing/ReportTable";
+import logo from "../../Images/logo.png";
+import { TitleColor } from "../../Styles/Colors";
+import CodeGenerator from "../../Components/Web Components/CodeGenerator/CodeGenerator";
+import { useReactToPrint } from "react-to-print";
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
 
 function ManagePurchase() {
    const { t } = useTranslation();
@@ -107,6 +112,78 @@ function ManagePurchase() {
       },
    ];
 
+   const reportColumns = [
+      {
+         field: "sl",
+         caption: t("SL."),
+      },
+      {
+         field: "product Name",
+         caption: t("product Name"),
+      },
+      {
+         field: "Qnty",
+         caption: t("Qnty"),
+      },
+      {
+         field: "Rate",
+         caption: t("Rate"),
+      },
+      {
+         field: "Discount (%)",
+         caption: t("Discount (%)"),
+      },
+      {
+         field: "Dis. Value",
+         caption: t("Dis. Value"),
+      },
+      {
+         field: "Vat (%)",
+         caption: t("Vat (%)"),
+      },
+      {
+         field: "Vat Value",
+         caption: t("Vat Value"),
+      },
+      {
+         field: "Total Amount",
+         caption: t("Total Amount"),
+         format: "currency",
+      },
+   ];
+
+   const reportData = [{}];
+
+   const reportSummary = [
+      {
+         column: "Total Amount",
+         summaryType: "sum",
+         valueFormat: "currency",
+      },
+   ];
+
+   const caption = (
+      <div className="mb-5 row align-items-center">
+         <div class="mb-3 col-lg-4" style={{ color: TitleColor }}>
+            <img src={logo} alt="" />
+            <h3> Demo Company </h3>
+            <h4>Company Demo Address </h4>
+            <h4>demo@mail.com </h4>
+            <h4> 123456 </h4>
+            <strong>Closing Report</strong>
+         </div>
+         <div className="col-lg-4">
+            <CodeGenerator type="qrCode" value="Google.com" />
+         </div>
+         <span className="col-lg-4 text-center">Date: 27-Jul-2022</span>
+      </div>
+   );
+
+   const componentRef = useRef();
+   const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+   });
+
    return (
       <FormComponent title={"Manage Purchase"}>
          <MasterTable
@@ -136,11 +213,30 @@ function ManagePurchase() {
             {clicked && (
                <Popup
                   title={t("Purchase Details")}
-                  height={"95vh"}
+                  height={"90vh"}
                   visible={clicked}
                   onHiding={() => setClicked(false)}
                >
-                  <PurchaseDetails />
+                  <ScrollView width="100%" height="100%">
+                     <div ref={componentRef}>
+                        <ReportTable
+                           hideHeader
+                           caption={caption}
+                           columns={reportColumns}
+                           data={reportData}
+                           summary={reportSummary}
+                        />
+                        <ButtonComponent
+                           style={{
+                              width: "100px",
+                              float: "right",
+                              marginTop: 20,
+                           }}
+                           title={"Print"}
+                           onClick={handlePrint}
+                        />
+                     </div>
+                  </ScrollView>
                </Popup>
             )}
          </MasterTable>

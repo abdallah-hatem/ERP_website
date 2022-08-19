@@ -98,16 +98,19 @@ function AddExpense() {
   }, [values, startDate]);
 
   return (
-    <SearchBar
-      listView
-      CardTitle="Add Expense"
-      hideCard={false}
-      data={data}
-      handleSubmit={handleSubmit}
-      dateData={dateData}
-      values={values}
-      startDate={startDate}
-    />
+     <SearchBar
+        listView
+        CardTitle="Add Expense"
+        hideCard={false}
+        data={data}
+        handleSubmit={handleSubmit}
+        dateData={dateData}
+        values={values}
+        startDate={startDate}
+        colWidth="10"
+        labelWidth="200px"
+        width="60%"
+     />
   );
 }
 

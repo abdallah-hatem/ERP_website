@@ -44,11 +44,13 @@ function AddPaymentMethod() {
       <SearchBar
          listView
          CardTitle={"Add Payment Method"}
-         colWidth="9"
          hideCard={false}
          data={data}
          buttonTitle="Save"
          handleSubmit={handleSubmit}
+         colWidth="10"
+         labelWidth="220px"
+         width="55%"
       />
    );
 }

@@ -66,7 +66,8 @@ function AddSalesTerms() {
             buttonTitle="Save"
             handleSubmit={handleSubmit}
             labelWidth={"200px"}
-            colWidth="10"
+            colWidth="11"
+            width="60%"
          />
       </div>
    );

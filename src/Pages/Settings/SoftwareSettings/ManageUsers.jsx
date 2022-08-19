@@ -7,8 +7,8 @@ import { Popup } from "devextreme-react/popup";
 import { useNavigate } from "react-router-dom";
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import AddUser from "./AddUser";
 import User from "./User";
+import ScrollView from "devextreme-react/scroll-view";
 
 function ManageUsers() {
    const { t } = useTranslation();
@@ -81,7 +81,7 @@ function ManageUsers() {
 
    return (
       <>
-         <FormComponent title={"Manage Designation"}>
+         <FormComponent title={"User List"}>
             <MasterTable
                allowDelete
                allowPaging
@@ -111,12 +111,14 @@ function ManageUsers() {
                {clickedEdit && (
                   <Popup
                      title={t("Update User")}
-                     height={"auto"}
+                     height={"85vh"}
                      visible={clickedEdit}
                      hideOnOutsideClick
                      onHiding={() => setClickedEdit(false)}
                   >
-                     <User hideCard picture={currentRowData.picture} />
+                     <ScrollView width="100%" height="100%">
+                        <User hideCard picture={currentRowData.picture} />
+                     </ScrollView>
                   </Popup>
                )}
             </MasterTable>

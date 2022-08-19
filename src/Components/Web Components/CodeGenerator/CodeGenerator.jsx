@@ -1,20 +1,23 @@
 import React from "react";
 import QRCode from "react-qr-code";
+import Barcode from "react-barcode";
 
-function QrCodeGenerator({
+function CodeGenerator({
    value = "",
    displayValue = false,
-   size = 150,
+   size = 170,
    style,
    label,
+   type = "qrCode",
 }) {
    return (
       <div className="d-flex flex-column align-items-center">
          {label && <p style={style}>{label}</p>}
-         <QRCode size={size} value={value} />
+         {type === "qrCode" && <QRCode size={size} value={value} />}
+         {type === "barCode" && <Barcode value={value} />}
          {displayValue && <p className="mt-1">{value}</p>}
       </div>
    );
 }
 
-export default QrCodeGenerator;
+export default CodeGenerator;

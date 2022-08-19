@@ -144,7 +144,8 @@ function AddCustomer() {
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       values={values}
-      labelWidth="170px"
+      labelWidth="100%"
+      width="100%"
     />
   );
 }

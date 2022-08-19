@@ -202,8 +202,8 @@ function AddProduct() {
             name="barcode"
             value={values["barcode"]}
             handleChange={handleChange}
-            width={"84.9%"}
-            // labelWidth="200px"
+            width={"100%"}
+            labelWidth="100%"
           />
         </div>
       </div>
@@ -218,7 +218,8 @@ function AddProduct() {
         values={values}
         countryChooser={false}
         regionChooser={false}
-        labelWidth="170px"
+        labelWidth="100%"
+        width={"100%"}
       />
 
       <div className="mt-5">

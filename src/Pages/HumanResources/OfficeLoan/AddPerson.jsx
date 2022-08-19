@@ -57,14 +57,17 @@ function AddPerson() {
   }, [values]);
 
   return (
-    <SearchBar
-      listView
-      CardTitle="Add Person"
-      buttonTitle="Save"
-      hideCard={false}
-      data={data}
-      handleSubmit={handleSubmit}
-    />
+     <SearchBar
+        listView
+        CardTitle="Add Person"
+        buttonTitle="Save"
+        hideCard={false}
+        data={data}
+        handleSubmit={handleSubmit}
+        colWidth="10"
+        labelWidth="200px"
+        width="60%"
+     />
   );
 }
 

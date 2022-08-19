@@ -117,32 +117,37 @@ function SalesReturn() {
   }, [values, startDate, endDate]);
 
   return (
-    <>
-      <SearchBar
-        hideHeader
-        hideCard={false}
-        width="56%"
-        handleSubmit={handleSubmit}
-        dateData={dateData}
-        startDate={startDate}
-        endDate={endDate}
-        values={values}
-        setValidDate={setValidDate}
-      />
-
-      <div className="d-flex justify-content-end mb-2">
-        <ButtonComponent
-          title={"Print"}
-          style={{ width: "100px" }}
-          onClick={handlePrint}
+     <>
+        <SearchBar
+           hideHeader
+           hideCard={false}
+           handleSubmit={handleSubmit}
+           dateData={dateData}
+           startDate={startDate}
+           endDate={endDate}
+           values={values}
+           setValidDate={setValidDate}
+           labelWidth="120px"
+           width="60%"
         />
-      </div>
 
-      <div ref={componentRef}>
-        <ReportTable title="Sales Return" summary={summary} columns={columns} />
-      </div>
-      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
-    </>
+        <div className="d-flex justify-content-end mb-2">
+           <ButtonComponent
+              title={"Print"}
+              style={{ width: "100px" }}
+              onClick={handlePrint}
+           />
+        </div>
+
+        <div ref={componentRef}>
+           <ReportTable
+              title="Sales Return"
+              summary={summary}
+              columns={columns}
+           />
+        </div>
+        <ActionsButtons style={{ float: "right" }} buttons={buttons} />
+     </>
   );
 }
 
