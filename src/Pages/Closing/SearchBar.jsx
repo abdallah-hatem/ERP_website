@@ -27,6 +27,7 @@ function SearchBar({
   hideCard = true,
   hideHeader,
   CardTitle,
+  hideDays,
 }) {
   const { t } = useTranslation();
 
@@ -88,6 +89,7 @@ function SearchBar({
               label={el.label}
             >
               <DateInput
+                hideDays={hideDays}
                 dateData={[dateData[index]]}
                 startDate={startDate}
                 endDate={endDate}

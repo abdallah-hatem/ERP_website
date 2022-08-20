@@ -1,6 +1,7 @@
 import React from "react";
 import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
 import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
+import { DataGrid } from "devextreme-react/data-grid";
 
 function SalesTermsList() {
   const options = [
@@ -19,20 +20,24 @@ function SalesTermsList() {
       field: "sl",
       caption: "SL No.",
       allowEditing: false,
-      width: "auto",
+      // width: "auto",
+      // minWidth: 80,
     },
     {
       field: "TermsAndConditions",
       caption: "Terms & Conditions",
       alignment: "center",
-      width: "auto",
+      editorType: "dxTextArea",
+      // width: "auto",
+      // minWidth: 200,
     },
     {
       field: "status",
       caption: "Status",
       alignment: "center",
-      //  width: "auto",
+      // width: "auto",
       options,
+      // minWidth: 50,
     },
   ];
 
@@ -60,6 +65,12 @@ function SalesTermsList() {
         colAttributes={columns}
         onSaving={(e) => console.log(e)}
       />
+      {/* <DataGrid
+        dataSource={data}
+        wordWrapEnabled
+        showBorders
+        columnAutoWidth={true}
+      /> */}
     </FormComponent>
   );
 }

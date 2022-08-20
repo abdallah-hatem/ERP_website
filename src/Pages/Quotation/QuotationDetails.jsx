@@ -6,7 +6,7 @@ import ButtonComponent from "../../Components/Web Components/ButtonComponent/But
 import DetailsCard from "../../Components/Web Components/DetailsCard/DetailsCard";
 import ServiceDetailsCaption from "../Service/ServiceDetailsCaption";
 
-function QuotationDetails() {
+function QuotationDetails({ caption }) {
   const { t } = useTranslation();
 
   const [summaryValue, setSummaryValue] = useState();
@@ -107,7 +107,7 @@ function QuotationDetails() {
         <ReportTable
           hideHeader
           data={data}
-          caption={<ServiceDetailsCaption />}
+          caption={caption}
           summary={summary}
           columns={columns}
           setSummaryValue={setSummaryValue}

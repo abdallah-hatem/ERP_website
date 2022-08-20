@@ -3,121 +3,123 @@ import { useTranslation } from "react-i18next";
 import SearchBar from "../../Closing/SearchBar";
 
 function GeneralLedger() {
-   const { t } = useTranslation();
+  const { t } = useTranslation();
 
-   const defaultValues = useRef({
-      start_date: "",
-      end_date: "",
-      transaction_head: "",
-      with_details: false,
-   });
+  const defaultValues = useRef({
+    start_date: "",
+    end_date: "",
+    transaction_head: "",
+    with_details: false,
+  });
 
-   const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current);
 
-   const handleChange = useCallback((e) => {
-      setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-   }, []);
+  const handleChange = useCallback((e) => {
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
 
-   function handleSubmit(e) {
-      // e.preventDefault();
-      for (const [key, value] of Object.entries(values)) {
-         if (!value) {
-            alert(t("Fill the inputs"));
-         }
+  function handleSubmit(e) {
+    // e.preventDefault();
+    for (const [key, value] of Object.entries(values)) {
+      if (!value) {
+        alert(t("Fill the inputs"));
       }
+    }
 
-      if (!validDate) {
-         alert(t("Start date cant be bigger than end date"));
-      }
-   }
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"));
+    }
+  }
 
-   const handleBoxChange = useCallback((e) => {
-      setValues((prev) => ({
-         ...prev,
-         [e.target.name]: !prev.with_details,
-      }));
-   }, []);
+  const handleBoxChange = useCallback((e) => {
+    setValues((prev) => ({
+      ...prev,
+      [e.target.name]: !prev.with_details,
+    }));
+  }, []);
 
-   const [startDate, setStartDate] = useState(new Date());
-   const [endDate, setEndDate] = useState(new Date());
-   const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [validDate, setValidDate] = useState(true);
 
-   const dateData = [
-      {
-         label: "Start Date :",
-         value: "start_date",
-         selected: startDate,
-         onChange: setStartDate,
-      },
-      {
-         label: "End Date :",
-         value: "end_date",
-         selected: endDate,
-         onChange: setEndDate,
-      },
-   ];
+  const dateData = [
+    {
+      label: "Start Date :",
+      value: "start_date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
+    {
+      label: "End Date :",
+      value: "end_date",
+      selected: endDate,
+      onChange: setEndDate,
+    },
+  ];
 
-   const options = [
-      {
-         label: "Hudson",
-         value: "hudson",
-      },
-      {
-         label: "Mike",
-         value: "mike",
-      },
-      {
-         label: "Justin",
-         value: "justin",
-      },
-   ];
+  const options = [
+    {
+      label: "Hudson",
+      value: "hudson",
+    },
+    {
+      label: "Mike",
+      value: "mike",
+    },
+    {
+      label: "Justin",
+      value: "justin",
+    },
+  ];
 
-   const data = [
-      {
-         label: "General Head :",
-         placeholder: "Select Option",
-         name: "general_head",
-         chooseOptions: true,
-         options,
-         handleChange,
-         value: values["general_head"],
-      },
-      {
-         label: "Transaction Head :",
-         placeholder: "Select Option",
-         name: "transaction_head",
-         handleChange,
-         value: values["transaction_head"],
-      },
-      {
-         label: "With Details :",
-         type: "checkbox",
-         name: "with_details",
-         value: values["with_details"],
-         handleChange: handleBoxChange,
-      },
-   ];
+  const data = [
+    {
+      label: "General Head :",
+      placeholder: "Select Option",
+      name: "general_head",
+      chooseOptions: true,
+      options,
+      handleChange,
+      value: values["general_head"],
+    },
+    {
+      label: "Transaction Head :",
+      placeholder: "Select Option",
+      name: "transaction_head",
+      chooseOptions: true,
+      options,
+      handleChange,
+      value: values["transaction_head"],
+    },
+    {
+      label: "With Details :",
+      type: "checkbox",
+      name: "with_details",
+      value: values["with_details"],
+      handleChange: handleBoxChange,
+    },
+  ];
 
-   useEffect(() => {
-      console.log(values);
-   }, [values, startDate, endDate]);
-   return (
-      <SearchBar
-         listView
-         hideHeader
-         hideCard={false}
-         handleSubmit={handleSubmit}
-         data={data}
-         dateData={dateData}
-         startDate={startDate}
-         endDate={endDate}
-         values={values}
-         setValidDate={setValidDate}
-         colWidth="10"
-         labelWidth="200px"
-         width="60%"
-      />
-   );
+  useEffect(() => {
+    console.log(values);
+  }, [values, startDate, endDate]);
+  return (
+    <SearchBar
+      listView
+      hideHeader
+      hideCard={false}
+      handleSubmit={handleSubmit}
+      data={data}
+      dateData={dateData}
+      startDate={startDate}
+      endDate={endDate}
+      values={values}
+      setValidDate={setValidDate}
+      colWidth="10"
+      labelWidth="200px"
+      width="60%"
+    />
+  );
 }
 
 export default GeneralLedger;

@@ -83,9 +83,8 @@ function AppSettings() {
           listView
           data={data}
           handleSubmit={handleSubmit}
-          colWidth={12}
-          labelWidth="250px"
           buttonTitle="Save"
+          colWidth={12}
         />
       </div>
     </FormComponent>

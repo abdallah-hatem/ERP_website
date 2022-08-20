@@ -339,23 +339,18 @@ function AddQuotation() {
         <>
           <div className="mt-5" />
 
-          <FormComponent
-            style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-            title={el.title}
-          >
-            <MasterTable
-              allowDelete
-              allowAdd
-              allowUpdate
-              editingMode="popup"
-              searchPanel={false}
-              columnChooser={false}
-              dataSource={el.data}
-              colAttributes={el.columns}
-              ColoredRows
-              // onRowDoubleClick={(e) => navigate(`/product-details/${e.data.sl}`)}
-            />
-          </FormComponent>
+          <MasterTable
+            allowDelete
+            allowAdd
+            allowUpdate
+            editingMode="popup"
+            searchPanel={false}
+            columnChooser={false}
+            dataSource={el.data}
+            colAttributes={el.columns}
+            ColoredRows
+            // onRowDoubleClick={(e) => navigate(`/product-details/${e.data.sl}`)}
+          />
         </>
       ))}
 

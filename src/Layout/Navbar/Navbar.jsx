@@ -10,8 +10,9 @@ function Navbar({ setClicked }) {
     window.addEventListener("resize", function () {
       setWindowSize(window.innerWidth);
     });
+
     let leftPanelId = document.getElementById("left-panel");
-    var body = document.body;
+    let body = document.body;
 
     if (windowSize < 1024) {
       body.classList.add("small-device");

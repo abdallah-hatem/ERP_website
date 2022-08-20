@@ -11,6 +11,7 @@ import { exportDataGrid } from "devextreme/excel_exporter";
 import CustomStore from "devextreme/data/custom_store";
 import { alert } from "devextreme/ui/dialog";
 import "devextreme/dist/css/dx.light.css";
+import "devextreme-react/text-area";
 
 import {
   Column,
@@ -40,6 +41,9 @@ import {
   Selection,
   SearchPanel,
   Sorting,
+  Form,
+  Item,
+  Popup,
 } from "devextreme-react/data-grid";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -125,6 +129,7 @@ function MasterTable({
   allowColumnReordering,
   allowSelection = false,
   onCellClick,
+  popupTitle = "pop-up Title",
 }) {
   const { t, i18n } = useTranslation();
 
@@ -216,7 +221,7 @@ function MasterTable({
         hoverStateEnabled={true}
         rtlEnabled={i18n.language === "ar"}
         showBorders={true}
-        // columnAutoWidth={true}   // Not Responsive
+        columnAutoWidth={true} // Not Responsive
         allowColumnResizing={true}
         wordWrapEnabled={true}
         // selection={{
@@ -277,6 +282,14 @@ function MasterTable({
             deleteRow={t("Remove")}
             confirmDeleteMessage={t(deleteMessage)}
           />
+          <Popup title={popupTitle} showTitle={true} />
+
+          <Form>
+            {colAttributes?.length > 0 &&
+              colAttributes.map((el) => (
+                <Item dataField={el.field} editorType={el.editorType} />
+              ))}
+          </Form>
         </Editing>
         {/* <Scrolling mode="virtual" rowRenderingMode="virtual" /> */}
 
@@ -315,6 +328,7 @@ function MasterTable({
                 width={col.width}
                 allowEditing={col.allowEditing}
                 headerCellRender={col.headerCellRender}
+                minWidth={col.minWidth}
                 // width={
                 //     col.widthRatio
                 //         ? `${col.widthRatio}px`
