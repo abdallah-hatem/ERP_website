@@ -221,8 +221,10 @@ function MasterTable({
         hoverStateEnabled={true}
         rtlEnabled={i18n.language === "ar"}
         showBorders={true}
+        ///////////////////
         columnAutoWidth={true} // Not Responsive
-        allowColumnResizing={true}
+        // allowColumnResizing={true}
+        ///////////////////////
         wordWrapEnabled={true}
         // selection={{
         //   mode: selectionMode,

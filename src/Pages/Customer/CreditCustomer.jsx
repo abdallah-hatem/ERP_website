@@ -98,7 +98,7 @@ function CreditCustomer() {
   ];
 
   return (
-    <FormComponent title={"Customer List"}>
+    <FormComponent title={"Credit Customer"}>
       <MasterTable
         allowPrint
         allowExcel

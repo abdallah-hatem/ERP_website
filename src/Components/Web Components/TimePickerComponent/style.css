@@ -28,3 +28,9 @@
 .MuiInputLabel-root {
   display: none !important;
 }
+
+.css-1laqsz7-MuiInputAdornment-root {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}

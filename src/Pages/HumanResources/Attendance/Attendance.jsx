@@ -92,7 +92,6 @@ function Attendance() {
   const popupData = [
     {
       label: "Upload CSV File :",
-      //   placeholder: "Sign In",
       name: "csv",
       type: "file",
       handleChange,
@@ -103,7 +102,6 @@ function Attendance() {
   const buttons = [
     {
       title: "Bulk Check-In",
-      //   path: "sales-report",
       class: "btn btn-info m-b-5 m-r-2",
       handleClick,
     },
@@ -119,46 +117,44 @@ function Attendance() {
   }, [values, startDate]);
 
   return (
-     <>
+    <>
+      <SearchBar
+        listView
+        hideHeader
+        buttonTitle="Check In"
+        hideCard={false}
+        handleSubmit={handleSubmit}
+        data={data}
+        dateData={dateData}
+        startDate={startDate}
+        values={values}
+        colWidth="10"
+        labelWidth="200px"
+        width="60%"
+      />
+
+      <Popup
+        title={t("Attendance")}
+        height={"auto"}
+        visible={clickedEdit}
+        hideOnOutsideClick
+        onHiding={() => setClickedEdit(false)}
+      >
         <SearchBar
-           listView
-           hideHeader
-           buttonTitle="Check In"
-           hideCard={false}
-           handleSubmit={handleSubmit}
-           handleChange={handleChange}
-           data={data}
-           dateData={dateData}
-           startDate={startDate}
-           values={values}
-           colWidth="10"
-           labelWidth="200px"
-           width="60%"
+          listView
+          buttonTitle="Submit"
+          handleSubmit={handleClick}
+          data={popupData}
+          colWidth="10"
+          labelWidth="200px"
+          width="60%"
         />
 
-        <Popup
-           title={t("Attendance")}
-           height={"auto"}
-           visible={clickedEdit}
-           hideOnOutsideClick
-           onHiding={() => setClickedEdit(false)}
-        >
-           <SearchBar
-              listView
-              buttonTitle="Submit"
-              handleSubmit={handleClick}
-              handleChange={handleChange}
-              data={popupData}
-              colWidth="10"
-              labelWidth="200px"
-              width="60%"
-           />
+        <DownloadFileButton link="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/assets/data/csv/sample_product .csv" />
+      </Popup>
 
-           <DownloadFileButton link="https://saleserpnew.bdtask.com/saleserp_v9.9_demo/assets/data/csv/sample_product .csv" />
-        </Popup>
-
-        <ActionsButtons style={{ float: "right" }} buttons={buttons} />
-     </>
+      <ActionsButtons style={{ float: "right" }} buttons={buttons} />
+    </>
   );
 }
 

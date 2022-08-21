@@ -1,22 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-
-import { Column, Button } from "devextreme-react/data-grid";
-import { Popup } from "devextreme-react/popup";
 
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 import FormComponent from "../../../Components/Web Components/FormComponent/FormComponent";
-import AddDesignation from "./AddDesignation";
 
 function ManageDesignation() {
   const { t } = useTranslation();
-
-  const [clickedEdit, setClickedEdit] = useState(false);
 
   const columns = [
     {
       field: "sl",
       caption: t("SL."),
+      allowEditing: false,
     },
     {
       field: "designation",
@@ -47,39 +42,14 @@ function ManageDesignation() {
         <MasterTable
           allowDelete
           allowPaging
+          allowUpdate
           allowExcel
           allowPrint
           columnChooser={false}
           dataSource={data}
           colAttributes={columns}
           ColoredRows
-        >
-          <Column type="buttons" width={120}>
-            <Button
-              hint={t("Update")}
-              icon="edit"
-              visible={true}
-              disabled={false}
-              onClick={(e) => {
-                setClickedEdit(true);
-              }}
-            />
-
-            <Button name="delete" />
-          </Column>
-
-          {clickedEdit && (
-            <Popup
-              title={t("Update Designation")}
-              height={"auto"}
-              visible={clickedEdit}
-              hideOnOutsideClick
-              onHiding={() => setClickedEdit(false)}
-            >
-              <AddDesignation hideCard hideHeader />
-            </Popup>
-          )}
-        </MasterTable>
+        />
       </FormComponent>
     </>
   );

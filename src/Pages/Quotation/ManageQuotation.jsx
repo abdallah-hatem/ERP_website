@@ -129,14 +129,14 @@ function ManageQuotation() {
 
   const popUp = [
     {
-      title: "Service Details",
+      title: "Details",
       height: "90vh",
       visible: clicked,
       hideOnOutsideClick: true,
       onHiding: () => setClicked(false),
       children: (
         <ScrollView width="100%" height="100%">
-          <QuotationDetails caption={caption} />
+          {/* <QuotationDetails caption={caption} /> */}
         </ScrollView>
       ),
     },

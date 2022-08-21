@@ -11,6 +11,7 @@ function ManageService() {
     {
       field: "sl",
       caption: t("SL."),
+      allowEditing: false,
     },
     {
       field: "service_name",

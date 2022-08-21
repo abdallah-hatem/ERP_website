@@ -6,6 +6,17 @@ import MasterTable from "../../Components/Web Components/MasterTable/MasterTable
 function CategoryList() {
   const { t } = useTranslation();
 
+  const options = [
+    {
+      label: "Active",
+      value: "Active",
+    },
+    {
+      label: "Inactive",
+      value: "Inactive",
+    },
+  ];
+
   const columns = useRef([
     {
       field: "sl",
@@ -19,6 +30,7 @@ function CategoryList() {
     {
       field: "status",
       caption: t("Status"),
+      options,
     },
   ]);
 

@@ -138,11 +138,7 @@ function CashBook() {
       </div>
 
       <div ref={componentRef}>
-        <ReportTable
-          title="Profit Report (Sale Wise)"
-          summary={summary}
-          columns={columns}
-        />
+        <ReportTable title="Cash Book" summary={summary} columns={columns} />
       </div>
     </>
   );

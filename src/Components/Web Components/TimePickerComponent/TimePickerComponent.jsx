@@ -6,16 +6,16 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import "./style.css";
 
 function TimePickerComponent({ handleChange, value }) {
-   return (
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-         <TimePicker
-            label="Time"
-            value={value}
-            onChange={(newValue) => handleChange(newValue)}
-            renderInput={(params) => <TextField {...params} />}
-         />
-      </LocalizationProvider>
-   );
+  return (
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <TimePicker
+        label="Time"
+        value={value}
+        onChange={(newValue) => handleChange(newValue)}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider>
+  );
 }
 
 export default TimePickerComponent;

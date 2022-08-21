@@ -32,7 +32,7 @@ function ServiceDetails() {
     },
     {
       field: "discount",
-      caption: t("Discount"),
+      caption: t("Discount (%)"),
     },
     {
       field: "discount_value",
@@ -59,7 +59,7 @@ function ServiceDetails() {
     {
       sl: 1,
       service_name: "Customer Service",
-      qnty: 2,
+      qnty: 1,
       charge: 1500,
       discount: 0,
       discount_value: 0,
@@ -107,7 +107,7 @@ function ServiceDetails() {
         <ReportTable
           hideHeader
           data={data}
-          caption={<ServiceDetailsCaption />}
+          // caption={<ServiceDetailsCaption />}
           summary={summary}
           columns={columns}
           setSummaryValue={setSummaryValue}

@@ -7,7 +7,7 @@ function AddSalarySetup() {
 
   const defaultValues = useRef({
     employee_name: "",
-    benefits_type: "",
+    salary_type: "",
   });
 
   const [values, setValues] = useState(defaultValues.current);
@@ -51,10 +51,10 @@ function AddSalarySetup() {
       value: values["employee_name"],
     },
     {
-      label: "Benefits Type :",
-      name: "benefits_type",
+      label: "Salary Type :",
+      name: "salary_type",
       handleChange,
-      value: values["benefits_type"],
+      value: values["salary_type"],
       disabled: true,
     },
     {
@@ -71,18 +71,18 @@ function AddSalarySetup() {
   }, [values]);
 
   return (
-     <SearchBar
-        listView
-        CardTitle="Add Salary Setup"
-        hideCard={false}
-        buttonTitle="Save"
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        data={data}
-        colWidth="10"
-        labelWidth="200px"
-        width="60%"
-     />
+    <SearchBar
+      listView
+      CardTitle="Add Salary Setup"
+      hideCard={false}
+      buttonTitle="Save"
+      handleSubmit={handleSubmit}
+      handleChange={handleChange}
+      data={data}
+      colWidth="10"
+      labelWidth="200px"
+      width="60%"
+    />
   );
 }
 
