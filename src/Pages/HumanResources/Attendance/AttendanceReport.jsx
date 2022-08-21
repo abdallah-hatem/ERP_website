@@ -5,6 +5,7 @@ import FormComponent from "../../../Components/Web Components/FormComponent/Form
 import MasterTable from "../../../Components/Web Components/MasterTable/MasterTable";
 import { Popup } from "devextreme-react/popup";
 import SearchBar from "../../Closing/SearchBar";
+import ScrollView from "devextreme-react/scroll-view";
 
 function AttendanceReport() {
   const { t } = useTranslation();
@@ -140,41 +141,51 @@ function AttendanceReport() {
   const popUp = [
     {
       title: "Attendance Report",
-      height: "auto",
+      height: "70vh",
       visible: dateClicked,
       hideOnOutsideClick: true,
       onHiding: () => setDateClicked(false),
       children: (
-        <SearchBar
-          listView
-          buttonTitle="Request"
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          dateData={dateData}
-          startDate={startDate}
-          values={values}
-          setValidDate={setValidDate}
-        />
+        <ScrollView width="100%" height="100%">
+          <SearchBar
+            listView
+            buttonTitle="Request"
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            dateData={dateData}
+            startDate={startDate}
+            values={values}
+            setValidDate={setValidDate}
+            colWidth="10"
+            labelWidth="190px"
+            width="60%"
+          />
+        </ScrollView>
       ),
     },
     {
       title: "Employee Wise Report",
-      height: "auto",
+      height: "70vh",
       visible: employeeClicked,
       hideOnOutsideClick: true,
       onHiding: () => setEmployeeClicked(false),
       children: (
-        <SearchBar
-          listView
-          buttonTitle="Request"
-          handleSubmit={handleSubmit}
-          handleChange={handleChange}
-          dateData={dateData}
-          data={data}
-          startDate={startDate}
-          values={values}
-          setValidDate={setValidDate}
-        />
+        <ScrollView width="100%" height="100%">
+          <SearchBar
+            listView
+            buttonTitle="Request"
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            dateData={dateData}
+            data={data}
+            startDate={startDate}
+            values={values}
+            setValidDate={setValidDate}
+            colWidth="10"
+            labelWidth="190px"
+            width="60%"
+          />
+        </ScrollView>
       ),
     },
   ];
