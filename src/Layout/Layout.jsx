@@ -1,13 +1,10 @@
 import Navbar from "./Navbar/Navbar";
+
 import SideBar from "./Sidebar/SideBar";
+import SideBar2 from "./Sidebar/SideBar2";
 
 import { Routes, Route } from "react-router-dom";
 import { routes, singleRoutes } from "../Routes/Routes";
-
-import ProductDetails from "../Pages/Product/ProductDetails";
-import UpdateProduct from "../Pages/Product/UpdateProduct";
-import EmployeeProfile from "../Pages/HumanResources/HRM/EmployeeProfile";
-import SideBar2 from "./Sidebar/SideBar2";
 import { useState } from "react";
 
 function Layout() {

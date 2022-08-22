@@ -86,7 +86,7 @@ function SideBar2({ clicked }) {
       style={{ backgroundColor: "#1d1d1d" }}
       className="left-panel small-sidebar-action"
     >
-      <ProSidebar onToggle={(e) => console.log(e)} collapsed={collapsed}>
+      <ProSidebar collapsed={collapsed}>
         <SidebarHeader>
           <UserProfile />
         </SidebarHeader>
