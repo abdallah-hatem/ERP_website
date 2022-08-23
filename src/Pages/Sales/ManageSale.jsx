@@ -85,7 +85,7 @@ function ManageSale() {
       caption: t("Total Amount"),
       format: "currency",
     },
-  ])
+  ]);
 
   const reportColumns = [
     {
@@ -169,7 +169,7 @@ function ManageSale() {
       date: "02/2/2022	",
       total_amount: 10000,
     },
-  ])
+  ]);
 
   const summary = useRef([
     {
@@ -177,7 +177,7 @@ function ManageSale() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ])
+  ]);
 
   const reportSummary = [
     {

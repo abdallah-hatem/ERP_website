@@ -24,6 +24,11 @@ function Navbar({ setClicked }) {
 
   function handleSideBar() {
     setClicked((prev) => !prev);
+
+    // setTimeout(() => {
+    //   setClicked((prev) => !prev);
+    // }, 250);
+
     let body = document.body;
 
     let leftPanelId = document.getElementById("left-panel");

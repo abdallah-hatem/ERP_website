@@ -80,6 +80,25 @@ function SideBar2({ clicked }) {
     return <span style={{ color: "red" }}>{title}</span>;
   }
 
+  ///////////// collapse side bar on item clicking in mobile mode /////////////
+
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [collapseMobile, setCollapseMobile] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", function () {
+      setWindowSize(window.innerWidth);
+    });
+  }, [windowSize]);
+
+  useEffect(() => {
+    let leftPanelId = document.getElementById("left-panel");
+    if (windowSize < 768 && collapseMobile) {
+      leftPanelId.classList.toggle("animation-dropdown");
+      setCollapseMobile(false);
+    }
+  }, [collapseMobile]);
+
   return (
     <aside
       id="left-panel"
@@ -116,14 +135,20 @@ function SideBar2({ clicked }) {
                         icon={<i className={el2.icon} />}
                       >
                         {el2.data.map((el3) => (
-                          <MenuItem style={{ color: handleColor(el3) }}>
+                          <MenuItem
+                            onClick={() => setCollapseMobile(true)}
+                            style={{ color: handleColor(el3) }}
+                          >
                             {t(el3.title)}
                             <Link to={el3.path} />
                           </MenuItem>
                         ))}
                       </SubMenu>
                     ) : (
-                      <MenuItem style={{ color: handleColor(el2) }}>
+                      <MenuItem
+                        onClick={() => setCollapseMobile(true)}
+                        style={{ color: handleColor(el2) }}
+                      >
                         {t(el2.title)}
                         <Link to={el2.path} />
                       </MenuItem>

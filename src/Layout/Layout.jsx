@@ -6,6 +6,7 @@ import SideBar2 from "./Sidebar/SideBar2";
 import { Routes, Route } from "react-router-dom";
 import { routes, singleRoutes } from "../Routes/Routes";
 import { useState } from "react";
+import SideBar3 from "./Sidebar/SideBar3";
 
 function Layout() {
   const [clicked, setClicked] = useState(false);
@@ -13,6 +14,7 @@ function Layout() {
     <>
       {/* <SideBar /> */}
       <SideBar2 clicked={clicked} />
+      {/* <SideBar3 /> */}
 
       <div id="right-panel" class="right-panel">
         <Navbar setClicked={setClicked} />
