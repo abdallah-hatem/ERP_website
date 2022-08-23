@@ -58,7 +58,7 @@ function ManageSale() {
   const [currentRowId, setCurrentRowId] = useState(0);
   const [currentRowData, setCurrentRowData] = useState("");
 
-  const columns = [
+  const columns = useRef([
     {
       field: "sl",
       caption: t("SL."),
@@ -85,7 +85,7 @@ function ManageSale() {
       caption: t("Total Amount"),
       format: "currency",
     },
-  ];
+  ])
 
   const reportColumns = [
     {
@@ -126,7 +126,7 @@ function ManageSale() {
     },
   ];
 
-  const data = [
+  const data = useRef([
     {
       sl: 1,
       invoice_no: 1000,
@@ -169,15 +169,15 @@ function ManageSale() {
       date: "02/2/2022	",
       total_amount: 10000,
     },
-  ];
+  ])
 
-  const summary = [
+  const summary = useRef([
     {
       column: "total_amount",
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ])
 
   const reportSummary = [
     {
@@ -356,9 +356,9 @@ function ManageSale() {
           allowExcel
           allowPrint
           columnChooser={false}
-          dataSource={data}
-          colAttributes={columns}
-          summaryItems={summary}
+          dataSource={data.current}
+          colAttributes={columns.current}
+          summaryItems={summary.current}
           ColoredRows
           // onRowDoubleClick={(e) => navigate(`/product-details/${e.data.sl}`)}
         >

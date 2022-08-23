@@ -53,6 +53,30 @@ function AddRoleTable({ title, data }) {
       },
    ];
 
+   let finalData = [];
+
+   data.map((el, index) =>
+      el.data
+         ? el.data.map((el, index2) =>
+              finalData.push({
+                 sl: index + 1 + index2,
+                 menu_name: el.title,
+                 create: false,
+                 read: false,
+                 update: false,
+                 delete: false,
+              })
+           )
+         : finalData.push({
+              sl: index + 1,
+              menu_name: el.title,
+              create: false,
+              read: false,
+              update: false,
+              delete: false,
+           })
+   );
+
    const titleStyle = {
       color: TitleColor,
       fontWeight: "550",
@@ -60,14 +84,14 @@ function AddRoleTable({ title, data }) {
 
    return (
       <>
-         <h3 style={titleStyle}>{"title"}</h3>
+         <h3 style={titleStyle}>{title}</h3>
          <MasterTable
             allowUpdate
             editingMode="batch"
             allowColumnReordering
             searchPanel={false}
             columnChooser={false}
-            dataSource={data}
+            dataSource={finalData}
             colAttributes={columns}
             onSaving={(e) => console.log(e)}
          />
