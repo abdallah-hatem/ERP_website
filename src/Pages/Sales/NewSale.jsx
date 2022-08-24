@@ -18,7 +18,8 @@ function NewSale() {
           name4: "hatem",
         },
       ]}
-      // width={500}
+      // width={1000}
+      // columnMinWidth={200}
       showBorders={true}
       columnAutoWidth={true}
     />

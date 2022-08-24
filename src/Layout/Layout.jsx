@@ -13,8 +13,8 @@ function Layout() {
   return (
     <>
       {/* <SideBar /> */}
-      <SideBar2 clicked={clicked} />
-      {/* <SideBar3 /> */}
+      {/* <SideBar2 clicked={clicked} /> */}
+      <SideBar3 clicked={clicked} />
 
       <div id="right-panel" class="right-panel">
         <Navbar setClicked={setClicked} />

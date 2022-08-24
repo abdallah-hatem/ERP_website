@@ -51,6 +51,7 @@
       "sass": "^1.53.0",
       "shards-react": "^1.0.3",
       "use-file-upload": "^1.0.11",
+      "uuid": "^8.3.2",
       "web-vitals": "^2.1.4"
    },
    "scripts": {

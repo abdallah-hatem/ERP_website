@@ -83,7 +83,7 @@ function SideBar2({ clicked }) {
   ///////////// collapse side bar on item clicking in mobile mode /////////////
 
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const [collapseMobile, setCollapseMobile] = useState(false);
+  const [clickedd, setCollapseMobile] = useState(false);
 
   useEffect(() => {
     window.addEventListener("resize", function () {
@@ -93,11 +93,11 @@ function SideBar2({ clicked }) {
 
   useEffect(() => {
     let leftPanelId = document.getElementById("left-panel");
-    if (windowSize < 768 && collapseMobile) {
+    if (windowSize < 768 && clickedd) {
       leftPanelId.classList.toggle("animation-dropdown");
       setCollapseMobile(false);
     }
-  }, [collapseMobile]);
+  }, [clickedd]);
 
   return (
     <aside
