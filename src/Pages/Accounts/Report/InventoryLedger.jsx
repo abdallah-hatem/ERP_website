@@ -1,37 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useReactToPrint } from "react-to-print";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { useReactToPrint } from "react-to-print"
 
-import SearchBar from "../../Closing/SearchBar";
-import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
-import ReportTable from "../../Closing/ReportTable";
+import SearchBar from "../../Closing/SearchBar"
+import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent"
+import ReportTable from "../../Closing/ReportTable"
 
 function InventoryLedger() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
-  const [values, setValues] = useState(defaultValues.current);
+  })
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit(e) {
     // e.preventDefault();
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
-        alert(t("Fill the inputs"));
-        return;
+        alert(t("Fill the inputs"))
+        return
       }
     }
 
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const columns = [
     {
@@ -70,7 +70,7 @@ function InventoryLedger() {
       caption: t("Balance"),
       format: "currency",
     },
-  ];
+  ]
 
   const summary = [
     {
@@ -88,12 +88,12 @@ function InventoryLedger() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
-  const componentRef = useRef();
+  const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+  })
 
   const dateData = [
     {
@@ -108,11 +108,11 @@ function InventoryLedger() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
     <>
@@ -138,14 +138,10 @@ function InventoryLedger() {
       </div>
 
       <div ref={componentRef}>
-        <ReportTable
-          title="Inventory Ledger"
-          summary={summary}
-          columns={columns}
-        />
+        <ReportTable title="Inventory Ledger" summary={summary} columns={columns} />
       </div>
     </>
-  );
+  )
 }
 
-export default InventoryLedger;
+export default InventoryLedger

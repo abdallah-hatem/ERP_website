@@ -1,29 +1,29 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import ReportTable from "../../Closing/ReportTable";
-import SearchBar from "../../Closing/SearchBar";
-import { useReactToPrint } from "react-to-print";
-import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import ReportTable from "../../Closing/ReportTable"
+import SearchBar from "../../Closing/SearchBar"
+import { useReactToPrint } from "react-to-print"
+import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent"
 
 function BalanceSheet() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit() {
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const dateData = [
     {
@@ -38,7 +38,7 @@ function BalanceSheet() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
   const columns = [
     {
@@ -49,7 +49,7 @@ function BalanceSheet() {
       field: "Amount",
       caption: "Amount",
     },
-  ];
+  ]
 
   const data = [
     {
@@ -73,7 +73,7 @@ function BalanceSheet() {
     {
       Particulars: "Total Expense",
     },
-  ];
+  ]
 
   //   const summary = [
   //     {
@@ -83,14 +83,14 @@ function BalanceSheet() {
   //     },
   //   ];
 
-  const componentRef = useRef();
+  const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+  })
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
   return (
     <>
       <SearchBar
@@ -118,7 +118,7 @@ function BalanceSheet() {
         <ReportTable title="Balance Sheet" data={data} columns={columns} />
       </div>
     </>
-  );
+  )
 }
 
-export default BalanceSheet;
+export default BalanceSheet

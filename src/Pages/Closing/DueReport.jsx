@@ -1,37 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useReactToPrint } from "react-to-print";
-import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import ReportTable from "./ReportTable";
-import SearchBar from "./SearchBar";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { useReactToPrint } from "react-to-print"
+import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons"
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent"
+import ReportTable from "./ReportTable"
+import SearchBar from "./SearchBar"
 
 function DueReport() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit(e) {
     // e.preventDefault();
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
-        alert(t("Fill the inputs"));
+        alert(t("Fill the inputs"))
       }
     }
 
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const columns = [
     {
@@ -61,7 +61,7 @@ function DueReport() {
       caption: t("Due Amount"),
       format: "currency",
     },
-  ];
+  ]
 
   const summary = [
     {
@@ -79,7 +79,7 @@ function DueReport() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
   const buttons = [
     {
@@ -106,7 +106,7 @@ function DueReport() {
       iconClass: "ti-align-justify",
       class: "btn btn-warning m-b-5 m-r-2",
     },
-  ];
+  ]
 
   const dateData = [
     {
@@ -121,16 +121,16 @@ function DueReport() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
-  const componentRef = useRef();
+  const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+  })
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
     <>
@@ -161,7 +161,7 @@ function DueReport() {
 
       <ActionsButtons style={{ float: "right" }} buttons={buttons} />
     </>
-  );
+  )
 }
 
-export default DueReport;
+export default DueReport

@@ -1,37 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useReactToPrint } from "react-to-print";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { useReactToPrint } from "react-to-print"
 
-import SearchBar from "../../Closing/SearchBar";
-import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent";
-import ReportTable from "../../Closing/ReportTable";
+import SearchBar from "../../Closing/SearchBar"
+import ButtonComponent from "../../../Components/Web Components/ButtonComponent/ButtonComponent"
+import ReportTable from "../../Closing/ReportTable"
 
 function CashBook() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit(e) {
     // e.preventDefault();
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
-        alert(t("Fill the inputs"));
+        alert(t("Fill the inputs"))
       }
     }
 
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const columns = [
     {
@@ -70,7 +70,7 @@ function CashBook() {
       caption: t("Balance"),
       format: "currency",
     },
-  ];
+  ]
 
   const summary = [
     {
@@ -88,7 +88,7 @@ function CashBook() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
   const dateData = [
     {
@@ -103,16 +103,16 @@ function CashBook() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
-  const componentRef = useRef();
+  const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+  })
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
     <>
@@ -141,7 +141,7 @@ function CashBook() {
         <ReportTable title="Cash Book" summary={summary} columns={columns} />
       </div>
     </>
-  );
+  )
 }
 
-export default CashBook;
+export default CashBook

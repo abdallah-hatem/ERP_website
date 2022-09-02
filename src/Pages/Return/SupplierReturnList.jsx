@@ -1,113 +1,113 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
-import SearchBar from "../Closing/SearchBar";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import FormComponent from "../../Components/Web Components/FormComponent/FormComponent"
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable"
+import SearchBar from "../Closing/SearchBar"
 
 function SupplierReturnList() {
-   const { t } = useTranslation();
+  const { t } = useTranslation()
 
-   const defaultValues = useRef({
-      start_date: "",
-      end_date: "",
-   });
+  const defaultValues = useRef({
+    start_date: "",
+    end_date: "",
+  })
 
-   const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
-   function handleSubmit() {
-      if (!validDate) {
-         alert(t("Start date cant be bigger than end date"));
-      }
-   }
+  function handleSubmit() {
+    if (!validDate) {
+      alert(t("Start date cant be bigger than end date"))
+    }
+  }
 
-   const [startDate, setStartDate] = useState(new Date());
-   const [endDate, setEndDate] = useState(new Date());
-   const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
-   const columns = [
-      {
-         field: "sl",
-         caption: t("SL No."),
-         allowEditing: false,
-         hideFilter: true,
-      },
-      {
-         field: "Purchase ID",
-         caption: t("Purchase ID"),
-         hideFilter: true,
-      },
-      {
-         field: "Supplier Name",
-         caption: t("Supplier Name"),
-         hideFilter: true,
-      },
-      {
-         field: "date",
-         caption: t("Date"),
-         dataType: "date",
-      },
+  const columns = [
+    {
+      field: "sl",
+      caption: t("SL No."),
+      allowEditing: false,
+      hideFilter: true,
+    },
+    {
+      field: "Purchase ID",
+      caption: t("Purchase ID"),
+      hideFilter: true,
+    },
+    {
+      field: "Supplier Name",
+      caption: t("Supplier Name"),
+      hideFilter: true,
+    },
+    {
+      field: "date",
+      caption: t("Date"),
+      dataType: "date",
+    },
 
-      {
-         field: "Total Amount",
-         caption: t("Total Amount"),
-         hideFilter: true,
-      },
-   ];
+    {
+      field: "Total Amount",
+      caption: t("Total Amount"),
+      hideFilter: true,
+    },
+  ]
 
-   const summary = [
-      {
-         column: "Total Amount",
-         summaryType: "sum",
-         valueFormat: "currency",
-      },
-   ];
+  const summary = [
+    {
+      column: "Total Amount",
+      summaryType: "sum",
+      valueFormat: "currency",
+    },
+  ]
 
-   const dateData = [
-      {
-         label: "Start Date :",
-         value: "start_date",
-         selected: startDate,
-         onChange: setStartDate,
-      },
-      {
-         label: "End Date :",
-         value: "end_date",
-         selected: endDate,
-         onChange: setEndDate,
-      },
-   ];
+  const dateData = [
+    {
+      label: "Start Date :",
+      value: "start_date",
+      selected: startDate,
+      onChange: setStartDate,
+    },
+    {
+      label: "End Date :",
+      value: "end_date",
+      selected: endDate,
+      onChange: setEndDate,
+    },
+  ]
 
-   useEffect(() => {
-      console.log(values);
-   }, [values, startDate, endDate]);
+  useEffect(() => {
+    console.log(values)
+  }, [values, startDate, endDate])
 
-   return (
-      <>
-         <SearchBar
-            hideHeader
-            hideCard={false}
-            handleSubmit={handleSubmit}
-            dateData={dateData}
-            startDate={startDate}
-            endDate={endDate}
-            values={values}
-            setValidDate={setValidDate}
-            labelWidth="120px"
-            width="60%"
-         />
+  return (
+    <>
+      <SearchBar
+        hideHeader
+        hideCard={false}
+        handleSubmit={handleSubmit}
+        dateData={dateData}
+        startDate={startDate}
+        endDate={endDate}
+        values={values}
+        setValidDate={setValidDate}
+        labelWidth="120px"
+        width="60%"
+      />
 
-         <FormComponent title={"Supplier Return"}>
-            <MasterTable
-               searchPanel={false}
-               ColoredRows
-               allowPaging
-               columnChooser={false}
-               colAttributes={columns}
-               summaryItems={summary}
-            />
-         </FormComponent>
-      </>
-   );
+      <FormComponent title={"Supplier Return"}>
+        <MasterTable
+          searchPanel={false}
+          ColoredRows
+          allowPaging
+          columnChooser={false}
+          colAttributes={columns}
+          summaryItems={summary}
+        />
+      </FormComponent>
+    </>
+  )
 }
 
-export default SupplierReturnList;
+export default SupplierReturnList

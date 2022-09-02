@@ -1,23 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import ReportTable from "./ReportTable";
-import { useReactToPrint } from "react-to-print";
-import SearchBar from "./SearchBar";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent"
+import ReportTable from "./ReportTable"
+import { useReactToPrint } from "react-to-print"
+import SearchBar from "./SearchBar"
 
 function ClosingReport() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit() {
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
@@ -49,16 +49,16 @@ function ClosingReport() {
       caption: t("Balance"),
       hideFilter: true,
     },
-  ];
+  ]
 
-  const ref = useRef();
+  const ref = useRef()
   const handlePrint = useReactToPrint({
     content: () => ref.current,
-  });
+  })
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const dateData = [
     {
@@ -73,11 +73,11 @@ function ClosingReport() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
     <>
@@ -106,7 +106,7 @@ function ClosingReport() {
         <ReportTable columns={columns} title={"Closing Report"} />
       </div>
     </>
-  );
+  )
 }
 
-export default ClosingReport;
+export default ClosingReport

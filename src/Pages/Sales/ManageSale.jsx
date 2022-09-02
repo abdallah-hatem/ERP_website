@@ -1,40 +1,40 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
-import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons";
-import { Column, Button } from "devextreme-react/data-grid";
-import { Popup } from "devextreme-react/popup";
-import { Link, useNavigate } from "react-router-dom";
-import ScrollView from "devextreme-react/scroll-view";
-import ReportTable from "../Closing/ReportTable";
-import CodeGenerator from "../../Components/Web Components/CodeGenerator/CodeGenerator";
-import { TitleColor } from "../../Styles/Colors";
-import logo from "../../Images/logo.png";
-import { useReactToPrint } from "react-to-print";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import SearchBar from "../Closing/SearchBar";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import FormComponent from "../../Components/Web Components/FormComponent/FormComponent"
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable"
+import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons"
+import { Column, Button } from "devextreme-react/data-grid"
+import { Popup } from "devextreme-react/popup"
+import { Link, useNavigate } from "react-router-dom"
+import ScrollView from "devextreme-react/scroll-view"
+import ReportTable from "../Closing/ReportTable"
+import CodeGenerator from "../../Components/Web Components/CodeGenerator/CodeGenerator"
+import { TitleColor } from "../../Styles/Colors"
+import logo from "../../Images/logo.png"
+import { useReactToPrint } from "react-to-print"
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent"
+import SearchBar from "../Closing/SearchBar"
 
 function ManageSale() {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { t } = useTranslation()
+  const navigate = useNavigate()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit() {
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const dateData = [
     {
@@ -49,14 +49,14 @@ function ManageSale() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
-  const [clickedQr, setClickedQr] = useState(false);
-  const [clickedBar, setClickedBar] = useState(false);
-  const [clickedEdit, setClickedEdit] = useState(false);
-  const [posSale, SetPosSale] = useState(false);
-  const [currentRowId, setCurrentRowId] = useState(0);
-  const [currentRowData, setCurrentRowData] = useState("");
+  const [clickedQr, setClickedQr] = useState(false)
+  const [clickedBar, setClickedBar] = useState(false)
+  const [clickedEdit, setClickedEdit] = useState(false)
+  const [posSale, SetPosSale] = useState(false)
+  const [currentRowId, setCurrentRowId] = useState(0)
+  const [currentRowData, setCurrentRowData] = useState("")
 
   const columns = useRef([
     {
@@ -85,7 +85,7 @@ function ManageSale() {
       caption: t("Total Amount"),
       format: "currency",
     },
-  ]);
+  ])
 
   const reportColumns = [
     {
@@ -124,7 +124,7 @@ function ManageSale() {
       caption: t("Paid Amount"),
       format: "currency",
     },
-  ];
+  ]
 
   const data = useRef([
     {
@@ -169,7 +169,7 @@ function ManageSale() {
       date: "02/2/2022	",
       total_amount: 10000,
     },
-  ]);
+  ])
 
   const summary = useRef([
     {
@@ -177,7 +177,7 @@ function ManageSale() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ]);
+  ])
 
   const reportSummary = [
     {
@@ -185,7 +185,7 @@ function ManageSale() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
   const buttons = [
     {
@@ -200,7 +200,7 @@ function ManageSale() {
       iconClass: "ti-align-justify",
       class: "btn btn-primary m-b-5 m-r-2",
     },
-  ];
+  ]
 
   const masterButtons = [
     {
@@ -209,8 +209,8 @@ function ManageSale() {
       visible: true,
       disabled: false,
       onClick: (e) => {
-        setClickedQr(true);
-        setCurrentRowId(e.row.data.sl);
+        setClickedQr(true)
+        setCurrentRowId(e.row.data.sl)
       },
     },
     {
@@ -219,7 +219,7 @@ function ManageSale() {
       visible: true,
       disabled: false,
       onClick: () => {
-        setClickedBar(true);
+        setClickedBar(true)
       },
     },
     {
@@ -228,7 +228,7 @@ function ManageSale() {
       visible: true,
       disabled: false,
       onClick: () => {
-        SetPosSale(true);
+        SetPosSale(true)
       },
     },
     {
@@ -237,15 +237,15 @@ function ManageSale() {
       visible: true,
       disabled: false,
       onClick: (e) => {
-        setClickedEdit(true);
-        setCurrentRowData(e.row.data);
+        setClickedEdit(true)
+        setCurrentRowData(e.row.data)
       },
       // onClick:(e) => {navigate(`/update-product/${e.row.data.sl}`)}
     },
     {
       name: "delete",
     },
-  ];
+  ]
 
   const caption = (
     <div className="mb-5 row align-items-center">
@@ -262,12 +262,12 @@ function ManageSale() {
       </div>
       <span className="col-lg-4 text-center">Date: 27-Jul-2022</span>
     </div>
-  );
+  )
 
-  const componentRef = useRef();
+  const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+  })
 
   const saleDetails = (
     <ScrollView style={{ padding: 15 }} width="100%" height="100%">
@@ -290,7 +290,7 @@ function ManageSale() {
         </div>
       </div>
     </ScrollView>
-  );
+  )
 
   const popUp = [
     {
@@ -329,11 +329,11 @@ function ManageSale() {
         </ScrollView>
       ),
     },
-  ];
+  ]
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
     <div>
@@ -394,7 +394,7 @@ function ManageSale() {
 
       <ActionsButtons style={{ float: "right" }} buttons={buttons} />
     </div>
-  );
+  )
 }
 
-export default ManageSale;
+export default ManageSale

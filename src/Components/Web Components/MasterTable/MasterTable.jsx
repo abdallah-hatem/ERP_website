@@ -223,7 +223,7 @@ function MasterTable({
         showBorders={true}
         ///////////////////
         columnAutoWidth={true} // Not Responsive
-        // allowColumnResizing={true}
+        allowColumnResizing={true}
         ///////////////////////
         wordWrapEnabled={true}
         // selection={{

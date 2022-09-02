@@ -1,42 +1,42 @@
-import React, { useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
-import { Popup } from "devextreme-react/popup";
-import { useState } from "react";
-import { Column, Button } from "devextreme-react/data-grid";
-import ScrollView from "devextreme-react/scroll-view";
-import ReportTable from "../Closing/ReportTable";
-import logo from "../../Images/logo.png";
-import { TitleColor } from "../../Styles/Colors";
-import CodeGenerator from "../../Components/Web Components/CodeGenerator/CodeGenerator";
-import { useReactToPrint } from "react-to-print";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import SearchBar from "../Closing/SearchBar";
+import React, { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
+import FormComponent from "../../Components/Web Components/FormComponent/FormComponent"
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable"
+import { Popup } from "devextreme-react/popup"
+import { useState } from "react"
+import { Column, Button } from "devextreme-react/data-grid"
+import ScrollView from "devextreme-react/scroll-view"
+import ReportTable from "../Closing/ReportTable"
+import logo from "../../Images/logo.png"
+import { TitleColor } from "../../Styles/Colors"
+import CodeGenerator from "../../Components/Web Components/CodeGenerator/CodeGenerator"
+import { useReactToPrint } from "react-to-print"
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent"
+import SearchBar from "../Closing/SearchBar"
 
 function ManagePurchase() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit(e) {
     // e.preventDefault();
     for (const [key, value] of Object.entries(values)) {
       if (!value) {
-        alert(t("Fill the inputs"));
+        alert(t("Fill the inputs"))
       }
     }
 
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(false)
 
   const columns = [
     {
@@ -65,7 +65,7 @@ function ManagePurchase() {
       caption: t("Total Amount"),
       format: "currency",
     },
-  ];
+  ]
 
   const data = [
     {
@@ -122,7 +122,7 @@ function ManagePurchase() {
       supplier_price: 10,
       purchase_date: "2022-02-02",
     },
-  ];
+  ]
 
   const summary = [
     {
@@ -130,7 +130,7 @@ function ManagePurchase() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
   const reportColumns = [
     {
@@ -170,9 +170,9 @@ function ManagePurchase() {
       caption: t("Total Amount"),
       format: "currency",
     },
-  ];
+  ]
 
-  const reportData = [{}];
+  const reportData = [{}]
 
   const reportSummary = [
     {
@@ -180,7 +180,7 @@ function ManagePurchase() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
   const caption = (
     <div className="mb-5 row align-items-center">
@@ -197,11 +197,11 @@ function ManagePurchase() {
       </div>
       <span className="col-lg-4 text-center">Date: 27-Jul-2022</span>
     </div>
-  );
+  )
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const dateData = [
     {
@@ -216,16 +216,16 @@ function ManagePurchase() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
-  const componentRef = useRef();
+  const componentRef = useRef()
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-  });
+  })
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
     <>
@@ -297,7 +297,7 @@ function ManagePurchase() {
         </MasterTable>
       </FormComponent>
     </>
-  );
+  )
 }
 
-export default ManagePurchase;
+export default ManagePurchase

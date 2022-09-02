@@ -1,24 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useReactToPrint } from "react-to-print";
-import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
-import SearchBar from "../Closing/SearchBar";
+import React, { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import { useReactToPrint } from "react-to-print"
+import ButtonComponent from "../../Components/Web Components/ButtonComponent/ButtonComponent"
+import FormComponent from "../../Components/Web Components/FormComponent/FormComponent"
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable"
+import SearchBar from "../Closing/SearchBar"
 
 function TaxReport() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const defaultValues = useRef({
     start_date: "",
     end_date: "",
-  });
+  })
 
-  const [values, setValues] = useState(defaultValues.current);
+  const [values, setValues] = useState(defaultValues.current)
 
   function handleSubmit() {
     if (!validDate) {
-      alert(t("Start date cant be bigger than end date"));
+      alert(t("Start date cant be bigger than end date"))
     }
   }
 
@@ -50,7 +50,7 @@ function TaxReport() {
       caption: t("IGT"),
       hideFilter: true,
     },
-  ];
+  ]
 
   const summary = [
     {
@@ -63,11 +63,11 @@ function TaxReport() {
       summaryType: "sum",
       valueFormat: "currency",
     },
-  ];
+  ]
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [validDate, setValidDate] = useState(true);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
+  const [validDate, setValidDate] = useState(true)
 
   const dateData = [
     {
@@ -82,54 +82,54 @@ function TaxReport() {
       selected: endDate,
       onChange: setEndDate,
     },
-  ];
+  ]
 
-  const ref = useRef();
+  const ref = useRef()
   const handlePrint = useReactToPrint({
     content: () => ref.current,
-  });
+  })
 
   useEffect(() => {
-    console.log(values);
-  }, [values, startDate, endDate]);
+    console.log(values)
+  }, [values, startDate, endDate])
 
   return (
-     <>
-        <SearchBar
-           hideHeader
-           hideCard={false}
-           handleSubmit={handleSubmit}
-           dateData={dateData}
-           startDate={startDate}
-           endDate={endDate}
-           values={values}
-           setValidDate={setValidDate}
-           labelWidth="120px"
-           width="60%"
+    <>
+      <SearchBar
+        hideHeader
+        hideCard={false}
+        handleSubmit={handleSubmit}
+        dateData={dateData}
+        startDate={startDate}
+        endDate={endDate}
+        values={values}
+        setValidDate={setValidDate}
+        labelWidth="120px"
+        width="60%"
+      />
+
+      <div className="d-flex justify-content-end mb-2">
+        <ButtonComponent
+          title={"Print"}
+          style={{ width: "100px" }}
+          onClick={handlePrint}
         />
+      </div>
 
-        <div className="d-flex justify-content-end mb-2">
-           <ButtonComponent
-              title={"Print"}
-              style={{ width: "100px" }}
-              onClick={handlePrint}
-           />
-        </div>
-
-        <div ref={ref}>
-           <FormComponent title="TAX Report">
-              <MasterTable
-                 searchPanel={false}
-                 ColoredRows
-                 allowPaging
-                 columnChooser={false}
-                 colAttributes={columns}
-                 summaryItems={summary}
-              />
-           </FormComponent>
-        </div>
-     </>
-  );
+      <div ref={ref}>
+        <FormComponent title="TAX Report">
+          <MasterTable
+            searchPanel={false}
+            ColoredRows
+            allowPaging
+            columnChooser={false}
+            colAttributes={columns}
+            summaryItems={summary}
+          />
+        </FormComponent>
+      </div>
+    </>
+  )
 }
 
-export default TaxReport;
+export default TaxReport

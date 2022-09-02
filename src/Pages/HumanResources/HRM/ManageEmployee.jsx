@@ -59,7 +59,7 @@ function ManageEmployee() {
       field: "picture",
       caption: t("Picture"),
       dataType: "Picture",
-      cellRender: (data) => <img src={data.value} alt="pic"></img>,
+      cellRender: (data) => <img style={{width:"100%",height:"100%"}} src={data.value} alt="pic"></img>,
     },
   ];
 

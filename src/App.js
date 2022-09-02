@@ -1,5 +1,6 @@
 import "./App.scss";
 import Layout from "./Layout/Layout";
+import Layout2 from "./Layout/Layout2";
 import { useTranslation } from "react-i18next";
 
 function App() {

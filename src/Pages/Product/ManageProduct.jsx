@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import FormComponent from "../../Components/Web Components/FormComponent/FormComponent";
-import MasterTable from "../../Components/Web Components/MasterTable/MasterTable";
-import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons";
-import { Column, Button } from "devextreme-react/data-grid";
-import { Popup } from "devextreme-react/popup";
-import QrCode from "./QrCode";
-import { Link, useNavigate } from "react-router-dom";
-import UpdateProduct from "./UpdateProduct";
-import BarCode from "./BarCode";
-import ProductDetails from "./ProductDetails";
-import ScrollView from "devextreme-react/scroll-view";
+import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
+import FormComponent from "../../Components/Web Components/FormComponent/FormComponent"
+import MasterTable from "../../Components/Web Components/MasterTable/MasterTable"
+import ActionsButtons from "../../Components/Web Components/ActionButtons/ActionsButtons"
+import { Column, Button } from "devextreme-react/data-grid"
+import { Popup } from "devextreme-react/popup"
+import QrCode from "./QrCode"
+import { Link, useNavigate } from "react-router-dom"
+import UpdateProduct from "./UpdateProduct"
+import BarCode from "./BarCode"
+import ProductDetails from "./ProductDetails"
+import ScrollView from "devextreme-react/scroll-view"
 
 function ManageProduct() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [clickedQr, setClickedQr] = useState(false);
-  const [clickedBar, setClickedBar] = useState(false);
-  const [clickedEdit, setClickedEdit] = useState(false);
-  const [currentRowId, setCurrentRowId] = useState(0);
-  const [currentRowData, setCurrentRowData] = useState("");
+  const [clickedQr, setClickedQr] = useState(false)
+  const [clickedBar, setClickedBar] = useState(false)
+  const [clickedEdit, setClickedEdit] = useState(false)
+  const [currentRowId, setCurrentRowId] = useState(0)
+  const [currentRowData, setCurrentRowData] = useState("")
 
   const columns = [
     {
@@ -34,8 +34,8 @@ function ManageProduct() {
       cellRender: (data) => (
         <span
           onClick={(e) => {
-            navigate(`/product-details/${data.data.sl}`);
-            e.preventDefault();
+            navigate(`/product-details/${data.data.sl}`)
+            e.preventDefault()
           }}
           style={{ cursor: "pointer", color: "#37a000" }}
         >
@@ -54,7 +54,7 @@ function ManageProduct() {
         <span
           onClick={(e) => {
             // navigate(`/product-details/${data.data.sl}`);
-            e.preventDefault();
+            e.preventDefault()
           }}
           style={{ cursor: "pointer", color: "#37a000" }}
         >
@@ -76,9 +76,15 @@ function ManageProduct() {
       field: "images",
       caption: t("Images"),
       dataType: "Picture",
-      cellRender: (data) => <img src={data.value} alt="pic"></img>,
+      cellRender: (data) => (
+        <img
+          style={{ width: "100px", heigth: "100x" }}
+          src={data.value}
+          alt="pic"
+        ></img>
+      ),
     },
-  ];
+  ]
 
   const data = [
     {
@@ -141,7 +147,7 @@ function ManageProduct() {
       images:
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
     },
-  ];
+  ]
 
   const buttons = [
     {
@@ -156,7 +162,7 @@ function ManageProduct() {
       iconClass: "ti-align-justify",
       class: "btn btn-primary m-b-5 m-r-2",
     },
-  ];
+  ]
 
   const masterButtons = [
     {
@@ -165,8 +171,8 @@ function ManageProduct() {
       visible: true,
       disabled: false,
       onClick: (e) => {
-        setClickedQr(true);
-        setCurrentRowId(e.row.data.sl);
+        setClickedQr(true)
+        setCurrentRowId(e.row.data.sl)
       },
     },
     {
@@ -175,7 +181,7 @@ function ManageProduct() {
       visible: true,
       disabled: false,
       onClick: () => {
-        setClickedBar(true);
+        setClickedBar(true)
       },
     },
     {
@@ -184,15 +190,15 @@ function ManageProduct() {
       visible: true,
       disabled: false,
       onClick: (e) => {
-        setClickedEdit(true);
-        setCurrentRowData(e.row.data);
+        setClickedEdit(true)
+        setCurrentRowData(e.row.data)
       },
       // onClick:(e) => {navigate(`/update-product/${e.row.data.sl}`)}
     },
     {
       name: "delete",
     },
-  ];
+  ]
 
   const popUp = [
     {
@@ -218,12 +224,12 @@ function ManageProduct() {
       hideOnOutsideClick: true,
       onHiding: () => setClickedEdit(false),
       children: (
-        <ScrollView width="100%" height="100%">
+        <ScrollView showScrollbar={false} width="100%" height="100%">
           <UpdateProduct UpdateData={currentRowData} />
         </ScrollView>
       ),
     },
-  ];
+  ]
 
   return (
     <>
@@ -271,7 +277,7 @@ function ManageProduct() {
 
       <ActionsButtons style={{ float: "right" }} buttons={buttons} />
     </>
-  );
+  )
 }
 
-export default ManageProduct;
+export default ManageProduct

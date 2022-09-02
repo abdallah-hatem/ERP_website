@@ -89,6 +89,7 @@ function CategoryList() {
         allowDelete
         allowUpdate
         allowPaging
+        editingMode="popup"
         columnChooser={false}
         dataSource={data}
         colAttributes={columns.current}

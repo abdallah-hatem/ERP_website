@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { routes } from "../../Routes/Routes";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React, { useCallback, useEffect, useRef, useState } from "react"
+import { useLocation } from "react-router-dom"
+import { routes } from "../../Routes/Routes"
+import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 import {
   ProSidebar,
@@ -10,157 +10,158 @@ import {
   MenuItem,
   SubMenu,
   SidebarHeader,
-} from "react-pro-sidebar";
+} from "react-pro-sidebar"
 
-import "react-pro-sidebar/dist/css/styles.css";
-import UserProfile from "./UserProfile";
+import "react-pro-sidebar/dist/css/styles.css"
+import UserProfile from "./UserProfile"
 
 function SideBar2({ clicked }) {
-  const { t } = useTranslation();
-  const location = useLocation();
+  const { t } = useTranslation()
+  const location = useLocation()
 
-  const [currentRoute, setCurrentRoute] = useState("");
-  const [collapsed, setCollapsed] = useState(false);
+  const [currentRoute, setCurrentRoute] = useState("")
+  const [collapsed, setCollapsed] = useState(false)
 
-  const [currentIndex, setCurrentIndex] = useState("");
-  const [currentIndex2, setCurrentIndex2] = useState("");
-
-  useEffect(() => {
-    setCurrentRoute(location.pathname);
-  }, [location]);
+  const [currentIndex, setCurrentIndex] = useState("")
+  const [currentIndex2, setCurrentIndex2] = useState("")
 
   useEffect(() => {
-    setCollapsed(document.body.classList.contains("open"));
-  }, [clicked]);
+    setCurrentRoute(location.pathname)
+  }, [location])
+
+  // useEffect(() => {
+  //   setCollapsed(document.body.classList.contains("open"));
+  // }, [clicked]);
 
   function handleOpen(el) {
-    let opened = false;
+    let opened = false
 
     if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
-      opened = true;
-      return opened;
+      opened = true
+      return opened
     }
 
     el.data?.map((el) => {
       if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
-        opened = true;
-        return opened;
+        opened = true
+        return opened
       }
-    });
+    })
 
-    return opened;
+    return opened
   }
 
   function handleColor(el) {
-    let color = "";
-    el.path === currentRoute && (color = "white");
+    let color = ""
+    el.path === currentRoute && (color = "white")
 
-    return color;
+    return color
   }
 
   function handleClassName(el) {
-    let className = "";
+    let className = ""
 
     if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
-      className = "Active";
-      return className;
+      className = "Active"
+      return className
     }
 
     el.data?.map((el) => {
       if (el.data?.filter((e) => e.path === currentRoute).length > 0) {
-        className = "Active";
-        return className;
+        className = "Active"
+        return className
       }
-    });
+    })
 
-    return className;
+    return className
   }
 
   function handleTitle(title) {
-    return <span style={{ color: "red" }}>{title}</span>;
+    return <span style={{ color: "red" }}>{title}</span>
   }
 
   ///////////// collapse side bar on item clicking in mobile mode /////////////
 
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const [clickedd, setCollapseMobile] = useState(false);
+  const [windowSize, setWindowSize] = useState(window.innerWidth)
+  const [collapseMobile, setCollapseMobile] = useState(false)
 
   useEffect(() => {
     window.addEventListener("resize", function () {
-      setWindowSize(window.innerWidth);
-    });
-  }, [windowSize]);
+      setWindowSize(window.innerWidth)
+    })
+  }, [windowSize])
 
   useEffect(() => {
-    let leftPanelId = document.getElementById("left-panel");
-    if (windowSize < 768 && clickedd) {
-      leftPanelId.classList.toggle("animation-dropdown");
-      setCollapseMobile(false);
+    let leftPanelId = document.getElementById("side-bar")
+    if (windowSize < 500 && collapseMobile) {
+      leftPanelId.classList.toggle("closed")
+
+      setCollapseMobile(false)
     }
-  }, [clickedd]);
+  }, [collapseMobile])
 
   return (
-    <aside
-      id="left-panel"
-      style={{ backgroundColor: "#1d1d1d" }}
-      className="left-panel small-sidebar-action"
-    >
-      <ProSidebar collapsed={collapsed}>
-        <SidebarHeader>
-          <UserProfile />
-        </SidebarHeader>
+    // <aside
+    //   id="left-panel"
+    //   style={{ backgroundColor: "#1d1d1d" }}
+    //   className="left-panel small-sidebar-action"
+    // >
+    <ProSidebar width={"100%"} collapsed={clicked}>
+      <SidebarHeader>
+        <UserProfile />
+      </SidebarHeader>
 
-        <Menu iconShape="square">
-          {routes.map((el, index) =>
-            el.path === "/dashboard" ? (
-              <MenuItem icon={<i className={el.icon}></i>}>
-                {t(el.title)}
-                <Link to={el.path} />
-              </MenuItem>
-            ) : (
-              <SubMenu
-                onClick={() => setCurrentIndex(index)}
-                open={index === currentIndex}
-                title={t(el.title)}
-                icon={<i className={el.icon} />}
-                className={handleClassName(el)}
-              >
-                {el.data &&
-                  el.data.map((el2, index2) =>
-                    el2.data ? (
-                      <SubMenu
-                        onClick={() => setCurrentIndex2(index2)}
-                        open={index2 === currentIndex2}
-                        title={t(el2.title)}
-                        icon={<i className={el2.icon} />}
-                      >
-                        {el2.data.map((el3) => (
-                          <MenuItem
-                            onClick={() => setCollapseMobile(true)}
-                            style={{ color: handleColor(el3) }}
-                          >
-                            {t(el3.title)}
-                            <Link to={el3.path} />
-                          </MenuItem>
-                        ))}
-                      </SubMenu>
-                    ) : (
-                      <MenuItem
-                        onClick={() => setCollapseMobile(true)}
-                        style={{ color: handleColor(el2) }}
-                      >
-                        {t(el2.title)}
-                        <Link to={el2.path} />
-                      </MenuItem>
-                    )
-                  )}
-              </SubMenu>
-            )
-          )}
-        </Menu>
-      </ProSidebar>
-    </aside>
-  );
+      <Menu iconShape="square">
+        {routes.map((el, index) =>
+          el.path === "/dashboard" ? (
+            <MenuItem icon={<i className={el.icon}></i>}>
+              {t(el.title)}
+              <Link to={el.path} />
+            </MenuItem>
+          ) : (
+            <SubMenu
+              onClick={() => setCurrentIndex(index)}
+              open={index === currentIndex}
+              title={t(el.title)}
+              icon={<i className={el.icon} />}
+              className={handleClassName(el)}
+            >
+              {el.data &&
+                el.data.map((el2, index2) =>
+                  el2.data ? (
+                    <SubMenu
+                      onClick={() => setCurrentIndex2(index2)}
+                      open={index2 === currentIndex2}
+                      title={t(el2.title)}
+                      icon={<i className={el2.icon} />}
+                    >
+                      {el2.data.map((el3) => (
+                        <MenuItem
+                          onClick={() => setCollapseMobile(true)}
+                          style={{ color: handleColor(el3) }}
+                        >
+                          {t(el3.title)}
+                          <Link to={el3.path} />
+                        </MenuItem>
+                      ))}
+                    </SubMenu>
+                  ) : (
+                    <MenuItem
+                      onClick={() => setCollapseMobile(true)}
+                      style={{ color: handleColor(el2) }}
+                    >
+                      {t(el2.title)}
+                      <Link to={el2.path} />
+                    </MenuItem>
+                  )
+                )}
+            </SubMenu>
+          )
+        )}
+      </Menu>
+    </ProSidebar>
+    // </aside>
+  )
 }
 
-export default SideBar2;
+export default SideBar2

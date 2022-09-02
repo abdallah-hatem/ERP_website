@@ -1,18 +1,18 @@
-import React from "react";
+import React from "react"
 import {
   TreeList,
   Editing,
   Column,
   Lookup,
   ValidationRule,
-} from "devextreme-react/tree-list";
-import { useTranslation } from "react-i18next";
+} from "devextreme-react/tree-list"
+import { useTranslation } from "react-i18next"
 
 function TreeTable({
   data,
   columns = [],
   autoExpandAll = false,
-  columnAutoWidth = false,
+  columnAutoWidth = true,
   showBorders = true,
   keyExpr,
   parentIdExpr,
@@ -23,7 +23,7 @@ function TreeTable({
   popUpTitle = "title",
   popUpWidth,
 }) {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <TreeList
@@ -63,7 +63,7 @@ function TreeTable({
         </Column>
       ))}
     </TreeList>
-  );
+  )
 }
 
-export default TreeTable;
+export default TreeTable

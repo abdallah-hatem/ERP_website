@@ -75,6 +75,7 @@ function UnitList() {
         allowDelete
         allowUpdate
         allowPaging
+        editingMode="popup"
         columnChooser={false}
         dataSource={data}
         colAttributes={columns}
